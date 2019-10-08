@@ -1,95 +1,553 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="zh">
+
+
+
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <script>
+    window.themeRuntime = {
+      root: "/",
+      scriptsMap: {},
+      init: {
+        status: false
+      },
+      commentRest: {
+        status: false
+      },
+      versions: {
+        theme: "2.0.3",
+        mdui: "0.4.0",
+        fetch: "3.0.0",
+        es6promise: "4.2.5+7f2b526d",
+        lightgallery: "1.0.1",
+        smoothscroll: "15.2.0"
+      }
+      
+    };
+    console.info("%cCopyright © 2018 - " + new Date().getFullYear() +" Halyul\n"+'Theme Version: ' + themeRuntime.versions.theme +'%c\nhttps://github.com/Halyul/hexo-theme-mdui',"font-size: 14px;color: #3F51B5;","color: #448AFF;text-decoration: none");
+  </script>
+  <!--
+        © HEXO MDUI Theme
+        https://github.com/Halyul/hexo-theme-mdui
+        -->
+
+  <meta charset="UTF-8">
+  <title>回顾html - 归</title>
+
+  <!-- Favicons -->
+  <link rel="icon shortcut" type="image/ico" href="/images/favicon.png">
+  <link rel="icon" sizes="192x192" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  <!-- Meta & Info -->
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <meta name="theme-color" content="#fff">
+
+  <meta name="author" content="Junjie Shen">
+  
+  <meta name="keywords" content="blog, hexo, mdui,HTML">
+
+  <!--iOS -->
+  <meta name="apple-mobile-web-app-title" content="归">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="480">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- The Open Graph protocol -->
+  <meta property="og:url" content="http://yoursite.com">
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="回顾html - 归 | 归">
+  <meta property="og:image" content="/images/favicon.png">
   
 
   
-  <title>回顾html | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对html语言进行了回顾和再次学习。 html样式一些标签和属性都用html中的style属性所代替了。 被抛弃的标签和属性   标签/属性 描述    &amp;lt;center&amp;gt; 定义居中的内容   &amp;lt;font&amp;gt;和&amp;lt;basefont&amp;gt; 定义HTML字体   &amp;lt;s&amp;gt;和&amp;lt;strike&amp;gt;(使用&amp;lt;del&amp;gt;代替) 定义删除线文本   &amp;lt;u">
-<meta name="keywords" content="HTML">
-<meta property="og:type" content="article">
-<meta property="og:title" content="回顾html">
-<meta property="og:url" content="http://yoursite.com/2019/10/08/回顾html/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="对html语言进行了回顾和再次学习。 html样式一些标签和属性都用html中的style属性所代替了。 被抛弃的标签和属性   标签/属性 描述    &amp;lt;center&amp;gt; 定义居中的内容   &amp;lt;font&amp;gt;和&amp;lt;basefont&amp;gt; 定义HTML字体   &amp;lt;s&amp;gt;和&amp;lt;strike&amp;gt;(使用&amp;lt;del&amp;gt;代替) 定义删除线文本   &amp;lt;u">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-08T14:19:07.910Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="回顾html">
-<meta name="twitter:description" content="对html语言进行了回顾和再次学习。 html样式一些标签和属性都用html中的style属性所代替了。 被抛弃的标签和属性   标签/属性 描述    &amp;lt;center&amp;gt; 定义居中的内容   &amp;lt;font&amp;gt;和&amp;lt;basefont&amp;gt; 定义HTML字体   &amp;lt;s&amp;gt;和&amp;lt;strike&amp;gt;(使用&amp;lt;del&amp;gt;代替) 定义删除线文本   &amp;lt;u">
+    <meta property="og:article:tag" content="HTML">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
   
+
+  <!-- Import CSS -->
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/mdui.css">
   
+
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
 </head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+
+
+<body class="mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+
+  <style>
+    #spinner {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+          opacity: 1;
+      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+          transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+    }
+    main {
+      opacity: 0;
+      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+      transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+      display: none;
+    }
+  </style>
+  <div id="spinner">
+    <style>
+      .spinner {
+
+      -webkit-animation: rotator 1.4s linear infinite;
+              animation: rotator 1.4s linear infinite;
+      }
+
+      @-webkit-keyframes rotator {
+      0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+      }
+      }
+
+      @keyframes rotator {
+      0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+      }
+      }
+
+      .path {
+      stroke-dasharray: 187;
+      stroke-dashoffset: 0;
+      -webkit-transform-origin: center;
+              transform-origin: center;
+      -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+              animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+      }
+
+      @-webkit-keyframes colors {
+      0% {
+        stroke: #4285F4;
+      }
+      25% {
+        stroke: #DE3E35;
+      }
+      50% {
+        stroke: #F7C223;
+      }
+      75% {
+        stroke: #1B9A59;
+      }
+      100% {
+        stroke: #4285F4;
+      }
+      }
+
+      @keyframes colors {
+      0% {
+        stroke: #4285F4;
+      }
+      25% {
+        stroke: #DE3E35;
+      }
+      50% {
+        stroke: #F7C223;
+      }
+      75% {
+        stroke: #1B9A59;
+      }
+      100% {
+        stroke: #4285F4;
+      }
+      }
+
+      @-webkit-keyframes dash {
+      0% {
+        stroke-dashoffset: 187;
+      }
+      50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+      }
+      100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+      }
+      }
+
+      @keyframes dash {
+      0% {
+        stroke-dashoffset: 187;
+      }
+      50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+      }
+      100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+      }
+      }
+    </style>
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+    </svg>
+  </div>
+
+  <main>
+    <div class="mdui-appbar mdui-appbar-fixed mdui-color-white mdui-shadow-0 theme-appbar">
+  <div class="mdui-toolbar theme-toolbar-top">
+    
+      <a href="/" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger theme-appbar__burger--arrow">
+        <i class="mdui-icon">
+          <span></span>
+        </i>
+      </a>
+    
+  </div>
+  <div class="mdui-toolbar theme-toolbar-bottom">
+    <span class="theme-toolbar-bottom__title">归</span>
+    
+      <a href="/search.html" class="mdui-textfield-icon mdui-btn mdui-btn-icon theme-toolbar-bottom__search">
+        <i class="mdui-icon material-icons">&#xe8b6;</i>
+      </a>
+    
+  </div>
+  <div class="mdui-progress theme-appbar__progress" id="progressBar">
+    <div class="mdui-progress-indeterminate"></div>
+  </div>
+</div>
+
+    <div class="mdui-drawer mdui-drawer-full-height theme-drawer" id="drawer">
+  <!-- header -->
+  <div class="theme-drawer__header">
+  <div class="theme-drawer__header__layer-1">
+    <div class="mdui-toolbar theme-toolbar-top">
+      
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger theme-appbar__burger--drawer theme-appbar__burger--arrow" id="drawer-back">
+          <i class="mdui-icon">
+            <span></span>
+          </i>
+        </a>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    <div class="mdui-toolbar theme-toolbar-bottom">
+      <span class="theme-toolbar-bottom__title">归</span>
+    </div>
+  </div>
+  <div class="theme-drawer__header__layer-2" style="background-image: url(/images/bg.png)">
+    <img class="mdui-img-circle theme-drawer__header__layer-2__user__avatar" src="/images/avatar.png"/>
+    <div class="theme-drawer__header__layer-2__user__info">
+      <div class="theme-drawer__header__layer-2__user__info__author mdui-text-color-white-text">
+        Junjie Shen
+      </div>
+      <div class="theme-drawer__header__layer-2__user__info__slogan mdui-text-color-white-secondary">
+        I&#39;m your slogan!
       </div>
     </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-回顾html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/08/回顾html/" class="article-date">
-  <time datetime="2019-10-08T04:28:11.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
+</div>
+
+  <div class="theme-drawer__warpper">
+    <!-- content -->
+    <div class="theme-drawer__warpper__content">
+  <ul class="mdui-list">
+    <a href="/" class="mdui-list-item mdui-ripple mdui-ripple-white">
+      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe88a;</i>
+      <div class="mdui-list-item-content">首页</div>
+    </a>
+    <a href="/archives/" class="mdui-list-item mdui-ripple mdui-ripple-white">
+      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe149;</i>
+      <div class="mdui-list-item-content">归档</div>
+    </a>
+    <ul class="mdui-list mdui-collapse" mdui-collapse="{accordion: true}" mdui-collapse>
+      
+      
+        <div class="mdui-collapse-item ">
+          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
+            <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
+            <div class="mdui-list-item-content">标签</div>
+            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
+          </div>
+          <div class="mdui-collapse-item-body mdui-list">
+            
+              <a href="/tags/HTML/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
+                HTML
+                <div style="flex-grow: 1;"></div>
+                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
+              </a>
+            
+          </div>
+        </div>
+      
+      <div class="mdui-collapse-item ">
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
+          <i class="mdui-list-item-icon mdui-icon material-icons">&#xe916;</i>
+          <div class="mdui-list-item-content">年份</div>
+          <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
+        </div>
+        <div class="mdui-collapse-item-body mdui-list">
+          
+          
+            <a href="/archives/2019/" class="mdui-list-item mdui-ripple">
+              2019
+            </a>
+          
+        </div>
+      </div>
+    </ul>
+  </ul>
+  
+    <div class="mdui-divider"></div>
+    <ul class="mdui-list" mdui-collapse="{accordion: true}" mdui-collapse>
+      
+        
+          
+            <a href="/friends" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
+          
+              
+              
+                <i class="mdui-list-item-icon mdui-icon material-icons">&#xe0ba;</i>
+              
+              
+              <div class="mdui-list-item-content">Test1</div>
+            </a>
+        
+      
+        
+          
+            <a href="/apply-for-link" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
+          
+              
+                <i class="mdui-list-item-icon mdui-icon fa fa-child mdui-text-center"></i>
+              
+              
+              
+              <div class="mdui-list-item-content">Test2</div>
+            </a>
+        
+      
+        
+          
+            <a href="/galleries" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
+          
+              
+              
+                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+              
+              
+              <div class="mdui-list-item-content">Test3</div>
+            </a>
+        
+      
+        
+          <div class="mdui-collapse-item">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
+              
+              
+                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+              
+              
+              <div class="mdui-list-item-content">Test4</div>
+              <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
+            </div>
+            <div class="mdui-collapse-item-body mdui-list">
+              
+                
+                  <a href="/myfriends" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
+                
+                    TEST1
+                  </a>
+              
+                
+                  <a href="/timeline" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
+                
+                    TEST2
+                  </a>
+              
+            </div>
+          </div>
+        
+      
+    </ul>
+  
+</div>
+
+    <div class="theme-spacer"></div>
+    <!-- footer -->
+    <div class="theme-drawer__warpper__footer">
+  <div class="mdui-typo mdui-typo-caption-opacity">
+    Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+    <br />
+    Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank">Halyul/MDUI</a>
+    <br />
+    <span>
+      Copyright ©
+      <span year></span>
+      Junjie Shen
+    </span>
+    
+    
+      <br />
+      <span>
+        最后更新于: 10月 08, 2019
+      </span>
+    
     
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+</div>
+<script type="text/javascript">
+  var copyrightNow = new Date().getFullYear();
+  var textContent = document.querySelector('span[year]')
   
-    <h1 class="article-title" itemprop="name">
-      回顾html
-    </h1>
+    textContent.textContent = copyrightNow
   
+</script>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+  </div>
+</div>
+
+    <div id="top"></div>
+
+    <script src="/js/lightgallery.min.js"></script>
+
+    <div id="barba-wrapper">
+      <div class="barba-container"  data-namespace="post">
+        
+
+
+
+  <link rel="stylesheet" href="/css/prism/darcula.min.css">
+
+
+  <link rel="stylesheet" href="/css/prism/line-number.min.css">
+
+
+<div class="theme-post">
+  <div class="theme-post__background mdui-color-theme"></div>
+  <div class="theme-post__header mdui-color-theme">
+    <div class="theme-post__header__title mdui-text-truncate">
+      回顾html
+    </div>
+    <div class="theme-spacer"></div>
+    <div class="theme-post__header__actions mdui-valign">
+      <div>
+        <span>编写时间：</span>
+        <span style="float: right">10月 08, 2019</span>
+        
+      </div>
       
-        <p>对html语言进行了回顾和再次学习。</p>
+  <div class="theme-post__qrcode">
+    <button class="mdui-btn mdui-ripple mdui-btn-icon mdui-hidden-xs-down" mdui-menu="{target: '#qrcode-menu'}">
+      <i class="mdui-icon material-icons">&#xe337;</i>
+    </button>
+    <ul class="mdui-menu" id="qrcode-menu">
+      <li class="mdui-list-item" style="cursor: auto">
+        文章二维码
+      </li>
+        <img class="mdui-img-fluid" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZElEQVR42u3aQXLCMBAEQP7/6eQBKciMVhaGap+olDFqH7Sb0T5+vvp64OHh4eHh4eHh3Yz3iK/X3/r797/3P/uc/0q0Njw8PLwjvH+22if3tOxnT8ifH60BDw8P7yAvWVxeEtonr5UQPDw8vE/kvabmm/u2F4SHh4d3S17S4L7e9Nv78fDw8O7JaxedLG5yzxuyFjw8PLyYlx8ynf989HwPDw8PL+DVI01L4wKvl56XgXroCg8PD+8CXhvRTsLcNvbN14OHh4d3ktduyvmx1jzayIe68PDw8N7LWwtbJ9+aHJVFYQQeHh7eVl4bEExGTttWu23i8fDw8M7wksZ6W8AalIG8zBR1Dw8PD+8yXnvQdV0EvHaEhoeHh3eGNxmEmhSYto0ufgUPDw/vYl6yBU9i2TxcSApS0tzj4eHhneRNlrvhyH+pFBXne3h4eHiX8aLNtwTkpWLtpePh4eGd5OVR7FqMmy89L0gbhq7w8PDwBrz8eCkPcNuIIS8ti3UPDw8P7wLerog2H59aG1mIWnM8PDy8i3ltRLt2tD8fsSpWhYeHh3ec127ua+FFGwovttR4eHh4R3iTmHUyZDB5Gh4eHt57eZP2t22jJ2Vg8+gAHh4eXhnj5ldbSNrBrDzaqEcH8PDw8DbxJv/2JxFDPjg1vx8PDw/vJG+tGLRDA22ckbf+eHh4eO/itRt0y8ufnx+n4eHh4X0uL2nT88KQDzTg4eHhfSKvHdJqX0odFuPh4eEd5M2D2vy7bfO9YegKDw8PbytvEgGsDVTlMXFSrvDw8PBO8r7vwsPDw8PDw8PDu8H1CyKbFhGUJQf1AAAAAElFTkSuQmCC" style="cursor: auto">
+    </ul>
+  </div>
+
+
+      
+  <div class="theme-post__share">
+    <button class="mdui-btn mdui-ripple mdui-btn-icon" mdui-menu="{target: '#post-share-menu'}">
+      <i class="mdui-icon material-icons">&#xe80d;</i>
+    </button>
+
+    <ul class="mdui-menu" id="post-share-menu">
+
+      
+        <li class="mdui-menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2019/10/08/回顾html/index.html" target="_blank" class="mdui-ripple">
+                分享到Facebook
+            </a>
+        </li>
+      
+
+      
+        <li class="mdui-menu-item">
+            <a href="https://plus.google.com/share?url=http://yoursite.com//2019/10/08/回顾html/index.html" target="_blank" class="mdui-ripple">
+                分享到Google+
+            </a>
+        </li>
+      
+
+      
+        <li class="mdui-menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2019/10/08/回顾html/index.html&title=回顾html" target="_blank" class="mdui-ripple">
+                分享到Linkedin
+            </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li class="mdui-menu-item">
+            <a href="https://twitter.com/intent/tweet?text=回顾html&url=http://yoursite.com//2019/10/08/回顾html/index.html&via=Junjie Shen" target="_blank" class="mdui-ripple">
+                分享到Twitter
+            </a>
+        </li>
+      
+
+      
+
+    </ul>
+  </div>
+
+
+    </div>
+  </div>
+  <div class="theme-post__warpper
+    
+  ">
+    <div class="theme-post__warpper__container">
+      <article class="mdui-card theme-post__card mdui-hoverable">
+        <section class="theme-post__card__warning">
+          这篇文章最后修改于
+          <span id="content-warning"></span>
+          天之前。
+          本页内容可能已经过时！
+        </section>
+        
+        
+          <section class="mdui-card-media">
+            <img src="/images/random/19.png"/>
+          </section>
+        
+        <section class="mdui-typo theme-post__card__content">
+          <p>对html语言进行了回顾和再次学习。</p>
 <h2 id="html样式"><a href="#html样式" class="headerlink" title="html样式"></a>html样式</h2><p>一些标签和属性都用html中的style属性所代替了。</p>
-<h4 id="被抛弃的标签和属性"><a href="#被抛弃的标签和属性" class="headerlink" title="被抛弃的标签和属性"></a>被抛弃的标签和属性</h4><table>
+<h4 id="被抛弃的标签和属性"><a href="#被抛弃的标签和属性" class="headerlink" title="被抛弃的标签和属性"></a>被抛弃的标签和属性</h4><div class="mdui-table-fluid theme-post__card__table--flat"><table class="mdui-table mdui-table-hoverable ">
 <thead>
 <tr>
 <th>标签/属性</th>
@@ -120,11 +578,10 @@
 <td>bgcolor/color</td>
 <td>定义背景/文本颜色</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h2 id="html折行"><a href="#html折行" class="headerlink" title="html折行"></a>html折行</h2><p>使用&lt;br /&gt;标签:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is<span class="tag">&lt;<span class="name">br</span> /&gt;</span>a para<span class="tag">&lt;<span class="name">br</span> /&gt;</span>graph with line breaks<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h2><table>
+<pre class="line-numbers language-html" mdui-tooltip="{content: 'html'}"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This is<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>a para<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>graph with line breaks<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h2><div class="mdui-table-fluid theme-post__card__table--flat"><table class="mdui-table mdui-table-hoverable ">
 <thead>
 <tr>
 <th>标签</th>
@@ -175,8 +632,8 @@
 <td>&lt;del&gt;</td>
 <td><del>删除</del></td>
 </tr>
-</tbody></table>
-<h4 id="“计算机输出“标签"><a href="#“计算机输出“标签" class="headerlink" title="“计算机输出“标签"></a>“计算机输出“标签</h4><table>
+</tbody></table></div>
+<h4 id="“计算机输出“标签"><a href="#“计算机输出“标签" class="headerlink" title="“计算机输出“标签"></a>“计算机输出“标签</h4><div class="mdui-table-fluid theme-post__card__table--flat"><table class="mdui-table mdui-table-hoverable ">
 <thead>
 <tr>
 <th>标签</th>
@@ -203,11 +660,18 @@
 <td>&lt;tt&gt;</td>
 <td><tt>打字机格式</tt></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p>&lt;code&gt; 元素不保留多余的空格和折行，用&lt;pre&gt;解决。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;code&gt;</span><br><span class="line">&lt;pre&gt;</span><br><span class="line">var person = &#123;</span><br><span class="line">    firstName:&quot;Bill&quot;,</span><br><span class="line">    lastName:&quot;Gates&quot;,</span><br><span class="line">    age:50,</span><br><span class="line">    eyeColor:&quot;blue&quot;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">&lt;/code&gt;</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
+<pre><code>&lt;code&gt;
+&lt;pre&gt;
+var person = {
+    firstName:&quot;Bill&quot;,
+    lastName:&quot;Gates&quot;,
+    age:50,
+    eyeColor:&quot;blue&quot;
+}
+&lt;/pre&gt;
+&lt;/code&gt;</code></pre><p>效果：</p>
 <code>
 
 <pre>
@@ -220,7 +684,7 @@ var person = {
 </pre>
 </code>
 
-<h4 id="引用和术语定义"><a href="#引用和术语定义" class="headerlink" title="引用和术语定义"></a>引用和术语定义</h4><table>
+<h4 id="引用和术语定义"><a href="#引用和术语定义" class="headerlink" title="引用和术语定义"></a>引用和术语定义</h4><div class="mdui-table-fluid theme-post__card__table--flat"><table class="mdui-table mdui-table-hoverable ">
 <thead>
 <tr>
 <th>标签</th>
@@ -247,21 +711,13 @@ var person = {
 <td>&lt;dfn&gt;</td>
 <td><p><dfn title="World Health Organization">WHO</dfn> 成立于 1948 年。</p></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h2 id="HTML-链接-target-属性"><a href="#HTML-链接-target-属性" class="headerlink" title="HTML 链接 - target 属性"></a>HTML 链接 - target 属性</h2><p>下面的这行会在新窗口打开文档：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3school.com.cn/&quot; target=&quot;_blank&quot;&gt;Visit W3School!&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="HTML-链接-name-属性"><a href="#HTML-链接-name-属性" class="headerlink" title="HTML 链接 - name 属性"></a>HTML 链接 - name 属性</h2><p>首先，我们在 HTML 文档中对锚进行命名（创建一个书签）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后，我们在同一个文档中创建指向该锚的链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#tips&quot;&gt;有用的提示&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<p>您也可以在其他页面中创建指向该锚的链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3school.com.cn/html/html_links.asp#tips&quot;&gt;有用的提示&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="div与span的区别"><a href="#div与span的区别" class="headerlink" title="div与span的区别"></a>div与span的区别</h2><p>div是块级元素，可以用于布局。<br>span是内联元素，多用于为部分文本设置不一样的样式。</p>
-<h2 id="HTML文件路径"><a href="#HTML文件路径" class="headerlink" title="HTML文件路径"></a>HTML文件路径</h2><table>
+<pre><code>&lt;a href=&quot;http://www.w3school.com.cn/&quot; target=&quot;_blank&quot;&gt;Visit W3School!&lt;/a&gt;</code></pre><h2 id="HTML-链接-name-属性"><a href="#HTML-链接-name-属性" class="headerlink" title="HTML 链接 - name 属性"></a>HTML 链接 - name 属性</h2><p>首先，我们在 HTML 文档中对锚进行命名（创建一个书签）：</p>
+<pre><code>&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</code></pre><p>然后，我们在同一个文档中创建指向该锚的链接：</p>
+<pre><code>&lt;a href=&quot;#tips&quot;&gt;有用的提示&lt;/a&gt;</code></pre><p>您也可以在其他页面中创建指向该锚的链接：</p>
+<pre><code>&lt;a href=&quot;http://www.w3school.com.cn/html/html_links.asp#tips&quot;&gt;有用的提示&lt;/a&gt;</code></pre><h2 id="div与span的区别"><a href="#div与span的区别" class="headerlink" title="div与span的区别"></a>div与span的区别</h2><p>div是块级元素，可以用于布局。<br>span是内联元素，多用于为部分文本设置不一样的样式。</p>
+<h2 id="HTML文件路径"><a href="#HTML文件路径" class="headerlink" title="HTML文件路径"></a>HTML文件路径</h2><div class="mdui-table-fluid theme-post__card__table--flat"><table class="mdui-table mdui-table-hoverable ">
 <thead>
 <tr>
 <th align="left">路径</th>
@@ -284,121 +740,304 @@ var person = {
 <td align="left">&lt;img src=”../picture.jpg”&gt;</td>
 <td align="left">picture.jpg 位于当前文件夹的上一级文件夹中</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 
+        </section>
+
+        
+          <section class="theme-post__card__license mdui-typo">
+            <span>
+              本文许可协议：
+              
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a>
+              
+            </span>
+            <br />
+            <span>本文永久链接：<a href="http://yoursite.com/2019/10/08/回顾html/">http://yoursite.com/2019/10/08/回顾html/</a></span>
+            
+              <br />
+              <span>本文Markdown：<a href="http://yoursite.com/2019/10/08/回顾html/回顾html.md">http://yoursite.com/2019/10/08/回顾html/回顾html.md</a></span>
+            
+          </section>
+        
+
+        
+          <section class="mdui-card-actions theme-post__card__actions">
+            
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple  mdui-color-red" mdui-tooltip="{content: '打赏', position: 'right'}" mdui-dialog="{target: '#donateDialog'}">
+                <i class="mdui-icon fa fa-beer"></i>
+              </button>
+            
+            <div class="theme-spacer"></div>
+            
+            
+              <div class="mdui-chip theme-post__card__chip--bg theme-post__card__chip--margin">
+                <span class="mdui-chip-icon theme-post__card__chip--bg"><i class="mdui-icon mdui-text-color-black-icon fa fa-tags"></i></span>
+              </div>
+              <div class="mdui-typo">
+                
+                  <a href="/tags/HTML/">
+                    <span>HTML</span>
+                  </a>
+                
+              </div>
+            
+          </section>
+        
+
+        
+          
+            <script type="text/javascript">
+              themeRuntime.commentRest.function = function (newIdentifier, newUrl, newTitle) {
+                return
+              }
+            </script>
+          
+        
+      </article>
+      
+        <div class="mdui-color-theme theme-post__toc">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#html&#x6837;&#x5F0F;" data-href="#html&#x6837;&#x5F0F;"><span class="toc-number"></span> <span class="toc-text">1. html&#x6837;&#x5F0F;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x88AB;&#x629B;&#x5F03;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;" data-href="#&#x88AB;&#x629B;&#x5F03;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;"><span class="toc-number"></span> <span class="toc-text">1.0.1. &#x88AB;&#x629B;&#x5F03;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#html&#x6298;&#x884C;" data-href="#html&#x6298;&#x884C;"><span class="toc-number"></span> <span class="toc-text">2. html&#x6298;&#x884C;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x7B7E;" data-href="#&#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x7B7E;"><span class="toc-number"></span> <span class="toc-text">3. &#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x7B7E;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x201C;&#x8BA1;&#x7B97;&#x673A;&#x8F93;&#x51FA;&#x201C;&#x6807;&#x7B7E;" data-href="#&#x201C;&#x8BA1;&#x7B97;&#x673A;&#x8F93;&#x51FA;&#x201C;&#x6807;&#x7B7E;"><span class="toc-number"></span> <span class="toc-text">3.0.1. &#x201C;&#x8BA1;&#x7B97;&#x673A;&#x8F93;&#x51FA;&#x201C;&#x6807;&#x7B7E;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x5F15;&#x7528;&#x548C;&#x672F;&#x8BED;&#x5B9A;&#x4E49;" data-href="#&#x5F15;&#x7528;&#x548C;&#x672F;&#x8BED;&#x5B9A;&#x4E49;"><span class="toc-number"></span> <span class="toc-text">3.0.2. &#x5F15;&#x7528;&#x548C;&#x672F;&#x8BED;&#x5B9A;&#x4E49;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#HTML-&#x94FE;&#x63A5;-target-&#x5C5E;&#x6027;" data-href="#HTML-&#x94FE;&#x63A5;-target-&#x5C5E;&#x6027;"><span class="toc-number"></span> <span class="toc-text">4. HTML &#x94FE;&#x63A5; - target &#x5C5E;&#x6027;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#HTML-&#x94FE;&#x63A5;-name-&#x5C5E;&#x6027;" data-href="#HTML-&#x94FE;&#x63A5;-name-&#x5C5E;&#x6027;"><span class="toc-number"></span> <span class="toc-text">5. HTML &#x94FE;&#x63A5; - name &#x5C5E;&#x6027;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#div&#x4E0E;span&#x7684;&#x533A;&#x522B;" data-href="#div&#x4E0E;span&#x7684;&#x533A;&#x522B;"><span class="toc-number"></span> <span class="toc-text">6. div&#x4E0E;span&#x7684;&#x533A;&#x522B;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#HTML&#x6587;&#x4EF6;&#x8DEF;&#x5F84;" data-href="#HTML&#x6587;&#x4EF6;&#x8DEF;&#x5F84;"><span class="toc-number"></span> <span class="toc-text">7. HTML&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</span></a></li>
+        </div>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/08/回顾html/" data-id="ck1hxkowh0001xq9cx8q9bn5j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
-
-    </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2019/10/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
+
+  <div class="theme-spacer"></div>
 
   
-</article>
+    <div class="mdui-color-theme theme-post__toc-fab">
+  <button class="mdui-fab mdui-color-theme-accent mdui-ripple mdui-fab-fixed mdui-hidden-md-up" mdui-menu="{target: '#toc-fab-menu', fixed: true}" id="toc-fab">
+    <i class="mdui-icon material-icons">&#xe242;</i>
+  </button>
+  <ul class="mdui-menu mdui-typo theme-post__toc-fab__menu" id="toc-fab-menu" style="padding: 8px;max-height: 80%">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#html&#x6837;&#x5F0F;" data-href="#html&#x6837;&#x5F0F;"><span class="toc-number"></span> <span class="toc-text">1. html&#x6837;&#x5F0F;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x88AB;&#x629B;&#x5F03;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;" data-href="#&#x88AB;&#x629B;&#x5F03;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;"><span class="toc-number"></span> <span class="toc-text">1.0.1. &#x88AB;&#x629B;&#x5F03;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#html&#x6298;&#x884C;" data-href="#html&#x6298;&#x884C;"><span class="toc-number"></span> <span class="toc-text">2. html&#x6298;&#x884C;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x7B7E;" data-href="#&#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x7B7E;"><span class="toc-number"></span> <span class="toc-text">3. &#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x7B7E;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x201C;&#x8BA1;&#x7B97;&#x673A;&#x8F93;&#x51FA;&#x201C;&#x6807;&#x7B7E;" data-href="#&#x201C;&#x8BA1;&#x7B97;&#x673A;&#x8F93;&#x51FA;&#x201C;&#x6807;&#x7B7E;"><span class="toc-number"></span> <span class="toc-text">3.0.1. &#x201C;&#x8BA1;&#x7B97;&#x673A;&#x8F93;&#x51FA;&#x201C;&#x6807;&#x7B7E;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#&#x5F15;&#x7528;&#x548C;&#x672F;&#x8BED;&#x5B9A;&#x4E49;" data-href="#&#x5F15;&#x7528;&#x548C;&#x672F;&#x8BED;&#x5B9A;&#x4E49;"><span class="toc-number"></span> <span class="toc-text">3.0.2. &#x5F15;&#x7528;&#x548C;&#x672F;&#x8BED;&#x5B9A;&#x4E49;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#HTML-&#x94FE;&#x63A5;-target-&#x5C5E;&#x6027;" data-href="#HTML-&#x94FE;&#x63A5;-target-&#x5C5E;&#x6027;"><span class="toc-number"></span> <span class="toc-text">4. HTML &#x94FE;&#x63A5; - target &#x5C5E;&#x6027;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#HTML-&#x94FE;&#x63A5;-name-&#x5C5E;&#x6027;" data-href="#HTML-&#x94FE;&#x63A5;-name-&#x5C5E;&#x6027;"><span class="toc-number"></span> <span class="toc-text">5. HTML &#x94FE;&#x63A5; - name &#x5C5E;&#x6027;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#div&#x4E0E;span&#x7684;&#x533A;&#x522B;" data-href="#div&#x4E0E;span&#x7684;&#x533A;&#x522B;"><span class="toc-number"></span> <span class="toc-text">6. div&#x4E0E;span&#x7684;&#x533A;&#x522B;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link mdui-list-item mdui-ripple theme-post__toc__content__link" href="#HTML&#x6587;&#x4EF6;&#x8DEF;&#x5F84;" data-href="#HTML&#x6587;&#x4EF6;&#x8DEF;&#x5F84;"><span class="toc-number"></span> <span class="toc-text">7. HTML&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</span></a></li>
+  </ul>
+</div>
 
-</section>
-        
-          <aside id="sidebar">
   
-    
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+    <div class="theme-post__pagination mdui-color-theme">
+  
+    <div class="theme-spacer mdui-hidden-xs"></div>
+  
+
+  
+    <div class="theme-post__pagination__next mdui-ripple mdui-valign">
+      <a href="/2019/10/08/hello-world/" class="theme-post__pagination__next__content mdui-text-right">
+        <div>
+          <span class="mdui-typo-body-2-opacity mdui-text-center">旧的文章</span>
+          <i class="mdui-icon material-icons mdui-text-center">&#xe5cc;</i>
+        </div>
+        <div class="mdui-typo-title mdui-text-truncate">
+          Hello World
+        </div>
+      </a>
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/HTML/" style="font-size: 10px;">HTML</a>
-    </div>
-  </div>
+</div>
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
-    </div>
-  </div>
-
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/10/08/回顾html/">回顾html</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/08/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+    <div class="mdui-dialog" id="donateDialog">
+      <div class="mdui-dialog-title">打赏</div>
+      <div class="mdui-dialog-content">
+        <div class="mdui-list">
+          
+            <a href="/img/avatar.png" title="wechat" class="mdui-list-item mdui-ripple" target="_blank">
+              
+                <i class="mdui-list-item-icon mdui-icon fa fa-wechat mdui-text-center"></i>&emsp;
+              
+              
+              
+              wechat
+            </a>
+          
+            <a href="https://paypal.com" title="paypay" class="mdui-list-item mdui-ripple" target="_blank">
+              
+                <i class="mdui-list-item-icon mdui-icon fa fa-paypal mdui-text-center"></i>&emsp;
+              
+              
+              
+              paypay
+            </a>
+          
+        </div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div class="mdui-dialog-actions">
+        <button class="mdui-btn mdui-ripple mdui-ripple" mdui-dialog-close>不要</button>
+      </div>
     </div>
-  </div>
-</footer>
+  
+</div>
+<script type="text/javascript">
+  themeRuntime.scriptsMap.post = [];
+  if (document.querySelector('.theme-post__toc-fab__menu > ol') !== null && document.querySelector('.theme-post__toc > ol') !== null) {
+    tocHighlight()
+    function tocHighlight() {
+      var timer;
+      function doWork() {
+        listens.forEach(function(value, index) {
+          value[1]();
+          value[0].classList.remove("mdui-list-item-active");
+        })
+        let actionToc = (listens[listens.reduce(function(r, v, index) {
+          if (v[2] == true) {
+            return index;
+          } else return r;
+        }, undefined)] || [])[0] || listens[0][0];
+        actionToc.classList.add("mdui-list-item-active");
+        if(actionToc.getClientRects().length == 0)return;
+        showToc(actionToc);
+      }
+      function showToc(toc) {
+        let offsetTop = toc.getClientRects()[0].top - cardToc.getClientRects()[0].top - 40;
+        let offsetBottom = toc.getClientRects()[0].bottom - cardToc.getClientRects()[0].bottom + 40;
+        let offset = 0;
+        if (offsetTop < 0) offset = offsetTop;
+        if (offsetBottom > 0) offset = offsetBottom;
+        var targetTop = Math.max(0, Math.min(cardToc.scrollTop + offset, toclist.offsetHeight - cardToc.offsetHeight));
+        clearInterval(timer);
+        timer = setInterval(function() {
+          var now = cardToc.scrollTop;
+          var speed = (targetTop - now) / 10;
+          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+          if (Math.abs(now - targetTop) < 1) {
+            clearInterval(timer);
+          }
+          cardToc.scrollTop = now + speed;
+        }, 30);
+      }
+      var listens = [];
+      var cardToc = document.querySelector('.theme-post__toc');
+      var links = cardToc.querySelectorAll(".theme-post__toc__content__link");
+      var toclist = document.querySelector(".theme-post__toc > ol");
+      Array.prototype.forEach.call(links, function(value, index) {
+        var id = (value.getAttribute("href") || "#").slice(1);
+        var element = document.getElementById(id);
+        listens.push([value, function() {
+          var readed = false;
+          var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+          if (element.offsetTop <= scrollTop + element.clientHeight + 64) {
+            readed = true;
+          } else {
+            readed = false;
+          }
+          listens[index][2] = readed;
+        }, false])
+      })
+      doWork();
+      window.addEventListener("scroll", doWork)
+      var listener = {
+        function:  doWork,
+        event: 'scroll',
+        el: window,
+        removed: false
+      }
+      themeRuntime.scriptsMap.post.push(listener)
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  (function() {
+    var postLastModifiedDate = 1570544347910
+    var today = (new Date()).getTime()
+    var difference = Math.floor((today - postLastModifiedDate)/(24*60*60*1000))
+    if (difference >= 100) {
+      document.querySelector('.theme-post__card__warning').style.display = 'block'
+      document.querySelector('#content-warning').textContent = difference
+    }
+  })();
+</script>
+
+<script type="text/javascript">
+  var images = document.querySelectorAll('.theme-post__card__content img')
+  for (i = 0; i < images.length; i++) {
+    //console.log('image added', i)
+    images[i].addEventListener("click", openLG);
+    var listener = {
+      function:  openLG,
+      event: 'click',
+      el: images[i],
+      removed: false
+    }
+    themeRuntime.scriptsMap.post.push(listener)
+  }
+  function openLG() {
+    var img_src = this.getAttribute('src');
+    var img_alt = this.getAttribute('alt');
+    lightGallery(this, {
+      dynamic: true,
+      counter: false,
+      dynamicEl: [{
+        "src": img_src,
+        'subHtml': "<span author>Junjie Shen</span><div descr>" + img_alt + "</div>"
+      }],
+    });
+  }
+</script>
+
+
+
+
+      </div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+  </main>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
+  <div id="outdated" style="z-index: 9999;">
+    <h6>你的浏览器已经过气辣！</h6>
+    <p>赶紧升级浏览器来访问本站吧！<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">现在就去</a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="关闭">&times;</a></p>
   </div>
+  <!-- import js -->
+
+
+  <script src="/js/outdatedbrowser.min.js"></script>
+
+
+
+  
+    <script src="/js/js.barba.min.js"></script>
+    <script type="text/javascript">
+      Barba.Utils.errorPageUrl = '/404.html';
+    </script>
+  
+
+
+<!-- theme js -->
+<script type="text/javascript">
+  (function() {
+    var appbarTopFlag = false;
+    var appbarEl = document.querySelector('.theme-appbar');
+    function appbarShadow() {
+      var bodyScrolled = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+      if (bodyScrolled > 0 && !appbarTopFlag) {
+        appbarEl.classList.add('theme-appbar--shadow');
+        appbarTopFlag = true;
+      } else if (bodyScrolled === 0 && appbarTopFlag) {
+        appbarEl.classList.remove('theme-appbar--shadow');
+        appbarTopFlag = false;
+      }
+    }
+    appbarShadow()
+    window.addEventListener('scroll', appbarShadow);
+  })();
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+  document.querySelector('body').classList.add('theme-loaded')
+</script>
+
+
+
+
 </body>
 </html>
