@@ -2,7 +2,7 @@
 title: 回顾html
 date: 2019-10-08 12:28:11
 tags: HTML
-thumbnail: /images/IMG_2683.jpg
+thumbnail: /images/bg.png
 ---
 
 对html语言进行了回顾和再次学习。
