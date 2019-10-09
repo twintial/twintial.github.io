@@ -1,723 +1,259 @@
-
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
+
+
 
 
 
 <head><meta name="generator" content="Hexo 3.9.0">
-  <script>
-    window.themeRuntime = {
-      root: "/",
-      scriptsMap: {},
-      init: {
-        status: false
-      },
-      commentRest: {
-        status: false
-      },
-      versions: {
-        theme: "2.0.3",
-        mdui: "0.4.0",
-        fetch: "3.0.0",
-        es6promise: "4.2.5+7f2b526d",
-        lightgallery: "1.0.1",
-        smoothscroll: "15.2.0"
-      }
-      
-    };
-    console.info("%cCopyright © 2018 - " + new Date().getFullYear() +" Halyul\n"+'Theme Version: ' + themeRuntime.versions.theme +'%c\nhttps://github.com/Halyul/hexo-theme-mdui',"font-size: 14px;color: #3F51B5;","color: #448AFF;text-decoration: none");
-  </script>
-  <!--
-        © HEXO MDUI Theme
-        https://github.com/Halyul/hexo-theme-mdui
-        -->
-
   <meta charset="UTF-8">
-  <title>2019 - 归</title>
-
-  <!-- Favicons -->
-  <link rel="icon shortcut" type="image/ico" href="/images/favicon.png">
-  <link rel="icon" sizes="192x192" href="/images/favicon.png">
-  <link rel="apple-touch-icon" href="/images/favicon.png">
-
-  <!-- Meta & Info -->
-  <meta http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  <meta name="theme-color" content="#fff">
-
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
   <meta name="author" content="Junjie Shen">
+  <meta name="keywords" content>
+  <title>归档 ~ TWINの無駄づかい</title>
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+  <link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
   
-  <meta name="keywords" content="blog, hexo, mdui">
-
-  <!--iOS -->
-  <meta name="apple-mobile-web-app-title" content="归">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="480">
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-
-  <!-- The Open Graph protocol -->
-  <meta property="og:url" content="http://yoursite.com">
-  <meta property="og:type" content="blog">
-  <meta property="og:title" content="2019 - 归 | 归">
-  <meta property="og:image" content="/images/favicon.png">
+    <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
   
+  <link rel="stylesheet" href="/css/main.css">
 
   
-
-  
-
-  <!-- Import CSS -->
-  
-    <link rel="stylesheet" href="/css/mdui.css">
-  
-
-  
-
 </head>
 
 
-<body class="mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+<body>
+  <header style="height: 80vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>TWINの無駄づかい</strong>&nbsp;</a>
 
-  <style>
-    #spinner {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-          opacity: 1;
-      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-          transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-    }
-    main {
-      opacity: 0;
-      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-      transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-      display: none;
-    }
-  </style>
-  <div id="spinner">
-    <style>
-      .spinner {
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-      -webkit-animation: rotator 1.4s linear infinite;
-              animation: rotator 1.4s linear infinite;
-      }
-
-      @-webkit-keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-      }
-      }
-
-      @keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-      }
-      }
-
-      .path {
-      stroke-dasharray: 187;
-      stroke-dashoffset: 0;
-      -webkit-transform-origin: center;
-              transform-origin: center;
-      -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-              animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-      }
-
-      @-webkit-keyframes colors {
-      0% {
-        stroke: #4285F4;
-      }
-      25% {
-        stroke: #DE3E35;
-      }
-      50% {
-        stroke: #F7C223;
-      }
-      75% {
-        stroke: #1B9A59;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-      }
-
-      @keyframes colors {
-      0% {
-        stroke: #4285F4;
-      }
-      25% {
-        stroke: #DE3E35;
-      }
-      50% {
-        stroke: #F7C223;
-      }
-      75% {
-        stroke: #1B9A59;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-      }
-
-      @-webkit-keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-      }
-      }
-
-      @keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-      }
-      }
-    </style>
-    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-    </svg>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
+
+
+</nav>
+
+    <div class="view intro-2"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <div class="mdui-appbar mdui-appbar-fixed mdui-color-white mdui-shadow-0 theme-appbar">
-  <div class="mdui-toolbar theme-toolbar-top">
     
-      <a href="/" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger theme-appbar__burger--arrow">
-        <i class="mdui-icon">
-          <span></span>
-        </i>
-      </a>
-    
-  </div>
-  <div class="mdui-toolbar theme-toolbar-bottom">
-    <span class="theme-toolbar-bottom__title">归</span>
-    
-      <a href="/search.html" class="mdui-textfield-icon mdui-btn mdui-btn-icon theme-toolbar-bottom__search">
-        <i class="mdui-icon material-icons">&#xe8b6;</i>
-      </a>
-    
-  </div>
-  <div class="mdui-progress theme-appbar__progress" id="progressBar">
-    <div class="mdui-progress-indeterminate"></div>
-  </div>
-</div>
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-    <div class="mdui-drawer mdui-drawer-full-height theme-drawer" id="drawer">
-  <!-- header -->
-  <div class="theme-drawer__header">
-  <div class="theme-drawer__header__layer-1">
-    <div class="mdui-toolbar theme-toolbar-top">
+<div class="list-group">
+  <p class="h4">共计 2 篇文章</p>
+  <hr>
+  
+    
       
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger theme-appbar__burger--drawer theme-appbar__burger--arrow" id="drawer-back">
-          <i class="mdui-icon">
-            <span></span>
-          </i>
-        </a>
-      
-    </div>
-    <div class="mdui-toolbar theme-toolbar-bottom">
-      <span class="theme-toolbar-bottom__title">归</span>
-    </div>
-  </div>
-  <div class="theme-drawer__header__layer-2" style="background-image: url(/images/bg.png)">
-    <img class="mdui-img-circle theme-drawer__header__layer-2__user__avatar" src="/images/avatar.png"/>
-    <div class="theme-drawer__header__layer-2__user__info">
-      <div class="theme-drawer__header__layer-2__user__info__author mdui-text-color-white-text">
-        Junjie Shen
-      </div>
-      <div class="theme-drawer__header__layer-2__user__info__slogan mdui-text-color-white-secondary">
-        I&#39;m your slogan!
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="theme-drawer__warpper">
-    <!-- content -->
-    <div class="theme-drawer__warpper__content">
-  <ul class="mdui-list">
-    <a href="/" class="mdui-list-item mdui-ripple mdui-ripple-white">
-      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe88a;</i>
-      <div class="mdui-list-item-content">首页</div>
+      <p class="h5">2019</p>
+    
+    <a href="/2019/10/08/回顾html/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">回顾html</span>
+      <span style="float: right;">10-08</span>
     </a>
-    <a href="/archives/" class="mdui-list-item mdui-ripple mdui-ripple-white">
-      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe149;</i>
-      <div class="mdui-list-item-content">归档</div>
+  
+    
+    <a href="/2019/10/08/hello-world/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Hello World</span>
+      <span style="float: right;">10-08</span>
     </a>
-    <ul class="mdui-list mdui-collapse" mdui-collapse="{accordion: true}" mdui-collapse>
-      
-      
-        <div class="mdui-collapse-item ">
-          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-            <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-            <div class="mdui-list-item-content">标签</div>
-            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
+  
+</div>
+
+
+              </div>
+            </div>
           </div>
-          <div class="mdui-collapse-item-body mdui-list">
-            
-              <a href="/tags/HTML/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                HTML
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-          </div>
-        </div>
-      
-      <div class="mdui-collapse-item mdui-collapse-item-open">
-        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-          <i class="mdui-list-item-icon mdui-icon material-icons">&#xe916;</i>
-          <div class="mdui-list-item-content">年份</div>
-          <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-        </div>
-        <div class="mdui-collapse-item-body mdui-list">
-          
-          
-            <a href="/archives/2019/" class="mdui-list-item mdui-ripple">
-              2019
-            </a>
-          
         </div>
       </div>
-    </ul>
-  </ul>
-  
-    <div class="mdui-divider"></div>
-    <ul class="mdui-list" mdui-collapse="{accordion: true}" mdui-collapse>
-      
-        
-          
-            <a href="/friends" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">&#xe0ba;</i>
-              
-              
-              <div class="mdui-list-item-content">Test1</div>
-            </a>
-        
-      
-        
-          
-            <a href="/apply-for-link" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-                <i class="mdui-list-item-icon mdui-icon fa fa-child mdui-text-center"></i>
-              
-              
-              
-              <div class="mdui-list-item-content">Test2</div>
-            </a>
-        
-      
-        
-          
-            <a href="/galleries" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-              
-              
-              <div class="mdui-list-item-content">Test3</div>
-            </a>
-        
-      
-        
-          <div class="mdui-collapse-item">
-            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-              
-              
-              <div class="mdui-list-item-content">Test4</div>
-              <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-            </div>
-            <div class="mdui-collapse-item-body mdui-list">
-              
-                
-                  <a href="/myfriends" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
-                
-                    TEST1
-                  </a>
-              
-                
-                  <a href="/timeline" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
-                
-                    TEST2
-                  </a>
-              
-            </div>
-          </div>
-        
-      
-    </ul>
-  
-</div>
-
-    <div class="theme-spacer"></div>
-    <!-- footer -->
-    <div class="theme-drawer__warpper__footer">
-  <div class="mdui-typo mdui-typo-caption-opacity">
-    Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
-    <br />
-    Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank">Halyul/MDUI</a>
-    <br />
-    <span>
-      Copyright ©
-      <span year></span>
-      Junjie Shen
-    </span>
     
-    
-      <br />
-      <span>
-        最后更新于: 10月 09, 2019
-      </span>
-    
-    
-  </div>
-</div>
-<script type="text/javascript">
-  var copyrightNow = new Date().getFullYear();
-  var textContent = document.querySelector('span[year]')
-  
-    textContent.textContent = copyrightNow
-  
-</script>
-
-  </div>
-</div>
-
-    <div id="top"></div>
-
-    <script src="/js/lightgallery.min.js"></script>
-
-    <div id="barba-wrapper">
-      <div class="barba-container"  data-namespace="archives">
-        
-  <div class="theme-archive">
-    
-<div id="side-content" class="mdui-color-deep-orange theme-archive__side-content">
-  <div class="mdui-grid-tile" style="overflow: visible;margin-bottom: 0;">
-    <div class="theme-archive__side-content__bg">
-      <img src="/images/random/24.png" />
-    </div>
-  </div>
-  <div class="theme-archive__side-content__content">
-    <img class="mdui-img-circle theme-archive__side-content__avatar" src="/images/avatar.png"/>
-    <div class="theme-archive__side-content__author mdui-text-center">
-      Junjie Shen
-    </div>
-    <div class="theme-archive__side-content__name">
-      2019
-    </div>
-    <div class="theme-archive__side-content__length">
-      
-      2篇文章
-    </div>
-  </div>
-</div>
-<div id="contentLocation"></div>
-
-    <div class="theme-posts">
-      
-        
-            
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/bg.png)">
-        <img src="/images/bg.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2019/10/08/回顾html/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              回顾html
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        对html语言进行了回顾和再次学习。
-
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-        
-          
-            
-              <a href="/tags/HTML/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__tags">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon fa fa-tags mdui-text-center"></i>
-                  </span>
-                  <span class="mdui-chip-title">HTML</span>
-                </div>
-              </a>
-            
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            10月 08, 2019
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-        
-            
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/30.png)">
-        <img src="/images/random/30.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2019/10/08/hello-world/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              Hello World
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        Welcome to Hexo
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            10月 08, 2019
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-        
-        
-          <div class="theme-end-footer">
-            <div class="mdui-text-center mdui-text-color-theme-text">
-              看起来已经没有了
-            </div>
-          </div>
-        
-    </div>
-    <button id="index-fab" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" onclick="smoothScroll.animateScroll( 0 );">
-  <i class="mdui-icon material-icons">&#xe5d8;</i>
-</button>
-
-  </div>
-  <script type="text/javascript">
-  themeRuntime.scriptsMap.archives = [];
-  (function() {
-    var fabTopFlag = false;
-    var fabEl = document.getElementById('index-fab');
-    function fabShowHide() {
-      var bodyScrolled = document.documentElement.scrollTop || document.body.scrollTop;
-      if (bodyScrolled > 0 && !fabTopFlag) {
-        fabEl.classList.remove('mdui-fab-hide');
-        fabTopFlag = true;
-      } else if (bodyScrolled === 0 && fabTopFlag) {
-        fabEl.classList.add('mdui-fab-hide');
-        fabTopFlag = false;
-      }
-    }
-    fabShowHide()
-    window.addEventListener('scroll', fabShowHide);
-    var listener = {
-      function: fabShowHide,
-      event: 'scroll',
-      el: window,
-      removed: false
-    }
-    themeRuntime.scriptsMap.archives.push(listener)
-  })();
-
-  (function() {
-    var pageTotal = 1
-    var pageNext = 2
-    themeRuntime.temp = {
-      index: 1
-    }
-    function morePosts() {
-      var screenHeight = window.innerHeight;
-      var compareHeight = document.body.clientHeight -  (document.documentElement.scrollTop || document.body.scrollTop);
-      var loadStatus = pageNext - themeRuntime.temp.index
-      if (screenHeight >= compareHeight && loadStatus === 1) {
-        if (pageNext <= pageTotal) {
-          loadProgress(false)
-          var url = window.location.href + "page/" + pageNext
-          themeRuntime.temp.index = pageNext;
-          //console.log(pageTotal, url)
-          fetch(url, {
-              method:'GET',
-              mode:'cors',
-              credentials: 'include'
-          })
-          .then(function(response) {
-            return response.text()
-          }).then(function(HTML) {
-            var fakeDom = document.createElement('html');
-            fakeDom.innerHTML = HTML
-            var morePostsHTML = fakeDom.querySelector('.theme-posts').innerHTML
-            var postsArea = document.querySelector(".theme-posts")
-            loadProgress(true)
-            postsArea.insertAdjacentHTML('beforeend', morePostsHTML)
-            pageNext++;
-          }).catch(function(error) {
-            mdui.alert(error, "错误！");
-          })
-        }
-      }
-    }
-    window.addEventListener('scroll', morePosts);
-    var listener = {
-      function: morePosts,
-      event: 'scroll',
-      el: window,
-      removed: false
-    }
-    themeRuntime.scriptsMap.archives.push(listener)
-  })();
-</script>
-<script>
-  var content_flag = false;
-  const appbar = document.querySelector('.theme-appbar')
-  const body = document.querySelector('body')
-  const title = document.querySelector('.theme-toolbar-bottom__title')
-  window.addEventListener('scroll', styleScrolled)
-  var listener = {
-    function: styleScrolled,
-    event: 'scroll',
-    el: window,
-    removed: false
-  }
-  themeRuntime.scriptsMap.archives.push(listener)
-
-  function styleScrolled() {
-    var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-    var divTop = document.querySelector('div#contentLocation').offsetTop
-    var contentLocation = divTop - scrollTop - 128;
-    if (!content_flag && contentLocation < 0 && window.innerWidth < 860) {
-      body.classList.remove('theme-archive--style-change');
-      content_flag = true;
-    } else if (content_flag && contentLocation >= 0 && window.innerWidth < 860) {
-      body.classList.add('theme-archive--style-change');
-      content_flag = false;
-    };
-  }
-</script>
-
-
-
-      </div>
-    </div>
   </main>
 
-  <div id="outdated" style="z-index: 9999;">
-    <h6>你的浏览器已经过气辣！</h6>
-    <p>赶紧升级浏览器来访问本站吧！<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">现在就去</a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="关闭">&times;</a></p>
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
-  <!-- import js -->
-
-
-  <script src="/js/outdatedbrowser.min.js"></script>
-
-
-
-  
-    <script src="/js/js.barba.min.js"></script>
-    <script type="text/javascript">
-      Barba.Utils.errorPageUrl = '/404.html';
-    </script>
+</div>
   
 
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
 
-<!-- theme js -->
-<script type="text/javascript">
-  (function() {
-    var appbarTopFlag = false;
-    var appbarEl = document.querySelector('.theme-appbar');
-    function appbarShadow() {
-      var bodyScrolled = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-      if (bodyScrolled > 0 && !appbarTopFlag) {
-        appbarEl.classList.add('theme-appbar--shadow');
-        appbarTopFlag = true;
-      } else if (bodyScrolled === 0 && appbarTopFlag) {
-        appbarEl.classList.remove('theme-appbar--shadow');
-        appbarTopFlag = false;
-      }
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "归档&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
     }
-    appbarShadow()
-    window.addEventListener('scroll', appbarShadow);
-  })();
-</script>
+    anchors.add(res.join(", "))
+  </script>
 
 
 
-
-
-
-<script type="text/javascript">
-  document.querySelector('body').classList.add('theme-loaded')
-</script>
-
-
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
 
 
 </body>
