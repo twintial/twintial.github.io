@@ -128,6 +128,70 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/10/10/回顾UML/" target="_self">
+          <img src="/img/IMG_2681.jpg" srcset="/img/loading.gif" alt="回顾UML" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/10/10/回顾UML/">
+        <p class="h4 index-header">回顾UML</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">类图类的定义
+
+类与类之间的关系
+Inheritance|继承：字面意义
+class CMyDoc : public CDocument
+{
+    private:
+      CObList myList;
+};
+
+
+Composition|组成：一个类包含另一个类，部分和整体的生命周期一致。分为composition by value和composition by reference。（下例为composition by value）
+class CMyDoc : public CDocument
+{
+    private:
+        CObList myList;
+};
+
+
+Aggregation|聚合：composition的一种，即composition by reference。比composition by value的关系弱。以指针的形式表现，是一种弱的拥有关系。可以在需要的时候为指针分配空间，不需要的时候释放。部分与整体生命周期不一致。
+class CMyDoc : public CDocument
+{
+    private:
+        CObLis</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/UML">UML</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/10/10/设计模式/" target="_self">
           <img src="/img/IMG_2681.jpg" srcset="/img/loading.gif" alt="设计模式" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -142,9 +206,9 @@
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">1. Template Method
-定义：首先定义一个算法骨干，推迟其中一些步骤使它们在子类中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。我们平时使用的许多接口都采用了这种方法。
+定义首先定义一个算法骨干，推迟其中一些步骤使它们在子类中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。我们平时使用的许多接口都采用了这种方法。
 
-示例：
+示例
 
 类图：
 
@@ -166,7 +230,7 @@ abstract class Generalization{
         stepThr();
         stepFor();
     }
-    prot</div>
+    protec</div>
         </div>
       </a>
 

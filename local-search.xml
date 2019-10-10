@@ -4,11 +4,36 @@
   
   
   <entry>
+    <title>回顾UML</title>
+    <link href="undefined2019/10/10/%E5%9B%9E%E9%A1%BEUML/"/>
+    <url>2019/10/10/%E5%9B%9E%E9%A1%BEUML/</url>
+    
+    <content type="html"><![CDATA[<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h2><img src="https://i.natfrp.com/9fdfaefc97ad92394e08125d4ae04fae.png" srcset="/img/loading.gif" alt="class" style="zoom:50%;"><h2 id="类与类之间的关系"><a href="#类与类之间的关系" class="headerlink" title="类与类之间的关系"></a>类与类之间的关系</h2><ol><li><p><strong>Inheritance|继承</strong>：字面意义</p><pre><code class="c++">class CMyDoc : public CDocument{    private:      CObList myList;};</code></pre><img src="https://i.natfrp.com/40270b82a208cdb66a47d376cf7105d9.png" srcset="/img/loading.gif" alt="inheritance" style="zoom:50%;"></li><li><p><strong>Composition|组成</strong>：一个类包含另一个类，部分和整体的生命周期一致。分为composition by value和composition by reference。（下例为composition by value）</p><pre><code class="c++">class CMyDoc : public CDocument{    private:        CObList myList;};</code></pre><img src="https://i.natfrp.com/5bebb222646084471eb19e9f1f0bb289.png" srcset="/img/loading.gif" alt="composition" style="zoom:50%;"></li><li><p><strong>Aggregation|聚合</strong>：composition的一种，即composition by reference。比composition by value的关系弱。以指针的形式表现，是一种弱的拥有关系。可以在需要的时候为指针分配空间，不需要的时候释放。部分与整体生命周期不一致。</p><pre><code>class CMyDoc : public CDocument{    private:        CObList* myList;};</code></pre><p><img src="https://i.natfrp.com/4964eaacdd9614b0dc0bcde4f91f437b.png" srcset="/img/loading.gif" alt="aggregation"></p></li><li><p><strong>Association|关联</strong>：一个类必须知道另一个类的成员和变量。若A-&gt;B，则A中存在classB的实例。关联包括聚合和组成。有双向和单项两种。</p><p><img src="https://i.natfrp.com/95e8b899324878203d7337860a187de6.png" srcset="/img/loading.gif" alt="img"></p></li></ol><p>（待续）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>UML</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>设计模式</title>
     <link href="undefined2019/10/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <url>2019/10/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-Template-Method"><a href="#1-Template-Method" class="headerlink" title="1. Template Method"></a>1. Template Method</h1><ul><li><p>定义：首先定义一个算法骨干，推迟其中一些步骤使它们在<strong>子类</strong>中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。<br>我们平时使用的许多接口都采用了这种方法。</p></li><li><p>示例：</p><ul><li><p>类图：</p><img src="https://i.natfrp.com/8057cae3fc6aeaed54a45e8a787338c8.png" srcset="/img/loading.gif" alt="img" style="zoom:50%;"></li><li><p>java代码：</p></li></ul><pre><code class="java">public class Main {    public static void main(String[] args) {        Generalization algorithm = new Realization();        algorithm.findSolution();    }}abstract class Generalization{    // 定义一个算法骨干    public void findSolution(){        stepOne();        stepTwo();        stepThr();        stepFor();    }    protected void stepOne(){        System.out.println(&quot;Generalization: stepOne&quot;);    }    // 存在两个为实现的步骤，将在子类中实现    abstract protected void stepTwo();    abstract protected void stepThr();    protected void stepFor(){        System.out.println(&quot;Generalization: stepFor&quot;);    }}abstract class Specialization extends Generalization{    // 实现了算法的stepThr，stepThr中也存在抽象方法，因此stepThr也算作一个算法骨干    @Override    protected void stepThr(){        step3_1();        step3_2();        step3_3();    }    protected void step3_1(){        System.out.println(&quot;Specialization: step3_1&quot;);    }    // stepThr的step3_2将在子类中实现    abstract protected void step3_2();    protected void step3_3(){        System.out.println(&quot;Specialization: step3_2&quot;);    }}class Realization extends Specialization{    @Override    protected void stepTwo() {        System.out.println(&quot;Realization: stepTwo&quot;);    }    @Override    protected void step3_2() {        System.out.println(&quot;Realization: step3_2&quot;);    }    @Override    protected void stepFor() {        super.stepFor();        System.out.println(&quot;Realization: stepFor&quot;);    }}</code></pre><ul><li>输出:</li></ul><pre>Generalization: stepOneRealization: stepTwoSpecialization: step3_1Realization: step3_2Specialization: step3_2Generalization: stepForRealization: stepFor</pre></li></ul><p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p><p>（待续）</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-Template-Method"><a href="#1-Template-Method" class="headerlink" title="1. Template Method"></a>1. Template Method</h1><ul><li><p><strong>定义</strong><br>首先定义一个算法骨干，推迟其中一些步骤使它们在<strong>子类</strong>中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。<br>我们平时使用的许多接口都采用了这种方法。</p></li><li><p><strong>示例</strong></p><ul><li><p>类图：</p><img src="https://i.natfrp.com/8057cae3fc6aeaed54a45e8a787338c8.png" srcset="/img/loading.gif" alt="TemplateMethod" style="zoom:50%;"></li><li><p>java代码：</p></li></ul><pre><code class="java">public class Main {    public static void main(String[] args) {        Generalization algorithm = new Realization();        algorithm.findSolution();    }}abstract class Generalization{    // 定义一个算法骨干    public void findSolution(){        stepOne();        stepTwo();        stepThr();        stepFor();    }    protected void stepOne(){        System.out.println(&quot;Generalization: stepOne&quot;);    }    // 存在两个为实现的步骤，将在子类中实现    abstract protected void stepTwo();    abstract protected void stepThr();    protected void stepFor(){        System.out.println(&quot;Generalization: stepFor&quot;);    }}abstract class Specialization extends Generalization{    // 实现了算法的stepThr，stepThr中也存在抽象方法，因此stepThr也算作一个算法骨干    @Override    protected void stepThr(){        step3_1();        step3_2();        step3_3();    }    protected void step3_1(){        System.out.println(&quot;Specialization: step3_1&quot;);    }    // stepThr的step3_2将在子类中实现    abstract protected void step3_2();    protected void step3_3(){        System.out.println(&quot;Specialization: step3_2&quot;);    }}class Realization extends Specialization{    @Override    protected void stepTwo() {        System.out.println(&quot;Realization: stepTwo&quot;);    }    @Override    protected void step3_2() {        System.out.println(&quot;Realization: step3_2&quot;);    }    @Override    protected void stepFor() {        super.stepFor();        System.out.println(&quot;Realization: stepFor&quot;);    }}</code></pre><ul><li>输出:</li></ul><pre>Generalization: stepOneRealization: stepTwoSpecialization: step3_1Realization: step3_2Specialization: step3_2Generalization: stepForRealization: stepFor</pre></li></ul><p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p><p>（待续）</p>]]></content>
     
     
     <categories>
