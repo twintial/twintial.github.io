@@ -4,12 +4,43 @@
   
   
   <entry>
+    <title>设计模式</title>
+    <link href="undefined2019/10/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <url>2019/10/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-Template-Method"><a href="#1-Template-Method" class="headerlink" title="1. Template Method"></a>1. Template Method</h1><ul><li><p>定义：首先定义一个算法骨干，推迟其中一些步骤使它们在<strong>子类</strong>中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。<br>我们平时使用的许多接口都采用了这种方法。</p></li><li><p>示例：</p><ul><li><p>类图：</p><img src="https://i.natfrp.com/8057cae3fc6aeaed54a45e8a787338c8.png" srcset="/img/loading.gif" alt="img" style="zoom:50%;"></li><li><p>java代码：</p></li></ul><pre><code class="java">public class Main {    public static void main(String[] args) {        Generalization algorithm = new Realization();        algorithm.findSolution();    }}abstract class Generalization{    // 定义一个算法骨干    public void findSolution(){        stepOne();        stepTwo();        stepThr();        stepFor();    }    protected void stepOne(){        System.out.println(&quot;Generalization: stepOne&quot;);    }    // 存在两个为实现的步骤，将在子类中实现    abstract protected void stepTwo();    abstract protected void stepThr();    protected void stepFor(){        System.out.println(&quot;Generalization: stepFor&quot;);    }}abstract class Specialization extends Generalization{    // 实现了算法的stepThr，stepThr中也存在抽象方法，因此stepThr也算作一个算法骨干    @Override    protected void stepThr(){        step3_1();        step3_2();        step3_3();    }    protected void step3_1(){        System.out.println(&quot;Specialization: step3_1&quot;);    }    // stepThr的step3_2将在子类中实现    abstract protected void step3_2();    protected void step3_3(){        System.out.println(&quot;Specialization: step3_2&quot;);    }}class Realization extends Specialization{    @Override    protected void stepTwo() {        System.out.println(&quot;Realization: stepTwo&quot;);    }    @Override    protected void step3_2() {        System.out.println(&quot;Realization: step3_2&quot;);    }    @Override    protected void stepFor() {        super.stepFor();        System.out.println(&quot;Realization: stepFor&quot;);    }}</code></pre><ul><li>输出:</li></ul><pre>Generalization: stepOneRealization: stepTwoSpecialization: step3_1Realization: step3_2Specialization: step3_2Generalization: stepForRealization: stepFor</pre></li></ul><p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p><p>（待续）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Design Pattern</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>回顾html</title>
     <link href="undefined2019/10/08/%E5%9B%9E%E9%A1%BEhtml/"/>
     <url>2019/10/08/%E5%9B%9E%E9%A1%BEhtml/</url>
     
     <content type="html"><![CDATA[<p>对html语言进行了回顾和再次学习。</p><h2 id="html样式"><a href="#html样式" class="headerlink" title="html样式"></a>html样式</h2><p>一些标签和属性都用html中的style属性所代替了。</p><h4 id="被抛弃的标签和属性"><a href="#被抛弃的标签和属性" class="headerlink" title="被抛弃的标签和属性"></a>被抛弃的标签和属性</h4><table><thead><tr><th>标签/属性</th><th>描述</th></tr></thead><tbody><tr><td>&lt;center&gt;</td><td>定义居中的内容</td></tr><tr><td>&lt;font&gt;和&lt;basefont&gt;</td><td>定义HTML字体</td></tr><tr><td>&lt;s&gt;和&lt;strike&gt;(使用&lt;del&gt;代替)</td><td>定义删除线文本</td></tr><tr><td>&lt;u&gt;(使用样式&lt;ins&gt;代替)</td><td>定义下划线文本</td></tr><tr><td>align</td><td>定义文本对齐方式</td></tr><tr><td>bgcolor/color</td><td>定义背景/文本颜色</td></tr></tbody></table><h2 id="html折行"><a href="#html折行" class="headerlink" title="html折行"></a>html折行</h2><p>使用&lt;br /&gt;标签:</p><pre><code class="html">&lt;p&gt;This is&lt;br /&gt;a para&lt;br /&gt;graph with line breaks&lt;/p&gt;</code></pre><h2 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h2><table><thead><tr><th>标签</th><th>效果</th></tr></thead><tbody><tr><td>&lt;p&gt;</td><td>正常</td></tr><tr><td>&lt;big&gt;</td><td><big>大号</big></td></tr><tr><td>&lt;em&gt;</td><td><em>着重</em></td></tr><tr><td>&lt;i&gt;</td><td><i>斜体</i></td></tr><tr><td>&lt;small&gt;</td><td><small>小号</small></td></tr><tr><td>&lt;b&gt;</td><td><b>粗体</b></td></tr><tr><td>&lt;strong&gt;</td><td><strong>加强语气</strong></td></tr><tr><td>&lt;sub&gt;</td><td>正常<sub>下标</sub></td></tr><tr><td>&lt;sup&gt;</td><td>正常<sup>上标</sup></td></tr><tr><td>&lt;ins&gt;</td><td><ins>插入</ins></td></tr><tr><td>&lt;del&gt;</td><td><del>删除</del></td></tr></tbody></table><h4 id="“计算机输出“标签"><a href="#“计算机输出“标签" class="headerlink" title="“计算机输出“标签"></a>“计算机输出“标签</h4><table><thead><tr><th>标签</th><th>效果</th></tr></thead><tbody><tr><td>&lt;code&gt;</td><td><code>prinf()</code></td></tr><tr><td>&lt;kbd&gt;</td><td><kbd>space</kbd></td></tr><tr><td>&lt;pre&gt;</td><td><pre>预格式文本</pre></td></tr><tr><td>&lt;var&gt;</td><td><var>变量</var></td></tr><tr><td>&lt;tt&gt;</td><td><tt>打字机格式</tt></td></tr></tbody></table><p>&lt;code&gt; 元素不保留多余的空格和折行，用&lt;pre&gt;解决。</p><pre><code>&lt;code&gt;&lt;pre&gt;var person = {    firstName:&quot;Bill&quot;,    lastName:&quot;Gates&quot;,    age:50,    eyeColor:&quot;blue&quot;}&lt;/pre&gt;&lt;/code&gt;</code></pre><p>效果：</p><code><pre>var person = {    firstName:"Bill",    lastName:"Gates",    age:50,    eyeColor:"blue"}</pre></code><h4 id="引用和术语定义"><a href="#引用和术语定义" class="headerlink" title="引用和术语定义"></a>引用和术语定义</h4><table><thead><tr><th>标签</th><th>效果</th></tr></thead><tbody><tr><td>&lt;abbr&gt;(缩写)</td><td><abbr title="etcetera">etc.</abbr></td></tr><tr><td>&lt;acronym&gt;(首字母缩写)</td><td><acronym title="World Wide Web">WWW</acronym></td></tr><tr><td>&lt;q&gt;</td><td><q>引用，周围有引号</q></td></tr><tr><td>&lt;bdo&gt;(dir=”rtl”)</td><td><bdo dir="rtl">Reverse</bdo></td></tr><tr><td>&lt;dfn&gt;</td><td><p><dfn title="World Health Organization">WHO</dfn> 成立于 1948 年。</p></td></tr></tbody></table><h2 id="HTML-链接-target-属性"><a href="#HTML-链接-target-属性" class="headerlink" title="HTML 链接 - target 属性"></a>HTML 链接 - target 属性</h2><p>下面的这行会在新窗口打开文档：</p><pre><code>&lt;a href=&quot;http://www.w3school.com.cn/&quot; target=&quot;_blank&quot;&gt;Visit W3School!&lt;/a&gt;</code></pre><h2 id="HTML-链接-name-属性"><a href="#HTML-链接-name-属性" class="headerlink" title="HTML 链接 - name 属性"></a>HTML 链接 - name 属性</h2><p>首先，我们在 HTML 文档中对锚进行命名（创建一个书签）：</p><pre><code>&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</code></pre><p>然后，我们在同一个文档中创建指向该锚的链接：</p><pre><code>&lt;a href=&quot;#tips&quot;&gt;有用的提示&lt;/a&gt;</code></pre><p>您也可以在其他页面中创建指向该锚的链接：</p><pre><code>&lt;a href=&quot;http://www.w3school.com.cn/html/html_links.asp#tips&quot;&gt;有用的提示&lt;/a&gt;</code></pre><h2 id="div与span的区别"><a href="#div与span的区别" class="headerlink" title="div与span的区别"></a>div与span的区别</h2><p>div是块级元素，可以用于布局。<br>span是内联元素，多用于为部分文本设置不一样的样式。</p><h2 id="HTML文件路径"><a href="#HTML文件路径" class="headerlink" title="HTML文件路径"></a>HTML文件路径</h2><table><thead><tr><th align="left">路径</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">&lt;img src=”picture.jpg”&gt;</td><td align="left">picture.jpg 位于与当前网页相同的文件夹</td></tr><tr><td align="left">&lt;img src=”images/picture.jpg”&gt;</td><td align="left">picture.jpg 位于当前文件夹的 images 文件夹中</td></tr><tr><td align="left">&lt;img src=”/images/picture.jpg”&gt;</td><td align="left">picture.jpg 当前站点根目录的 images 文件夹中</td></tr><tr><td align="left">&lt;img src=”../picture.jpg”&gt;</td><td align="left">picture.jpg 位于当前文件夹的上一级文件夹中</td></tr></tbody></table>]]></content>
     
+    
+    <categories>
+      
+      <category>学习</category>
+      
+    </categories>
     
     
     <tags>

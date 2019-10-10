@@ -128,6 +128,72 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/10/10/设计模式/" target="_self">
+          <img src="/img/IMG_2681.jpg" srcset="/img/loading.gif" alt="设计模式" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/10/10/设计模式/">
+        <p class="h4 index-header">设计模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1. Template Method
+定义：首先定义一个算法骨干，推迟其中一些步骤使它们在子类中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。我们平时使用的许多接口都采用了这种方法。
+
+示例：
+
+类图：
+
+
+java代码：
+
+
+public class Main {
+    public static void main(String[] args) {
+        Generalization algorithm = new Realization();
+        algorithm.findSolution();
+    }
+}
+abstract class Generalization{
+    // 定义一个算法骨干
+    public void findSolution(){
+        stepOne();
+        stepTwo();
+        stepThr();
+        stepFor();
+    }
+    prot</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Design%20Pattern">Design Pattern</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/10/08/回顾html/" target="_self">
           <img src="/img/IMG_2681.jpg" srcset="/img/loading.gif" alt="回顾html" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -217,6 +283,11 @@ html折行使用&lt;br /&gt;标签:
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-08&nbsp;&nbsp;
         
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
