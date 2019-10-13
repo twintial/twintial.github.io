@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Junjie Shen">
   <meta name="keywords" content>
-  <title>归档 ~ TWINの無駄づかい</title>
+  <title>在用Maven搭建SpringMVC项目时出现的问题 ~ TWINの無駄づかい</title>
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
@@ -30,7 +30,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -101,6 +101,9 @@
             </span>
 
             
+              <br>
+              <p>星期日, 十月 13日 2019, 2:41 下午</p>
+            
           </div>
 
           
@@ -111,53 +114,63 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/10/13/在用Maven搭建SpringMVC项目时出现的问题/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在用Maven搭建SpringMVC项目时出现的问题</span>
-      <span style="float: right;">10-13</span>
-    </a>
-  
-    
-    <a href="/2019/10/10/回顾UML/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">回顾UML</span>
-      <span style="float: right;">10-10</span>
-    </a>
-  
-    
-    <a href="/2019/10/10/设计模式/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">设计模式</span>
-      <span style="float: right;">10-10</span>
-    </a>
-  
-    
-    <a href="/2019/10/08/回顾html/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">回顾html</span>
-      <span style="float: right;">10-08</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto">
+          <div class="markdown-body">
+            <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>IDE: IntelliJ IDEA 2019.2.3专业版<br>系统：MacOS<br>JDK：1.8</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Maven项目没有src文件夹"><a href="#Maven项目没有src文件夹" class="headerlink" title="Maven项目没有src文件夹"></a>Maven项目没有src文件夹</h2><p>打开Perference设置，在Build, Execution, Deployment-&gt;Build Tools-&gt;Maven-&gt;Runner的VM Options中添加<strong>-DarchetypeCatalog=internal</strong></p>
+<h2 id="项目Add-Framework-Support中无法添加SpringMVC框架"><a href="#项目Add-Framework-Support中无法添加SpringMVC框架" class="headerlink" title="项目Add Framework Support中无法添加SpringMVC框架"></a>项目Add Framework Support中无法添加SpringMVC框架</h2><ul>
+<li>先在Project Structure的Modules中删除Spring框架，重新添加SpringMVC框架</li>
+<li>如果还是没有，打开Perference设置，在Plugins中勾选启用SpringMVC</li>
+</ul>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/Java">Java</a>
+              
+                <a class="hover-with-bg" href="/tags/SpringMVC">SpringMVC</a>
+              
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -211,6 +224,11 @@
   <script src="/js/lazyload.js" ></script>
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
   <script src="/lib/prettify/prettify.min.js" ></script>
   <script>
@@ -226,7 +244,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "在用Maven搭建SpringMVC项目时出现的问题&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
