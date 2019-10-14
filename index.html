@@ -128,6 +128,56 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/10/14/深度学习中遇到的问题/" target="_self">
+          <img src="/img/view/70460878_p0.png" srcset="/img/loading.gif" alt="深度学习中遇到的问题" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/10/14/深度学习中遇到的问题/">
+        <p class="h4 index-header">深度学习中遇到的问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Logistic regression常用的数据集预处理方法
+
+找出数据集的维度和形状（m_train, m_test, num_px,….）
+用reshape方法将数据集的每一个样本化为一个列向量（num_px * numpx * 3, 1）
+标准化数据（n/(MAX - MIN)）
+
+注意
+图片处理的scipy.imread和imresize已经被抛弃，用matplotlib.pyplot.imread或者PLT.Image.open代替imread。用Image对象image.resize代替imresize
+reshape的坑
+train_x_flatten = train_x_orig.reshape(-1, train_x_orig.shape[0])
+train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T
+两者不相等，要了解其中含义
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/10/13/在用Maven搭建SpringMVC项目时出现的问题/" target="_self">
           <img src="/img/view/76995599_p0.png" srcset="/img/loading.gif" alt="在用Maven搭建SpringMVC项目时出现的问题" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>

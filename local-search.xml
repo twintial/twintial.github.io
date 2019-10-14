@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>深度学习中遇到的问题</title>
+    <link href="undefined2019/10/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>2019/10/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h1><p><strong>常用的数据集预处理方法</strong></p><ul><li>找出数据集的维度和形状（m_train, m_test, num_px,….）</li><li>用reshape方法将数据集的每一个样本化为一个列向量（num_px * numpx * 3, 1）</li><li>标准化数据（n/(MAX - MIN)）</li></ul><p><strong>注意</strong></p><p>图片处理的scipy.imread和imresize已经被抛弃，用matplotlib.pyplot.imread或者PLT.Image.open代替imread。用Image对象image.resize代替imresize</p><p><strong>reshape的坑</strong></p><pre><code class="python">train_x_flatten = train_x_orig.reshape(-1, train_x_orig.shape[0])train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T</code></pre><p>两者不相等，要了解其中含义</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>在用Maven搭建SpringMVC项目时出现的问题</title>
     <link href="undefined2019/10/13/%E5%9C%A8%E7%94%A8Maven%E6%90%AD%E5%BB%BASpringMVC%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <url>2019/10/13/%E5%9C%A8%E7%94%A8Maven%E6%90%AD%E5%BB%BASpringMVC%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
