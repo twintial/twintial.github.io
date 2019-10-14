@@ -289,6 +289,7 @@ private:
 };</code></pre>
 <p>以上是整个族系算法。接下来还需要一个类实现算法抽换和执行。</p>
 <p>setStrategy()实现抽换，doit()执行。</p>
+<p>(也可以不构造此类，让用户自己进行算法的抽换)</p>
 <pre><code class="c++">class Test{
 public:
     enum StrategyType{
@@ -305,8 +306,10 @@ public:
                 break;
             case Right:
                 _strategy = new RightStragety(width);
+                    break;
             case Center:
                 _strategy = new CenterStragety(width);
+                    break;
             default:
                 break;
         }
@@ -316,7 +319,7 @@ public:
         _strategy-&gt;format();
     }
 private:
-    Strategy* _strategy;
+Strategy* _strategy;
     int a;
 };</code></pre>
 <p>main()函数</p>
@@ -334,11 +337,15 @@ private:
         cin &gt;&gt; type;
     }
 }</code></pre>
+<p>若之后要加入在家族中加入一个新成员（这里指新的格式），只要在Test类的setStrategy（抽换算法）中添加一个新的选择即可。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="Observer-publish-subscribe"><a href="#Observer-publish-subscribe" class="headerlink" title="Observer/publish-subscribe"></a>Observer/publish-subscribe</h1><p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p>
+<h1 id="Observer-publish-subscribe"><a href="#Observer-publish-subscribe" class="headerlink" title="Observer/publish-subscribe"></a>Observer/publish-subscribe</h1><ul>
+<li>定义</li>
+</ul>
+<p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p>
 
             <hr>
           </div>
