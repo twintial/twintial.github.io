@@ -132,8 +132,6 @@
 <img src="https://i.natfrp.com/8057cae3fc6aeaed54a45e8a787338c8.png" srcset="/img/loading.gif" alt="TemplateMethod" style="zoom:50%;">
 </li>
 <li><p>java代码：</p>
-</li>
-</ul>
 <pre><code class="java">public class Main {
     public static void main(String[] args) {
         Generalization algorithm = new Realization();
@@ -192,9 +190,12 @@ class Realization extends Specialization{
         System.out.println(&quot;Realization: stepFor&quot;);
     }
 }</code></pre>
-<ul>
-<li>输出:</li>
+</li>
 </ul>
+</li>
+</ul>
+<ul>
+<li><p>输出:</p>
 <pre>Generalization: stepOne
 Realization: stepTwo
 Specialization: step3_1
@@ -202,6 +203,7 @@ Realization: step3_2
 Specialization: step3_2
 Generalization: stepFor
 Realization: stepFor</pre>
+
 
 
 
@@ -215,7 +217,7 @@ Realization: stepFor</pre>
 <li><p><strong>示例</strong></p>
 <ul>
 <li><p>类图</p>
-<p><img src="https://i.natfrp.com/bbc90d5c49dcd2906e03115bc815c536.png" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="https://i.natfrp.com/bbc90d5c49dcd2906e03115bc815c536.png" srcset="/img/loading.gif" alt="Strategy"></p>
 </li>
 <li><p>c++代码</p>
 <p>首先定义一个族系的父类Strategy，在这个例子中算法家族做的是定义一个文本格式。format()函数是一个Template Method，其中的步骤justify()需要子类实现。</p>
@@ -343,9 +345,90 @@ Strategy* _strategy;
 </li>
 </ul>
 <h1 id="Observer-publish-subscribe"><a href="#Observer-publish-subscribe" class="headerlink" title="Observer/publish-subscribe"></a>Observer/publish-subscribe</h1><ul>
-<li>定义</li>
+<li><p><strong>定义</strong></p>
+<p>在objects之间定义“一对多”的依存关系，当一个object发生改变时，其他依存于它的objects们也会被通知并更新。</p>
+</li>
+<li><p><strong>示例</strong></p>
+<ul>
+<li><p>类图</p>
+<p><img src="https://i.natfrp.com/6cafc22f5ae227f56111092958fdae27.png" srcset="/img/loading.gif" alt="Observer"></p>
+</li>
+<li><p>java代码</p>
+<p><strong>java中已经封装了Observer和Observable以供使用，这里为了进一步掌握这个设计模式，重新实现了Observer设计模式。</strong></p>
+<p>首先定一个Observe接口和Subject主体用于通知全部订阅了的观察者（对应标准库中的Observable）</p>
+<pre><code class="java">interface Observer{
+    void update(int value);
+}
+
+class Subject{
+    int m_value;
+    List&lt;Observer&gt; m_views;
+    Subject(){
+        m_views = new ArrayList&lt;&gt;();
+    }
+    public void addObserver(Observer observe){
+        m_views.add(observe);
+    }
+    private void notifyChanges(){
+        for (Observer observe: m_views){
+            observe.update(m_value);
+        }
+    }
+    public void set_value(int value){
+        m_value = value;
+        notifyChanges();
+    }
+}</code></pre>
+<p>实现了继承Observer的两个观察者</p>
+<pre><code class="java">class DivObserve implements Observer{
+    private int m_div;
+    DivObserve(int div){
+        m_div = div;
+    }
+    @Override
+    public void update(int value) {
+        System.out.println(value+&quot; div &quot;+m_div+&quot; = &quot;+(value / m_div));
+    }
+}
+class ModObserve implements Observer{
+    private int m_mod;
+    ModObserve(int mod){
+        m_mod = mod;
+    }
+    @Override
+    public void update(int value) {
+        System.out.println(value+&quot; mod &quot;+m_mod+&quot; = &quot;+(value % m_mod));
+    }
+}</code></pre>
+<p>main()函数在创建新观察者后，调用addObserver()函数订阅（依赖）subject主体。</p>
+<pre><code class="java">public class Main {
+
+    public static void main(String[] args) {
+        Subject subject = new Subject();
+        DivObserve div1 = new DivObserve(4);
+        DivObserve div2 = new DivObserve(3);
+        ModObserve mod1 = new ModObserve(3);
+        subject.addObserver(div1);
+        subject.addObserver(div2);
+        subject.addObserver(mod1);
+        subject.set_value(14);
+    }
+}</code></pre>
+</li>
+<li><p>输出</p>
+<pre>
+14 div 4 = 3
+14 div 3 = 4
+14 mod 3 = 2
+</pre>
+
+
+
+</li>
 </ul>
-<p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p>
+</li>
+</ul>
+<h1 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h1><p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p>
 
             <hr>
           </div>
