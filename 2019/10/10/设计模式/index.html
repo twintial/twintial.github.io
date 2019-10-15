@@ -126,10 +126,13 @@
             <h1 id="Template-Method"><a href="#Template-Method" class="headerlink" title="Template Method"></a>Template Method</h1><ul>
 <li><p><strong>定义</strong><br>首先定义一个算法骨干，推迟其中一些步骤使它们在<strong>子类</strong>中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。<br>我们平时使用的许多接口都采用了这种方法。</p>
 </li>
+<li><p><strong>类图表示</strong></p>
+<p><img src="/img/backup/TemplateMethod.png" srcset="/img/loading.gif" alt="TemplateMethod"></p>
+</li>
 <li><p><strong>示例</strong></p>
 <ul>
 <li><p>类图：</p>
-<img src="https://i.natfrp.com/8057cae3fc6aeaed54a45e8a787338c8.png" srcset="/img/loading.gif" alt="TemplateMethod" style="zoom:50%;">
+<img src="https://i.natfrp.com/8057cae3fc6aeaed54a45e8a787338c8.png" srcset="/img/loading.gif" alt="TemplateMethodSample" style="zoom:50%;">
 </li>
 <li><p>java代码：</p>
 <pre><code class="java">public class Main {
@@ -214,10 +217,13 @@ Realization: stepFor</pre>
 <p>首先定义一个族系算法（a family of algorithms），然后封装其中每一个算法成为类class，使得它们可以被交换使用。</p>
 <p>Strategy可以使算法添加，删除不影响客户。</p>
 </li>
+<li><p><strong>类图表示</strong></p>
+<p><img src="/img/backup/Strategy.png" srcset="/img/loading.gif" alt="Strategy"></p>
+</li>
 <li><p><strong>示例</strong></p>
 <ul>
 <li><p>类图</p>
-<p><img src="https://i.natfrp.com/bbc90d5c49dcd2906e03115bc815c536.png" srcset="/img/loading.gif" alt="Strategy"></p>
+<p><img src="https://i.natfrp.com/bbc90d5c49dcd2906e03115bc815c536.png" srcset="/img/loading.gif" alt="StrategySample"></p>
 </li>
 <li><p>c++代码</p>
 <p>首先定义一个族系的父类Strategy，在这个例子中算法家族做的是定义一个文本格式。format()函数是一个Template Method，其中的步骤justify()需要子类实现。</p>
@@ -348,10 +354,13 @@ Strategy* _strategy;
 <li><p><strong>定义</strong></p>
 <p>在objects之间定义“一对多”的依存关系，当一个object发生改变时，其他依存于它的objects们也会被通知并更新。</p>
 </li>
+<li><p><strong>类图表示</strong></p>
+<p>java标准库：<br><img src="/img/backup/Observer.png" srcset="/img/loading.gif" alt="Observer"></p>
+</li>
 <li><p><strong>示例</strong></p>
 <ul>
 <li><p>类图</p>
-<p><img src="https://i.natfrp.com/6cafc22f5ae227f56111092958fdae27.png" srcset="/img/loading.gif" alt="Observer"></p>
+<p><img src="https://i.natfrp.com/6cafc22f5ae227f56111092958fdae27.png" srcset="/img/loading.gif" alt="ObserverSample"></p>
 </li>
 <li><p>java代码</p>
 <p><strong>java中已经封装了Observer和Observable以供使用，这里为了进一步掌握这个设计模式，重新实现了Observer设计模式。</strong></p>
@@ -428,7 +437,54 @@ class ModObserve implements Observer{
 </ul>
 </li>
 </ul>
-<h1 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h1><p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p>
+<h1 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h1><ul>
+<li><p><strong>定义</strong></p>
+<p>提供一种方法可以循环访问一个聚合物（List，Vector等）而无需显露聚合物的底部表述。</p>
+<p>比如java中遍历不同的聚合物需要知道不同聚合物获得元素的方法。</p>
+</li>
+<li><p><strong>类图表示</strong></p>
+<p><img src="/img/backup/Iteration.png" srcset="/img/loading.gif" alt="Iteration"><br>java标准库：<br><img src="/img/backup/Iteration1.png" srcset="/img/loading.gif" alt="Iteration1"></p>
+</li>
+<li><p><strong>为什么要用Iteration来遍历</strong></p>
+<ul>
+<li><p>Iteration可以提供一种统一的方法访问一个聚合物，客户无需知道聚合物的具体用法。</p>
+<p><code>for(Iterator it = aggregation.iterater(); it.hasNext(); )</code></p>
+<p> <code>{ ... }</code></p>
+</li>
+<li><p>用Iteration在改变聚合物的种类时，可以减少对代码的修改（无需修改循环部分），符合OCP的设计准则。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h1><ul>
+<li><p><strong>定义</strong></p>
+<p>单例模式，确保某个class只能生成唯一一个实体。使用private修饰的构造函数实现。</p>
+</li>
+<li><p><strong>类图表示</strong></p>
+<p>Singleton的实现方法有很多种，这里只介绍比较实用的一种。<br><img src="/img/backup/Singleton.png" srcset="/img/loading.gif" alt="Singleton"></p>
+</li>
+<li><p><strong>示例</strong></p>
+<ul>
+<li><p>java代码</p>
+<pre><code class="java">public class SingleObject {
+   //创建 SingleObject 的一个对象
+   private static SingleObject instance = new SingleObject();
+   //让构造函数为 private，这样该类就不会被实例化
+   private SingleObject(){}
+   //获取唯一可用的对象
+   public static SingleObject getInstance(){
+      return instance;
+   }
+
+   public void showMessage(){
+      System.out.println(&quot;Hello World!&quot;);
+   }
+}</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考：<a href="https://sourcemaking.com/design_patterns" target="_blank" rel="noopener">Design Patterns</a></p>
 
             <hr>
           </div>
