@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Junjie Shen">
   <meta name="keywords" content>
-  <title>深度学习中遇到的问题 ~ TWINの無駄づかい</title>
+  <title>java编程思想 ~ TWINの無駄づかい</title>
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
@@ -102,7 +102,7 @@
 
             
               <br>
-              <p>星期一, 十月 14日 2019, 5:52 下午</p>
+              <p>星期二, 三月 10日 2020, 8:03 早上</p>
             
           </div>
 
@@ -123,20 +123,52 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto">
           <div class="markdown-body">
-            <h1 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h1><p><strong>常用的数据集预处理方法</strong></p>
-<ul>
-<li>找出数据集的维度和形状（m_train, m_test, num_px,….）</li>
-<li>用reshape方法将数据集的每一个样本化为一个列向量（num_px * numpx * 3, 1）</li>
-<li>标准化数据（n/(MAX - MIN)）</li>
-</ul>
-<p><strong>注意</strong></p>
-<p>图片处理的scipy.imread和imresize已经被抛弃，用matplotlib.pyplot.imread或者PLT.Image.open代替imread。用Image对象image.resize代替imresize</p>
-<p><strong>reshape的坑</strong></p>
-<pre><code class="python">train_x_flatten = train_x_orig.reshape(-1, train_x_orig.shape[0])
-train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T</code></pre>
-<p>两者不相等，要了解其中含义</p>
-<p>#He initialization</p>
-<p>​    This function is similar to the previous initialize_parameters_random(…). The only difference is that instead of multiplying np.random.randn(..,..) by 10, you will multiply it by <strong>sqrt(2./layers_dims[l-1])</strong> , which is what He initialization recommends for layers with a ReLU activation.</p>
+            <h1 id="第一章-对象导论"><a href="#第一章-对象导论" class="headerlink" title="第一章 对象导论"></a>第一章 对象导论</h1><h3 id="访问控制的原因"><a href="#访问控制的原因" class="headerlink" title="访问控制的原因"></a>访问控制的原因</h3><ol>
+<li>为了让客户端程序员无法触及他们不应该触及的部分</li>
+<li>允许库设计者可以改变类内部的工作方式而不用担心会影响到客户端程序员</li>
+</ol>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>区分前期绑定和后期绑定</p>
+<h3 id="范性出现的原因"><a href="#范性出现的原因" class="headerlink" title="范性出现的原因"></a>范性出现的原因</h3><p>​        java SE5之前容器中只能存储Object对象，即当对象从容器中取出时需要向下转型为程序员需要的类型，然而除非知道所要处理的对象类型，这种转换是不安全的。<strong>向下转型和运行时的检查需要额为的程序运行时间，也需要程序员付出更多的心血。</strong></p>
+<h3 id="对象创建的生命周期"><a href="#对象创建的生命周期" class="headerlink" title="对象创建的生命周期"></a>对象创建的生命周期</h3><ol>
+<li>在编写程序的时候确定对象的存储空间和生命周期。可以通过将对象置于栈中（有时被称为automatic variable或scoped variable）或静态存储区域来实现。</li>
+<li>在被称为堆的内存池中动态地创建对象。</li>
+</ol>
+<h1 id="第二章-对象"><a href="#第二章-对象" class="headerlink" title="第二章 对象"></a>第二章 对象</h1><h3 id="程序运行时，对象可以存在的位置"><a href="#程序运行时，对象可以存在的位置" class="headerlink" title="程序运行时，对象可以存在的位置"></a>程序运行时，对象可以存在的位置</h3><ol>
+<li>寄存器</li>
+<li>栈</li>
+<li>堆：通用的对象池，用于存放所有的java对象。</li>
+<li>常量存储</li>
+<li>非RAM存储</li>
+</ol>
+<h3 id="高精度数字"><a href="#高精度数字" class="headerlink" title="高精度数字"></a>高精度数字</h3><p>BigInteget和BigDecimal</p>
+<h3 id="获取系统信息"><a href="#获取系统信息" class="headerlink" title="获取系统信息"></a>获取系统信息</h3><pre><code class="java">System.getProperties().list(System.out);
+System.out.println(System.getProperty(&quot;user.name&quot;));
+System.out.println(System.getProperty(&quot;java.library.path&quot;));</code></pre>
+<h1 id="第五章-初始化与清理"><a href="#第五章-初始化与清理" class="headerlink" title="第五章 初始化与清理"></a>第五章 初始化与清理</h1><h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><ol>
+<li>方法名相同而参数列表不同。</li>
+<li>基本类型的参数重载，如果没有找到char，char会提升至int。</li>
+<li>返回值不能用来区分重载方法。</li>
+</ol>
+<p>###什么时候需要使用finalize()</p>
+<ol>
+<li>当在java类中调用非java代码时，如c/c++，需要在finalize()中释放其占据的内存。一般情况下不需要使用finalize()</li>
+<li>用于对象<strong>终结条件</strong>的验证，用于发现错误，之后也需要去除（使用<code>System.gc()</code>可以强制进行垃圾回收）</li>
+</ol>
+<h3 id="垃圾回收器的工作原理"><a href="#垃圾回收器的工作原理" class="headerlink" title="垃圾回收器的工作原理"></a>垃圾回收器的工作原理</h3><p>​    java采用<strong>自适应</strong>的垃圾回收机制（见Java编程思想第四版P89）</p>
+<h3 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h3><p>​    基本类型作为局部变量必须被初始化，而作为成员变量，会获得自己默认的初始值。对象类型的初始值为null。</p>
+<h3 id="类的初始化过程"><a href="#类的初始化过程" class="headerlink" title="类的初始化过程"></a>类的初始化过程</h3><ol>
+<li>因为构造器为静态函数，因此首次创建此类或者类的静态方法/静态域首次被访问时，Java解释器必须找到类路径，以定位xxx.class文件。</li>
+<li>然后载入Dog.class，有关静态初始化的所有动作都会被执行，且只执行这一次。</li>
+<li>当用new xxx()创建对象的时候，首先将在堆上为对象分配足够的存储空间。</li>
+<li>将这块存储空间清0，这是所有的基本类型成员被设置成了默认值，对象成员被设置成了null。</li>
+<li>执行所有字段定义处的初始化动作。</li>
+<li>执行构造器。（将涉及很多动作，尤其是涉及继承的时候）</li>
+</ol>
+<h1 id="第七章-复用类"><a href="#第七章-复用类" class="headerlink" title="第七章 复用类"></a>第七章 复用类</h1><h3 id="final关键词"><a href="#final关键词" class="headerlink" title="final关键词"></a>final关键词</h3><ol>
+<li><strong>数据</strong>：final通常用于基本类型变量。若用于对象类型则表示此应用不能改变，而引用指向的对象的值依然可以改变，因此没有太大意义。</li>
+<li><strong>方法</strong>：明确禁止覆写。</li>
+<li><strong>类</strong>：明确禁止继承。</li>
+</ol>
 
             <hr>
           </div>
@@ -146,9 +178,7 @@ train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T</code></pre
             <p>
               <i class="iconfont icon-tag"></i>
               
-                <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
-              
-                <a class="hover-with-bg" href="/tags/python">python</a>
+                <a class="hover-with-bg" href="/tags/java">java</a>
               
             </p>
             
@@ -252,7 +282,7 @@ train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T</code></pre
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "深度学习中遇到的问题&nbsp;",
+        "java编程思想&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

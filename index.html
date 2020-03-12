@@ -127,6 +127,55 @@
   <div class="row mb-4 mx-auto">
     
     
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/10/java编程思想/">
+        <p class="h4 index-header">java编程思想</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">第一章 对象导论访问控制的原因
+为了让客户端程序员无法触及他们不应该触及的部分
+允许库设计者可以改变类内部的工作方式而不用担心会影响到客户端程序员
+
+多态区分前期绑定和后期绑定
+范性出现的原因​        java SE5之前容器中只能存储Object对象，即当对象从容器中取出时需要向下转型为程序员需要的类型，然而除非知道所要处理的对象类型，这种转换是不安全的。向下转型和运行时的检查需要额为的程序运行时间，也需要程序员付出更多的心血。
+对象创建的生命周期
+在编写程序的时候确定对象的存储空间和生命周期。可以通过将对象置于栈中（有时被称为automatic variable或scoped variable）或静态存储区域来实现。
+在被称为堆的内存池中动态地创建对象。
+
+第二章 对象程序运行时，对象可以存在的位置
+寄存器
+栈
+堆：通用的对象池，用于存放所有的java对象。
+常量存储
+非RAM存储
+
+高精度数字BigInteget和BigDecimal
+获取系统信息System.getProperties().list(System.out);
+System.out.println(Sys</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
       <div class="col-12 col-md-4 m-auto">
         <a href="/2019/10/14/深度学习中遇到的问题/" target="_self">
           <img src="/img/view/70460878_p0.png" srcset="/img/loading.gif" alt="深度学习中遇到的问题" class="img-fluid rounded z-depth-3 index-thumbnails">
@@ -153,7 +202,8 @@ reshape的坑
 train_x_flatten = train_x_orig.reshape(-1, train_x_orig.shape[0])
 train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T
 两者不相等，要了解其中含义
-</div>
+#He initialization
+​    This function is similar to the previous initialize_para</div>
         </div>
       </a>
 
