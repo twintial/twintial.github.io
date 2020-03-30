@@ -128,7 +128,7 @@
 <li>允许库设计者可以改变类内部的工作方式而不用担心会影响到客户端程序员</li>
 </ol>
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>区分前期绑定和后期绑定</p>
-<h3 id="范性出现的原因"><a href="#范性出现的原因" class="headerlink" title="范性出现的原因"></a>范性出现的原因</h3><p>​        java SE5之前容器中只能存储Object对象，即当对象从容器中取出时需要向下转型为程序员需要的类型，然而除非知道所要处理的对象类型，这种转换是不安全的。<strong>向下转型和运行时的检查需要额为的程序运行时间，也需要程序员付出更多的心血。</strong></p>
+<h3 id="泛型出现的原因"><a href="#泛型出现的原因" class="headerlink" title="泛型出现的原因"></a>泛型出现的原因</h3><p>​        java SE5之前容器中只能存储Object对象，即当对象从容器中取出时需要向下转型为程序员需要的类型，然而除非知道所要处理的对象类型，这种转换是不安全的。<strong>向下转型和运行时的检查需要额外的程序运行时间（<em>java的泛型不能优化这部分时间，使用泛型的话向下转型依然存在（归咎于擦除机制），但是是由编译器自动帮你完成 P380</em>），也需要程序员付出更多的心血。</strong></p>
 <h3 id="对象创建的生命周期"><a href="#对象创建的生命周期" class="headerlink" title="对象创建的生命周期"></a>对象创建的生命周期</h3><ol>
 <li>在编写程序的时候确定对象的存储空间和生命周期。可以通过将对象置于栈中（有时被称为automatic variable或scoped variable）或静态存储区域来实现。</li>
 <li>在被称为堆的内存池中动态地创建对象。</li>
@@ -157,18 +157,778 @@ System.out.println(System.getProperty(&quot;java.library.path&quot;));</code></p
 <h3 id="垃圾回收器的工作原理"><a href="#垃圾回收器的工作原理" class="headerlink" title="垃圾回收器的工作原理"></a>垃圾回收器的工作原理</h3><p>​    java采用<strong>自适应</strong>的垃圾回收机制（见Java编程思想第四版P89）</p>
 <h3 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h3><p>​    基本类型作为局部变量必须被初始化，而作为成员变量，会获得自己默认的初始值。对象类型的初始值为null。</p>
 <h3 id="类的初始化过程"><a href="#类的初始化过程" class="headerlink" title="类的初始化过程"></a>类的初始化过程</h3><ol>
-<li>因为构造器为静态函数，因此首次创建此类或者类的静态方法/静态域首次被访问时，Java解释器必须找到类路径，以定位xxx.class文件。</li>
-<li>然后载入Dog.class，有关静态初始化的所有动作都会被执行，且只执行这一次。</li>
-<li>当用new xxx()创建对象的时候，首先将在堆上为对象分配足够的存储空间。</li>
-<li>将这块存储空间清0，这是所有的基本类型成员被设置成了默认值，对象成员被设置成了null。</li>
-<li>执行所有字段定义处的初始化动作。</li>
-<li>执行构造器。（将涉及很多动作，尤其是涉及继承的时候）</li>
+<li><p>因为构造器为静态函数，因此首次创建此类或者类的静态方法/静态域首次被访问时，Java解释器必须找到类路径，以定位xxx.class文件。</p>
+</li>
+<li><p>然后载入xxx.class，有关静态初始化的所有动作都会被执行，且只执行这一次。</p>
+</li>
+<li><p>当用new xxx()创建对象的时候，首先将在堆上为对象分配足够的存储空间。</p>
+</li>
+<li><p>将这块存储空间清0，这时所有的基本类型成员被设置成了默认值，对象成员被设置成了null。</p>
+</li>
+<li><p>若此类继承了其他类，则按照继承顺序依次进行初始化，初始化步骤为如下：</p>
+<ol>
+<li><p>执行所有字段定义处的初始化动作。</p>
+</li>
+<li><p>执行构造器。</p>
+</li>
 </ol>
+</li>
+</ol>
+<p><strong>PS：当程序创建第一个对类的静态成员的引用时，就会加载这个类</strong></p>
 <h1 id="第七章-复用类"><a href="#第七章-复用类" class="headerlink" title="第七章 复用类"></a>第七章 复用类</h1><h3 id="final关键词"><a href="#final关键词" class="headerlink" title="final关键词"></a>final关键词</h3><ol>
-<li><strong>数据</strong>：final通常用于基本类型变量。若用于对象类型则表示此应用不能改变，而引用指向的对象的值依然可以改变，因此没有太大意义。</li>
+<li><strong>数据</strong>：final通常用于基本类型变量。若用于对象类型则表示此引用不能改变，而引用指向的对象的值依然可以改变，因此没有太大意义。</li>
 <li><strong>方法</strong>：明确禁止覆写。</li>
 <li><strong>类</strong>：明确禁止继承。</li>
 </ol>
+<h1 id="第十章-内部类"><a href="#第十章-内部类" class="headerlink" title="第十章 内部类"></a>第十章 内部类</h1><ol>
+<li><p>普通内部类(inner class)：内部类通常继承自某个类或者实现了某个接口，它是一个独立的实体，因此通常以匿名类的方式出现。若内部类被多次使用，才将他显示的定义出来。很少情况下会在外部使用内部类。</p>
+<p><strong>每个内部类都能独立的继承自一个（接口的）的实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。</strong></p>
+</li>
+<li><p>静态内部类(nested class)</p>
+</li>
+</ol>
+<h1 id="第十一章-持有对象"><a href="#第十一章-持有对象" class="headerlink" title="第十一章 持有对象"></a>第十一章 持有对象</h1><h3 id="添加一组元素"><a href="#添加一组元素" class="headerlink" title="添加一组元素"></a>添加一组元素</h3><ol>
+<li><p><strong>Array.asList()</strong>：返回的是以数组为底层的List，<strong>因此对其添加或删除元素会抛出Unsupported Operation</strong>。可以使用<code>Collection.add(Array.asList())</code>。</p>
+<p><code>new ArrayList&lt;&gt;(Arrays.asList(1, 2, 3))</code>可以用来初始化List。</p>
+<p><code>Arrays.&lt;Integer&gt;asList(1, 2, 3)</code>可以显示的指定类型。</p>
+</li>
+<li><p><strong>Collections.add()</strong>：返回boolean。</p>
+</li>
+</ol>
+<h3 id="各种容器的区别"><a href="#各种容器的区别" class="headerlink" title="各种容器的区别"></a>各种容器的区别</h3><ul>
+<li><p><strong>List</strong></p>
+<ul>
+<li><strong>ArrayList</strong>：按照插入顺序保存元素，随机访问元素的速度较快。retainAll()求交集。</li>
+<li><strong>LinkedList</strong>：按照插入顺序保存元素，增加删除元素的速度较快。包含的操作多于ArrayList。<strong>其中多出的操作可以使其作栈、队列和双端队列的方法</strong>。</li>
+</ul>
+</li>
+<li><p><strong>Set</strong></p>
+<ul>
+<li><strong>HashSet</strong>：保存顺序无意义，获取元素的速度最快。<strong>专门对快速查找进行了优化</strong>。使用散列存储。</li>
+<li><strong>TreeSet</strong>：按照比较结果的升序保存数据，也可以按照降序。使用红-黑树存储。</li>
+<li><strong>LinkedHashSet</strong>：按照插入顺序保存元素，同时保存了HashSet的查询速度。使用散列存储。</li>
+</ul>
+</li>
+<li><p><strong>Map</strong></p>
+<ul>
+<li><strong>HashMap</strong>：同Set。</li>
+<li><strong>TreeSet</strong>：同Set。</li>
+<li><strong>LinkedHashMap</strong>：同Set。</li>
+</ul>
+</li>
+</ul>
+<h3 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h3><p>​        ListIterator只能用于各种List类的访问。它是一个双向迭代器。</p>
+<h3 id="一些容器的介绍"><a href="#一些容器的介绍" class="headerlink" title="一些容器的介绍"></a>一些容器的介绍</h3><ul>
+<li><p><strong>LinkedList</strong>：可以实现栈和队列的功能。是Deque的一个实现。</p>
+</li>
+<li><p><strong>stack</strong>：Java1.0中的Stack设计欠佳（Vector也是）。推荐使用LinkedList来重新实现。</p>
+</li>
+<li><p><strong>Set</strong>：主要用于查询，可以进行很多集合操作，如交，并，差，包含（<a href="#set-math">需要自己实现</a>）等。</p>
+<ul>
+<li>TreeSet默认使用字典序排序，传入<code>String.CASE_INSENSITIVE_ORDER</code>可以使用字母序排序，也可以构造自己规定的Comparator比较器。</li>
+</ul>
+</li>
+<li><p><strong>Map</strong>：很厉害。</p>
+</li>
+<li><p><strong>Queue</strong>：LinkedList为其一个实现（LinkedList实现了Deque，Deque继承自Queue），因此可以将LinkedList向上转型，使其使用更加清晰。</p>
+<ul>
+<li><strong>PriorityQueue</strong>：优先级队列，默认以字典序降序排列（可以构造自己规定的Comparator比较器），是Queue的一个具体实现。底层实现是<strong>堆</strong>的结构，因此直接遍历输出是无序的，需要一个一个出队才可以有序。另外，<strong>无法改变元素等待时在容器中的优先度</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>#####对于LinkedList的见解：</p>
+<p><strong><em>它同时实现了List和Deque接口，同时具备了List和Dqeue的特性，这也是其拥有许多功能类似甚至相同的方法。</em></strong></p>
+<p><strong><em>它就像是一个大杂烩，有许多使用场景：</em></strong></p>
+<ol>
+<li><strong><em>当需要使用Collection的特性时，且会对容器内的元素进行频繁的增删改时，适合直接使用。</em></strong></li>
+<li><strong><em>当需要使用Stack的特性时，可以将其重新封装，只暴露出符合Stack特性的方法来使用。</em></strong></li>
+<li><strong><em>当需要使用Queue的特性时，可以将其向上转型为Queue，Deque也是如此。</em></strong></li>
+</ol>
+<h3 id="Foreach语句"><a href="#Foreach语句" class="headerlink" title="Foreach语句"></a>Foreach语句</h3><p>​        只要实现了Iterable接口实现了Iterator方法的类都可以使用foreach，即foreach的本质就是迭代器的简化写法。<strong><em>（问题：那么数组为什么能使用foreach？）</em></strong></p>
+<p><strong>PS：使用适配器模式可以实现更多的使用Iterator的遍历方法</strong>。</p>
+<p>#第十二章 异常处理</p>
+<h3 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h3><pre><code class="java">class SimpleException extends Exception {
+    SimpleException() {}
+    SimpleException(String msg) {
+        super(msg);
+    }
+}</code></pre>
+<h3 id="日志与异常"><a href="#日志与异常" class="headerlink" title="日志与异常"></a>日志与异常</h3><pre><code class="java">// 构造一个可以记录日志信息的Logger，不过现在已经用更成熟的日志框架了（如log4j）
+class LoggingException {
+    private static Logger logger = Logger.getLogger(&quot;LoggingException&quot;);
+    static void log(Exception e) {
+        StringWriter trace = new StringWriter();
+        e.printStackTrace(new PrintWriter(trace));
+        logger.info(trace.toString());
+    }
+}</code></pre>
+<h3 id="throws关键字"><a href="#throws关键字" class="headerlink" title="throws关键字"></a>throws关键字</h3><p>​        紧跟在方法后面，方便方法使用者知道这个方法会抛出什么样的异常，优雅。</p>
+<h3 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h3><p>没有cause参数的异常类需要使用initCause添加异常链。表明引发这个异常的根本异常。</p>
+<pre><code class="java"> SimpleException simpleException = new SimpleException();
+ simpleException.initCause(new NullPointerException());
+ throw simpleException;</code></pre>
+<p>###RuntimeException</p>
+<p>​        java虚拟机会自动抛出这一类异常，无需手动抛出。因为它代表的是<strong>编程错误</strong>。</p>
+<h3 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h3><p>​        finally里的语句一定会执行，即使try中已经执行了break，continue或者return。<strong>但是finally语句的错误使用可能会发生异常丢失（JDK5的书上如此写到，不知道JDK8是否已经修复）</strong></p>
+<h3 id="异常的限制"><a href="#异常的限制" class="headerlink" title="异常的限制"></a>异常的限制</h3><p>​        当覆写方法时，只能抛出基类方法的异常说明里列出的那些异常。</p>
+<p>​        派生类的构造器不能捕获它基类构造器所抛出的异常，<strong>因为super()（对基类构造器的调用）必须位于首行</strong>。</p>
+<h3 id="异常匹配"><a href="#异常匹配" class="headerlink" title="异常匹配"></a>异常匹配</h3><p>​        异常类中，派生类也可以匹配基类的处理程序。</p>
+<p><strong>PS：千万不能吞食异常，即在catch语句中不输出任何错误</strong>。</p>
+<h1 id="第十三章-字符串"><a href="#第十三章-字符串" class="headerlink" title="第十三章 字符串"></a>第十三章 字符串</h1><p>###StringBuilder</p>
+<p>​        <strong>就结论而言，循环对字符串做加减应该使用StringBuilder。（或者StringBuffer，因为是线程安全的，效率比StringBuilder差一点）</strong></p>
+<p>​        简单的字符串运算，jvm会自动优化使用StringBuilder。但是在循环操作时候，jvm优化会产生多个StringBuilder，因此效率依然低于直接使用StringBuilder。</p>
+<p><strong>PS：java -c可以反编译产生jvm字节码。在不确定程序效率的时候可以使用这个命令查看</strong>。</p>
+<h3 id="重写toString-方法的坑"><a href="#重写toString-方法的坑" class="headerlink" title="重写toString()方法的坑"></a>重写toString()方法的坑</h3><p>​        重写此方法要注意避免<strong>无意识的递归</strong>。例如，在toString()中使用<code>&quot;a&quot; + this</code>，会触发调用this的toString()方法，产生递归调用。要输出对象的内存地址，这里应该使用<code>super.toString()</code>。</p>
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><ol>
+<li><code>System.out.format()和System.out.printf()</code>两者用法与C语言中的printf一致。</li>
+<li><code>String.format()</code>调用Formatter的静态函数实现格式化String，返回值为一个String对象。</li>
+</ol>
+<p>###正则表达式</p>
+<p>​        与其他语言的正则表达式不同，P295页有解释。</p>
+<p>​        具体表现为：在出现 <strong>\</strong> 的时候需要再多加一个 <strong>\</strong> 。如\d变为\\d、\\变为\\\\、\|变为\\|。</p>
+<p>#####对于转义的理解：</p>
+<p>​        <strong><em>有很多地方都有不同的转义需求，通常使用 \ 作为转义字符。转义不仅仅局限于高级编程语言当中，例如目前学习到的正则表达式，甚至笔者正在使用的markdown编辑格式中都有转义的需求。在不同地方需要转义的字符也不同。如字符*，在高级编程语言中不需要转义，而在regex和md中各有特殊含义，因此需要转义。</em></strong></p>
+<p>​        <strong><em>将转义的范围局限于高级编程语言所规定的字符中，将影响对其他地方使用到的转义进行理解。</em></strong></p>
+<p>​        <strong><em>在java中使用regex的例子更加特殊，因为它们同时使用 \ 作为转义字符，而在java中 \ 也是需要转义的字符。当在regex使用转义字符 \ 时，需要现在java中先将 \ 转义，这也为什么在java中使用正则表达式需要多加一个 \ 的原因。</em></strong>（其实在别的高级语言中也是如此，但是因为python有r，c#有@可以取消高级语言造成的转义（即废除 \ 在语言中作为转义字符的作用），js貌似也有取消转义的方式（好像是用/将字符串包围起来）。当java中也出现这种功能时，我们也就不必再为此感到纠结了）</p>
+<p>^和$的作用：^表示从头匹配，$表示从尾匹配。</p>
+<p>###量词</p>
+<ul>
+<li><strong>贪婪型</strong>：不做如何改变，最长匹配。</li>
+<li><strong>勉强型</strong>：在原来的正则表达式后面多加一个<strong>?</strong>，最短匹配。</li>
+<li><strong>占有型</strong>：在原来的正则表达式后面多加一个<strong>+</strong>，java特有的类型。（不知道有什么用）</li>
+</ul>
+<p>###一些重要的地方</p>
+<ul>
+<li>Matcher对象以括号次序分组，原始的正则匹配式为第0组。</li>
+<li>Pattern标记，比较重要的有<strong>Pattern.CASE_INSENSITIVE(?i)</strong>、<strong>Pattern.MULTILINE(?i)</strong>以及<strong>Pattern.COMMENTS(?x)</strong></li>
+<li>appendReplacement()，当被替换的字符与替换它的字符存在转化关系时使用。（如大写变小写）</li>
+<li>Scanner类可以用正则表达式对输入进行分词（默认为空白字符），也可以用正则表达式过滤记录。</li>
+</ul>
+<h1 id="第十四章-类型信息"><a href="#第十四章-类型信息" class="headerlink" title="第十四章 类型信息"></a>第十四章 类型信息</h1><h3 id="Class对象"><a href="#Class对象" class="headerlink" title="Class对象"></a>Class对象</h3><p>​        每一个类都有一个Class对象。Class对象包含了与类有关的信息。</p>
+<p>​        当程序创建第一个对类的静态成员的引用时就会加载这个类。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Class.forName(String)</td>
+<td align="center">静态方法。或该Class对象的引用，若找不到该加载的类，会抛出<strong>ClassNotFoundException</strong></td>
+</tr>
+<tr>
+<td>Class.getInterfaces()</td>
+<td align="center">获得这个Class对象所实现的所有接口</td>
+</tr>
+<tr>
+<td>Class.getSuperclass()</td>
+<td align="center">获得基类</td>
+</tr>
+<tr>
+<td><strong>Class.newInstance()</strong></td>
+<td align="center">会返回一个Object对象，若指定泛型，则会返回具体对象</td>
+</tr>
+<tr>
+<td>Class.isInstance(Object)</td>
+<td align="center">判断Object对象是否是此Class的一个实例</td>
+</tr>
+<tr>
+<td>Class.isAssignableFrom(Class&lt;?&gt;)</td>
+<td align="center">判断是否是子类</td>
+</tr>
+<tr>
+<td>(class name).class</td>
+<td align="center">类字面常量。返回类对象的引用，和forName的区别是不会初始化该类。基本类型也能使用。</td>
+</tr>
+</tbody></table>
+<p>####使用类所需的三步骤</p>
+<ol>
+<li>加载</li>
+<li>链接</li>
+<li>初始</li>
+</ol>
+<p>其中初始化被延迟到了对静态方法（构造器隐式的也是静态的）或者非常数静态域（编译期常量）进行首次引用（<strong>对static final int a = 1的引用是不会引起类的初始化的</strong>）</p>
+<h4 id="泛化的Class引用"><a href="#泛化的Class引用" class="headerlink" title="泛化的Class引用"></a>泛化的Class引用</h4><ol>
+<li>Class&lt;?&gt;优于平凡的Class</li>
+<li>Class&lt;? extends Number&gt;和Class&lt;? super Integer&gt;的含义（类比到盘子和盘子内的物品，<strong><em>拓展：PECS理论</em></strong>）</li>
+<li>新的类型转换方式，Class&lt;T&gt;.cast(Object)会将Object对象转型到T。（<strong>几乎在所有的场合都可以使用普通的类型转换代替</strong>）</li>
+</ol>
+<p>###RTTI的三种形式</p>
+<ol>
+<li>传统的类型转换。如(Shape)，RTTI（Run-Time Type Identification）保证了类型转换的正确性。（只有向下转型时需要，向上转型是安全的）。</li>
+<li>代表对象类型的Class对象。</li>
+<li>关键词instanceof。(可以用Class.isInstance()代替)</li>
+</ol>
+<p><strong>P331的工厂模式的实现方法挺独特的（将工厂作为内部类实现，即每个类都有一个自己的工厂）</strong></p>
+<p>###反射</p>
+<h4 id="RTTI和反射的区别"><a href="#RTTI和反射的区别" class="headerlink" title="RTTI和反射的区别"></a>RTTI和反射的区别</h4><p>​        RTTI来说，编译器编译时打开和检查.class文件。对于反射来说，.class文件在编译时是不可获取的，所以是在运行时打开和检查.class文件。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Class.getMethods()</td>
+<td align="center">获得类的所有方法，类型为Method</td>
+</tr>
+<tr>
+<td align="left">Class.getFields()</td>
+<td align="center">获得类的所有字段，类型为Field</td>
+</tr>
+<tr>
+<td align="left">Class.getConstructor()</td>
+<td align="center">获得类的所有的构造器，类型为Constructor&lt;?&gt;</td>
+</tr>
+</tbody></table>
+<p>Method、Field和Constructor都实现了Member接口</p>
+<p>####动态代理</p>
+<pre><code class="java">public class DynamicProxyDemo {
+
+    public static void main(String[] args) {
+        A proxy = (A) Proxy.newProxyInstance(A.class.getClassLoader(), new Class&lt;?&gt;[]{A.class},
+                new DemoHandler(new B()));
+        proxy.doSomething();
+        proxy.doElse(&quot;test&quot;);
+    }
+
+}
+
+class DemoHandler implements InvocationHandler {
+    private Object proxied;
+
+    DemoHandler(Object proxied){
+        this.proxied = proxied;
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(&quot;proxy class: &quot; + proxy.getClass() + &quot;\nMethod: &quot; + method.getName() +
+                &quot;\n args: &quot; + Arrays.toString(args));
+        method.invoke(proxied, args);
+        System.out.println(&quot;==============invoke over=============&quot;);
+        return null;
+    }
+}
+
+interface A {
+    void doSomething();
+    void doElse(String msg);
+}
+
+class B implements A{
+
+    @Override
+    public void doSomething() {
+        System.out.println(&quot;doSomething&quot;);
+    }
+
+    @Override
+    public void doElse(String msg) {
+        System.out.println(&quot;do &quot; + msg);
+    }
+}
+</code></pre>
+<p>也可以使用内部类将main里的函数简化为（使用了lamda表达式，JDK8支持）：</p>
+<pre><code class="java">A proxy = (A) Proxy.newProxyInstance(A.class.getClassLoader(), new Class&lt;?&gt;[]{A.class},
+        (proxy1, method, args1) -&gt; {
+            System.out.println(&quot;proxy class: &quot; + proxy1.getClass() + &quot;\nMethod: &quot; + method.getName() +
+                    &quot;\n args: &quot; + Arrays.toString(args1));
+            method.invoke(new B(), args1);
+            System.out.println(&quot;==============invoke over=============&quot;);
+            return null;
+        });
+proxy.doSomething();
+proxy.doElse(&quot;test&quot;);</code></pre>
+<p>（P415用动态代理实现混型，很好的一个例子）</p>
+<h4 id="空对象"><a href="#空对象" class="headerlink" title="空对象"></a>空对象</h4><p>​        这是一种将null也变为一个对象的设计模式。具体实现见P341。</p>
+<h4 id="突破访问权限"><a href="#突破访问权限" class="headerlink" title="突破访问权限"></a>突破访问权限</h4><p>​        使用java反射的特性可以访问到包括private的所有成员方法和变量，不受访问修饰符的限制。</p>
+<h1 id="第十五章-泛型"><a href="#第十五章-泛型" class="headerlink" title="第十五章 泛型"></a>第十五章 泛型</h1><p>基本类型无法作为类型参数，但是java有autoboxing和unboxing，因此使用基本类型的封装类型即可。</p>
+<h3 id="泛型的一些使用场景"><a href="#泛型的一些使用场景" class="headerlink" title="泛型的一些使用场景"></a>泛型的一些使用场景</h3><ol>
+<li><p><strong>实现元祖</strong>：P354结合P366，和python中的元祖功能一样。java没有内置元祖，需要自己实现。</p>
+</li>
+<li><p><strong>通用容器</strong>：可以事前知道容器中存储的对象类型，但实际上是“窄化”了容器。</p>
+</li>
+<li><p><strong>泛型接口</strong>：用于接口，实现例如 通用生成器 等。P358和P364（这个比较好）</p>
+</li>
+<li><p><strong>泛型方法</strong>：使用泛型方法时，类不一定需要是参数化的。</p>
+<pre><code class="java">public &lt;T&gt; void f(T x){
+  System.out.println(x.toString());
+}</code></pre>
+<p>而且使用泛型方法的时候<strong>不必指明参数类型</strong>，因为编译器会为我们找到具体的类型。这称为<strong>类型参数推断（type argument inference）</strong>。</p>
+<p><strong>注意</strong>：再将泛型方法的调用结果作为参数传递给另一个方法时，编译器不会执行类型推断，返回值将被赋给一个Object类型的变量。</p>
+</li>
+<li><p><span id="set-math">P367实现了Set的各种数学关系式。</span></p>
+</li>
+<li><p>在泛型与数组结合使用会产生很多很多问题。P383</p>
+</li>
+</ol>
+<h3 id="擦除"><a href="#擦除" class="headerlink" title="擦除"></a>擦除</h3><p>​        Java泛型是使用擦除来实现的。<strong>与c++不同，Java在泛型代码内部是无法调用任何有关实际使用类型的方法和变量的</strong>。如List&lt;String&gt;和List&lt;Integer&gt;在运行时事实上是相同的类型，运行期间都会变成List（这里的String 和 Integer 仅仅是给编译器做编译的时候检查用的）。无法在类方法内部调用String或Integer类型对象的方法，只能调用Object的方法，这就是Java的擦除。泛型类型只有在静态类型检查期间才出现，之后全都会被擦除。</p>
+<p>​        <strong>泛型类型参数将被擦除到它的第一个边界（它可能会有多个边界），Raw use of parameterized class其实就是被擦除后的样子</strong>。这个边界默认是Object，可以使用<strong>&lt;T extends A&gt;</strong>将边界提升到类型A。</p>
+<p>​        因此在使用泛型的时候我们需要无时不刻的提醒自己，泛型T最终只是一个Object类型对象（或是其他边界），而不是我们真正传入的类型。</p>
+<p>​        为什么要有擦除？因为<strong>迁移兼容性</strong>。是为了兼容SE5之前的非泛型代码，它是被迫的，但是必须的。</p>
+<h3 id="不适合的向上转型"><a href="#不适合的向上转型" class="headerlink" title="不适合的向上转型"></a>不适合的向上转型</h3><pre><code class="java">//这里的向上转型是不适合的
+Fruit[] fruits = new Apple[10];
+//泛型在编译期就解决了这个问题
+List&lt;Fruit&gt; fruitList = new ArrayList&lt;Apple&gt;();// compile error
+// 通配符的使用建立了容器的向上转换，但不能添加元素了
+List&lt;? extends Fruit&gt; fruits1 = new ArrayList&lt;Apple&gt;();
+fruits1.add(new Apple()); // compile error</code></pre>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>T get()</th>
+<th>set(T)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原生</td>
+<td>返回Object</td>
+<td>参数类型为Object（warning）</td>
+</tr>
+<tr>
+<td>&lt;?&gt;</td>
+<td>返回Object</td>
+<td>error</td>
+</tr>
+<tr>
+<td>&lt;? extends T&gt;</td>
+<td>返回T</td>
+<td>error</td>
+</tr>
+<tr>
+<td>&lt;? super T&gt;</td>
+<td>error</td>
+<td>参数类型为T和T的子类</td>
+</tr>
+<tr>
+<td>&lt;T&gt;</td>
+<td>返回T</td>
+<td>参数类型为T和T的子类</td>
+</tr>
+</tbody></table>
+<h3 id="自限定类型"><a href="#自限定类型" class="headerlink" title="自限定类型"></a>自限定类型</h3><pre><code class="java">class SelfBounded&lt;T extends SelfBounded&lt;T&gt;&gt; {}
+// 为了如下使用
+class A extends SelfBounded&lt;A&gt; {}</code></pre>
+<p>具体见P404</p>
+<p><strong><em>java类库中的Comparable接口没有使用这种方法，我觉得可以改成自限定类型，毕竟只有相同类型才可以比较。</em></strong></p>
+<h3 id="动态类型安全"><a href="#动态类型安全" class="headerlink" title="动态类型安全"></a>动态类型安全</h3><p>java.util.Collections提供了一组checked方法确保SE5之前的旧式代码不会破坏你的容器。（很少用，所以SE5之后不要再使用不带泛型的容器了！！）</p>
+<h3 id="潜在类型机制"><a href="#潜在类型机制" class="headerlink" title="潜在类型机制"></a>潜在类型机制</h3><p>这也是java的泛型和其他语言的泛型的差别。具体见P417</p>
+<p><strong>反射是对java中缺少这一机制的最好补偿</strong>。</p>
+<h5 id="对于泛型的理解："><a href="#对于泛型的理解：" class="headerlink" title="对于泛型的理解："></a>对于泛型的理解：</h5><p><strong><em>java的泛型其实有点尴尬，它本质上只是添加了在编译期检查语法的正确与否，程序运行时，是否使用了泛型其实完全没有区别。（确实完全一样，连编译后的字节码都一摸一样）</em></strong></p>
+<p><strong><em>泛型应该使用在真正需要确切对象的时候（不用也行，使用的话向下转型依然存在，但是是由编译器自动帮你完成的 P380），如在一个函数中返回这个类型时，使用泛型就不需要对他进行显式的向下类型转换了（&lt;T extends HasF&gt;在这个时候也有帮助了）。就像容器中的get()方法一样，因此容器应该使用泛型。除此之外，大多数的问题在java的单根体系下都可以解决，且使用泛型只会显得代码更加繁琐，没有任何好处。（这很大程度上是由于擦除限制了泛型的实用性）</em></strong></p>
+<p><strong><em>因此我认为java的泛型在大多数时候只是提供了一个编译期检查，为了将一些运行期间的错误在编译期间就能发现，同时让代码更加优雅。除了使用extends限定擦除的上界，不过使用场景很少。</em></strong>（我就随便说说，也不知真的假的）</p>
+<h1 id="第十六章-数组"><a href="#第十六章-数组" class="headerlink" title="第十六章 数组"></a>第十六章 数组</h1><h3 id="Arrays的static实用方法"><a href="#Arrays的static实用方法" class="headerlink" title="Arrays的static实用方法"></a>Arrays的static实用方法</h3><p>方法前有deep的都是用于多维数组的。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>equals()（deepEquals()）</td>
+<td align="center">比较是否相等</td>
+</tr>
+<tr>
+<td>sort()</td>
+<td align="center">排序</td>
+</tr>
+<tr>
+<td>binarySearch()</td>
+<td align="center">对排好序的数组查找元素</td>
+</tr>
+<tr>
+<td>toString（）</td>
+<td align="center">…</td>
+</tr>
+<tr>
+<td>fill()</td>
+<td align="center">填充数组</td>
+</tr>
+<tr>
+<td>hashCodee()</td>
+<td align="center">产生数组的散列码</td>
+</tr>
+</tbody></table>
+<p>###数组复制</p>
+<p><code>System.arraycopy()</code>比使用for循环要快很多。它不会进行自动装拆箱。</p>
+<p><strong>要点：对于对象数组的复制是浅复制</strong></p>
+<h3 id="还需要使用数组吗"><a href="#还需要使用数组吗" class="headerlink" title="还需要使用数组吗"></a>还需要使用数组吗</h3><p>在java中使用容器代替数组几乎总是更好的选择，除非明确的测试表明用数组能提高性能，我们才需要使用数组。</p>
+<h1 id="第十七章-容器深入研究"><a href="#第十七章-容器深入研究" class="headerlink" title="第十七章 容器深入研究"></a>第十七章 容器深入研究</h1><h3 id="Collection的可选操作"><a href="#Collection的可选操作" class="headerlink" title="Collection的可选操作"></a>Collection的可选操作</h3><p>并不是Collection接口中的所有操作都必须实现，为了防止接口爆炸。可以在还没设计好或不支持的可选方法抛出<strong>UnSupportedOperationException</strong>异常。</p>
+<p>如Array.asList()和Collection.unmodifiableList()返回的Collection实现一样。（这两个的细粒度只在一个方法上）</p>
+<h3 id="Set和存储顺序"><a href="#Set和存储顺序" class="headerlink" title="Set和存储顺序"></a>Set和存储顺序</h3><table>
+<thead>
+<tr>
+<th>Set类型</th>
+<th align="center">要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Set(interface)</td>
+<td align="center">通过equals()函数确保对象的唯一性。默认equals()函数<strong>比较的是对象地址</strong>需要两个完全相同对象的引用才返回true</td>
+</tr>
+<tr>
+<td>HashSet</td>
+<td align="center">无序。需要调用hashCode()函数。默认hashCode()函数<strong>使用对象地址计算散列码</strong>，每个不同对象都会返回一个不同的code</td>
+</tr>
+<tr>
+<td>TreeSet(继承SortedSet)</td>
+<td align="center">自定义顺序。需要对象实现Comparable接口</td>
+</tr>
+<tr>
+<td>LinkedHashSet</td>
+<td align="center">有序的HashSet（插入顺序），也需要实现hashCode()</td>
+</tr>
+</tbody></table>
+<p>equals()和hashCode()一般最好一起重写。</p>
+<h3 id="散列和散列码"><a href="#散列和散列码" class="headerlink" title="散列和散列码"></a>散列和散列码</h3><p>散列的正常工作依赖于对象的hashCode()和equals()函数。</p>
+<p>equals()方法必须满足下列5个条件（把这组对象定义为了一个阿贝尔群）：</p>
+<ul>
+<li>自反性</li>
+<li>对称性</li>
+<li>传递性</li>
+<li>一致性</li>
+<li>对任何不是null的x，x.equals(null)返回false</li>
+</ul>
+<h4 id="散列的具体工作原理"><a href="#散列的具体工作原理" class="headerlink" title="散列的具体工作原理"></a>散列的具体工作原理</h4><p>散列的价值在于速度，存储读取一组元素最快的数据结构是数组。所以散列把表示键的信息保存在一个数组中（HashMap使用的是一个Node&lt;K, V&gt;[]，Node&lt;K, V&gt;继承自Map.Entry&lt;K, V&gt;），散列允许算出的散列码相同，因此数组中的每一项保存的是一个list（HashMap使用了链表结构）。</p>
+<p>#####具体步骤和伪代码</p>
+<ol>
+<li>使用键对象的hashCode()计算出键的散列码。</li>
+<li>用数组的大小对散列码取余得到存储在数组中的位置。</li>
+<li>查询这个位置是否为null<ul>
+<li>若为null，则new一个list，并把此对象存储到这个list</li>
+<li>否则，使用equals()函数判断在list中是否已有相同的键，没有则将此对象加入现有的list，否则将此键对应的值修改。</li>
+</ul>
+</li>
+</ol>
+<p><strong>input:</strong> The key and value</p>
+<p><strong>Output:</strong> A array that has stored this key-value pair</p>
+<pre><code class="pseudocode">hash_code = key.hashCode()
+index = hash_code mod store_array.size()
+if store_array[index] is null then
+    store_array[index] = new list
+    store_array[index].add(&lt;k, v&gt;)
+else
+    if the key set of store_array[index] contains key with the equals() then
+        store_array[index][pos of the same key].value = value
+    else 
+        store_array[index].add(&lt;k, v&gt;)
+    end if
+end if</code></pre>
+<p>hashCode()的基本书写指导见P496</p>
+<p>###HashMap的性能因子</p>
+<ul>
+<li>容量：表中桶位数</li>
+<li>初始容量：默认16</li>
+<li>尺寸：表中当前存储的项数</li>
+<li>负载因子：尺寸/容量。默认为0.75。</li>
+</ul>
+<p>当Map中的负载超过了负载因子，会自动扩容resize()，并且再散列。（因为项在容器中的位置与容器大小有关）</p>
+<p><strong>为HashMap选择合适的初始容量可以避免resize()带来的开销。</strong></p>
+<p>###快速报错</p>
+<p>这是java对容器的一种保护机制，能够防止多个进程同时修改同一个容器的内容。抛出ConcurrentModificationExecption异常。</p>
+<p>ConcurrentMap、CopyOnWriteArrayList和CopyOnWriteArraySet都使用了可以避免这个异常的技术。</p>
+<h1 id="第十八章-Java-I-O系统"><a href="#第十八章-Java-I-O系统" class="headerlink" title="第十八章 Java I/O系统"></a>第十八章 Java I/O系统</h1><p>DataOutputStream和DataInpuStream有什么用还不清楚。</p>
+<h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>一个File对象即能代表一个特定文件的名称，又能代表一个目录下的一组文件的名称的名称（使用list()或listFiles()方法可以获得所有这组文件）。</p>
+<p>使用list()方法的时候可以使用FilenameFilter进行过滤：</p>
+<pre><code class="java">File path = new File(&quot;./src/cn/hailuo/learn/annotation&quot;);
+String[] list = path.list((dir, name) -&gt; {
+    Pattern pattern = Pattern.compile(&quot;D.+\\.java&quot;);
+    return pattern.matcher(name).matches();
+});
+Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
+System.out.println(Arrays.toString(list));</code></pre>
+<p>File有许多实用的方法，自行查阅jdk文档</p>
+<h3 id="输入与输出（感觉很复杂，还没有搞清楚）"><a href="#输入与输出（感觉很复杂，还没有搞清楚）" class="headerlink" title="输入与输出（感觉很复杂，还没有搞清楚）"></a>输入与输出（感觉很复杂，还没有搞清楚）</h3><h4 id="Java1-0"><a href="#Java1-0" class="headerlink" title="Java1.0"></a>Java1.0</h4><p>主要存在4种类型（具体见P536）：</p>
+<ol>
+<li>InputStream：输入流。</li>
+<li>OutputStream：输出流。</li>
+<li>FilterInputStream：输入流的装饰类，可以扩展基本输入流的功能。</li>
+<li>FilterOutputStream：输出流的装饰类。</li>
+</ol>
+<h4 id="Java1-1之后"><a href="#Java1-1之后" class="headerlink" title="Java1.1之后"></a>Java1.1之后</h4><p>对I/O流库进行了重大的修改。</p>
+<ul>
+<li><p>Reader类和Writer类代替了大部分的InputStream和OutputStream。但是不是完全取代。</p>
+</li>
+<li><p><strong>Reader和Writer继承结构的设计主要是为了国际化，提供了兼容Unicode和面向字符的I/O功能</strong></p>
+</li>
+<li><p>有时候需要把继承了InputStream和OutputStream的类与继承了Reader和Writer类结合起来使用。要用到适配器类，InputStreamReader（继承了Reader）和OutputStreamReader（继承了Writer）。（如FileReader继承了InputStreamReader）</p>
+<pre><code class="java">// since 1.5
+// PrintWriter的一个辅助构造器，就使用了OutputStreamWriter作为适配器
+public PrintWriter(String fileName) throws FileNotFoundException {
+    this(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName))),
+        false);
+}</code></pre>
+</li>
+</ul>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>用BufferedReader可以提高速度。</p>
+<p>建议用 BufferedReader 包装所有其 read() 操作可能开销很高的 Reader（如 FileReader 和 InputStreamReader）。</p>
+<p>####输入</p>
+<pre><code class="java">BufferedReader reader = new BufferedReader(new FileReader(filename));
+String s;
+StringBuilder sb = new StringBuilder();
+while ((s = reader.readLine()) != null) {
+    sb.append(s).append(&quot;\n&quot;);
+}
+reader.close();
+return sb.toString();</code></pre>
+<p>####输出</p>
+<pre><code class="java">// 自动包装了BufferedWriter
+PrintWriter writer = new PrintWriter(outFile);
+BufferedReader reader = new BufferedReader(new FileReader(path));
+String s;
+int count = 1;
+while ((s = reader.readLine()) != null) {
+    writer.println(count++ + &quot;: &quot; + s);
+}
+writer.close(); //不写这句话将会出错
+reader.close();</code></pre>
+<pre><code class="java">// se8？新特性, 可以不用写close
+try (PrintWriter writer = new PrintWriter(outFile);
+     BufferedReader reader = new BufferedReader(new FileReader(path))) {
+    String s;
+    int count = 1;
+    while ((s = reader.readLine()) != null) {
+        writer.println(count++ + &quot;: &quot; + s);
+    }
+}</code></pre>
+<p><strong>java.io默认相对路径定位到当前用户目录(“user.dir”)下，即：工程根目录。</strong></p>
+<h3 id="随机访问文件"><a href="#随机访问文件" class="headerlink" title="随机访问文件"></a>随机访问文件</h3><p>使用RandomAccessFile，类似于组合了DataOutputStream和DataInpuStream。使用seek()可以在文件中到处移动，移动单位为字节。因此它也是一个面向字节的I/O。</p>
+<pre><code class="java">// 在文件最后添加一行
+RandomAccessFile af = new RandomAccessFile(outFile, &quot;rw&quot;);
+af.seek(af.length());
+af.writeBytes(&quot;\nadd this content at the end of file&quot;);</code></pre>
+<h3 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h3><p>Scanner也可以用于文件的读取。但是不能用于文件的写入，并且这个工具主要设计用来创建编程语言的扫描器。（它不在java.io中，而在java.util中）</p>
+<h3 id="标准I-O"><a href="#标准I-O" class="headerlink" title="标准I/O"></a>标准I/O</h3><p>标准I/O包括<strong>标准输入、标准输出和标准错误</strong>。</p>
+<p>按照标准java提供了<strong>System.in、System.out和System.err</strong>。</p>
+<p><strong>System.out</strong>和<strong>System.err</strong>都是PrintStream，但是<strong>System.in</strong>是一个未被包装过的InputStream。因此<strong>System.out</strong>和<strong>System.err</strong>可以直接使用（System.out.print()），而<strong>System.in</strong>需要装饰器包装，如BufferedReader（需要用InputStreamReader适配）等。（可以使用Scanner类）</p>
+<h4 id="标准I-O重定向"><a href="#标准I-O重定向" class="headerlink" title="标准I/O重定向"></a>标准I/O重定向</h4><p>标准I/O原始的输入输出源是<strong>控制台console</strong>。</p>
+<p>重定向函数：</p>
+<table>
+<thead>
+<tr>
+<th>标准输入System.in</th>
+<th>标准输出System.out</th>
+<th>标准错误System.err</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setIn(InputStream)</td>
+<td>setOut(InputStream)</td>
+<td>setErr(InputStream)</td>
+</tr>
+</tbody></table>
+<p>⚠️<strong>注意</strong>：I/O重定向操作的字节流，而不是字符流，因此需要用到java1.0的I/O库。</p>
+<h3 id="控制进程（不知道在干啥）"><a href="#控制进程（不知道在干啥）" class="headerlink" title="控制进程（不知道在干啥）"></a>控制进程（不知道在干啥）</h3><p>见书P551。实现了运行控制台指令，并输出在控制台上。</p>
+<h3 id="新I-O"><a href="#新I-O" class="headerlink" title="新I/O"></a>新I/O</h3><p>JDK1.4的java.nio.*包中引入了新JavaI/O库，其目的在于提高速度。它也是面向字节的I/O。</p>
+<p><strong>旧的I/O库也已经重新用nio实现过。因此可以不用显示的用nio编写代码。</strong></p>
+<p>nio使用<strong>通道和缓存器</strong>提高了读写速度</p>
+<p>####通道</p>
+<p>旧I/O类库中有三个类被修改可以产生<strong>FileChannel</strong>，分别为<strong>FileInputStream</strong>、<strong>FileOutputStream</strong>和<strong>RandomAccessFile</strong>。</p>
+<p>####缓存器</p>
+<p>唯一直接与通道交互的缓存器是<strong>ByteBuffer</strong>。即FileChannel的write()方法和read()方法只接受<strong>ByteBuffer</strong>和<strong>ByteBuffer[]</strong>对象。</p>
+<ul>
+<li><p><strong>创建ByteBuffer</strong></p>
+<ol>
+<li><pre><code class="java">ByteBuffer buff = ByteBuffer.wrap(byte[]);</code></pre>
+</li>
+<li><pre><code class="java">ByteBuffer buff = ByteBuffer.allocate(BSIZE); // 单位为字节，会自动填充0
+// 往buff中添加数据
+buff.put(byte[]);
+buff.put(ByteBuffer);
+channel.write(buff);</code></pre>
+</li>
+</ol>
+</li>
+<li><p><strong>获取ByteBuffer中的数据</strong></p>
+<ol>
+<li><pre><code class="java">// buff.get()返回的是byte对象
+while (buff.hasRemaining()) {
+    System.out.println((char) buff.get());
+}</code></pre>
+</li>
+<li><pre><code class="java">// 使用解码器，如中文从字节转换到字符等，用jvm默认的编码方式会产生乱码，需要用UTF_8或其他uniCode编码方式解码。
+// CharBuffer的存储单位为2字节
+CharBuffer decode = StandardCharsets.UTF_8.decode(buff);</code></pre>
+</li>
+</ol>
+</li>
+<li><p><strong>基本类型转换</strong></p>
+<p>{primitive type}Buffer buffer = byteBufferObject.as{primitive type}Buffer()</p>
+<p>不同类型的存储单位不同，存储单位与相应基本类型长度相同。如char为2字节，int为4字节，double为8字节。</p>
+</li>
+<li><p><strong>字节存放顺序</strong></p>
+<p>分为大端和小端（高位优先和低位优先），ByteBuffer默认为小端。</p>
+<pre><code class="java">ByteBuffer buff = ByteBuffer.allocate(BSIZE);
+buff.order(ByteOrder.BIG_ENDIAN); //大端
+buff.order(ByteOrder.LITTLE_ENDIAN); //小端</code></pre>
+</li>
+<li><p><strong>与索引相关的方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>capacity()</td>
+<td>返回缓存区容量</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空缓存区。position-&gt;0, limit-&gt;capacity</td>
+</tr>
+<tr>
+<td>flip()</td>
+<td>用于准备从缓存区中读取数据。limit-&gt;position, position-&gt;0</td>
+</tr>
+<tr>
+<td>limit()</td>
+<td>返回limit的值，limit主要影响remaining()返回的值</td>
+</tr>
+<tr>
+<td>limit(int lim)</td>
+<td>设置limit的值</td>
+</tr>
+<tr>
+<td>mark()</td>
+<td>将mark设置为position</td>
+</tr>
+<tr>
+<td>reset()</td>
+<td>将position设置为mark</td>
+</tr>
+<tr>
+<td>position()</td>
+<td>返回position的值</td>
+</tr>
+<tr>
+<td>position(int pos)</td>
+<td>设置position的值</td>
+</tr>
+<tr>
+<td>remaining()</td>
+<td>返回(limit-position)</td>
+</tr>
+<tr>
+<td>hasRemaining()</td>
+<td>返回(position &lt; limit)</td>
+</tr>
+<tr>
+<td>rewind()</td>
+<td>设置position为0</td>
+</tr>
+<tr>
+<td>get()/get(int i)</td>
+<td>get()会使position加1</td>
+</tr>
+<tr>
+<td>put(byte[])</td>
+<td>会使position增加放入的byte数，若超过capacity，则position为capacity</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="内存映射文件"><a href="#内存映射文件" class="headerlink" title="内存映射文件"></a>内存映射文件</h3><p>用来修改大尺寸文件，速度很快。P563</p>
+<h3 id="文件加锁"><a href="#文件加锁" class="headerlink" title="文件加锁"></a>文件加锁</h3><p>P566</p>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>P568 gzip和zip</p>
+<h3 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h3><p>P571 标记接口Serializable</p>
+<p>static值不会被自动序列化</p>
+<h1 id="第十九章-枚举类型"><a href="#第十九章-枚举类型" class="headerlink" title="第十九章 枚举类型"></a>第十九章 枚举类型</h1><h3 id="基本enum特性"><a href="#基本enum特性" class="headerlink" title="基本enum特性"></a>基本enum特性</h3><ul>
+<li><p>每一个枚举类都继承了java.lang.Enum类</p>
+</li>
+<li><p><strong>每一个enum的具体枚举对象都像是这个枚举类的一个独特的子类（但其实是一个static final实例），也就是说每次调用了一个枚举（EnumClass.XXX）就像是new了一个此枚举类的实例。因此构造函数也只能在内部被使用。</strong></p>
+</li>
+<li><p>可以使用==来比较enum实例</p>
+</li>
+<li><p>用反射的方式也可以得到枚举类实例</p>
+<pre><code class="java">Enmu.valueOf(EnmuClass.class, String str)</code></pre>
+</li>
+<li><p>enum类除了不能继承之外，我们可以把它看作一个常规的类，可以添加构造函数和方法。但是必须先定义enum实例，并在最后添加一个分号。</p>
+</li>
+<li><p>switch语句中也可以使用enum类型，而且在case语句中不需要使用一个enum类型来修饰enum实例。</p>
+</li>
+<li><p>values()和ValueOf(String)两个方法是编译器添加的静态方法，原来Enum中valueOf(Class&lt;T&gt; enumType, String name) 和它是两个不同的方法。</p>
+<p>所以将enum实例向上转型为Enum将不能使用values()了，不过Class中有一个getEnumConstants()方法也可以获得所有的enum实例。</p>
+</li>
+</ul>
+<h3 id="EnumSet和EnumMap"><a href="#EnumSet和EnumMap" class="headerlink" title="EnumSet和EnumMap"></a>EnumSet和EnumMap</h3><p>速度快，枚举类就用它们。</p>
+<p>EnumSet需要用<code>EnumSet.of()</code>或者<code>EnumSet.noneOf()</code>来初始化。它本身是一个abstract class。</p>
+<h3 id="关于常量相关的方法（constant-specific-methods）"><a href="#关于常量相关的方法（constant-specific-methods）" class="headerlink" title="关于常量相关的方法（constant-specific methods）"></a>关于常量相关的方法（constant-specific methods）</h3><p>需要先定义一个abstract方法，然后每个enum实例可以实现该抽象方法。</p>
+<p>也可以覆盖enum类中定义的方法，如下面的函数f()。</p>
+<pre><code class="java">enum Test {
+    A(&quot;a&quot;){
+        @Override
+        void behavior() {
+            System.out.println(&quot;i am a&quot;);
+        }
+
+        @Override
+        void f() {
+            behavior();
+        }
+    }, B(&quot;b&quot;) {
+        @Override
+        void behavior() {
+            System.out.println(&quot;i am b&quot;);
+        }
+    }, C(&quot;c&quot;) {
+        @Override
+        void behavior() {
+            System.out.println(&quot;i am c&quot;);
+        }
+    };
+    String lowCase;
+    abstract void behavior();
+    void f() {
+        System.out.println(lowCase);
+    }
+    Test(String lowCase) {
+        this.lowCase = lowCase;
+    }
+}</code></pre>
+<p>用这个方式可以实现<strong>命令模式P604</strong>、<strong>责任链模式P606</strong>和<strong>状态模式P609</strong></p>
+<p>###多路分发</p>
+<p>在使用a.plus(b)时，a和b的具体类型都不知道。</p>
+<p>解决方法为<strong>二路分发</strong>：在调用a.plus()时第一次分发，在方法体内部可以得到a的类型，于是在方法体中再次调用b.method(this)完成第二次分发，这时a和b的类型都可以得到。</p>
+<p>这样的解决方法会使代码更加优雅（用反射也可以完成，就是代码难看一点）</p>
+<h1 id="第二十章-注解"><a href="#第二十章-注解" class="headerlink" title="第二十章 注解"></a>第二十章 注解</h1><h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><table>
+<thead>
+<tr>
+<th>元注解</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Target</td>
+<td>表示该注解可以用于什么地方。如ElementType.FIELD…</td>
+</tr>
+<tr>
+<td>@Retention</td>
+<td>表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数有SOURCE、CLASS和RUNTIME。一般需要用反射在运行时获取注解都需要使用RUNTIME。</td>
+</tr>
+<tr>
+<td>@Document</td>
+<td>将此注解包含在Javadoc中</td>
+</tr>
+<tr>
+<td>@Inherited</td>
+<td>允许子类继承父类中的注解</td>
+</tr>
+</tbody></table>
+<h3 id="默认值限制"><a href="#默认值限制" class="headerlink" title="默认值限制"></a>默认值限制</h3><p>default可以为注解元素添加默认值，默认值不允许为null。</p>
+<h3 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h3><p>在注解中定义了名为value的元素，并且在应用该注解的时候如果该元素是唯一需要赋值的一个元素，那么此时无需使用名-值对的这种语法，而只需要在括号内给出value元素需要的值即可。</p>
+<h3 id="注解处理器"><a href="#注解处理器" class="headerlink" title="注解处理器"></a>注解处理器</h3><p>注解只是一个标注，没有处理器的注解就如同注释。</p>
+<p>一般在处理器中使用反射机制获取注解信息。</p>
+<p>####注解处理工具apt</p>
+<p>本书中所说的api在SE7之后已经被废弃。</p>
+<p><strong>Note</strong>: The <code>apt</code> tool and its associated API contaiined in the pakcage <code>com.sun.mirror</code> have been deprecated since Java SE 7. Use the options available in the <code>javac</code> tool and the APIs contained in the packages <code>javax.annotation.processing</code> and <code>javax.lang.model</code> to process annotations.</p>
+<p><a href="http://hannesdorfmann.com/annotation-processing/annotationprocessing101" target="_blank" rel="noopener">使用<em>JavaSE</em>中的<em>javac</em>和<em>javax.annotation.processing</em>进行注解处理</a></p>
 
             <hr>
           </div>

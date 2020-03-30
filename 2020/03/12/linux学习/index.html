@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="Junjie Shen">
+  <meta name="keywords" content>
+  <title>linux学习 ~ TWINの無駄づかい</title>
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+  <link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  
+    <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+  
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>TWINの無駄づかい</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p>星期四, 三月 12日 2020, 10:00 晚上</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto">
+          <div class="markdown-body">
+            <h1 id="第三章-安装Centos7"><a href="#第三章-安装Centos7" class="headerlink" title="第三章 安装Centos7"></a>第三章 安装Centos7</h1><h3 id="强制使用GPT分区表"><a href="#强制使用GPT分区表" class="headerlink" title="强制使用GPT分区表"></a>强制使用GPT分区表</h3><p>​        若磁盘容量小于2TB则会默认使用MBR分区表来安装。</p>
+<p>​        在光盘启动后安装界面按下<code>TAB</code>按键，输入<strong>inst.gpt</strong>。</p>
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>​        所有的配置信息，包括root的密码等都会被记录到<strong>/root/anaconda-ks.cfg</strong>这个文件内。重建系统时，可以参考该文件。</p>
+<h3 id="指令学习"><a href="#指令学习" class="headerlink" title="指令学习"></a>指令学习</h3><ol>
+<li><code>echo $LANG</code>和<code>locale</code>可以获得终端支持的语系数据。</li>
+<li><code>date</code>可显示日期，<code>cal</code>可显示日历，<code>bc</code>可作为计算器。</li>
+<li><code>man</code>和<code>info</code>为常见的帮助指令。</li>
+<li><kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>F1~6</kbd>可以切换tty1～6</li>
+<li>man page的数字中，1代表一般账号可用命令，8代表系统管理员可用，5代表系统配置文件格式。</li>
+</ol>
+<h1 id="第五章-Linux的文件权限与目录配置"><a href="#第五章-Linux的文件权限与目录配置" class="headerlink" title="第五章 Linux的文件权限与目录配置"></a>第五章 Linux的文件权限与目录配置</h1><h3 id="文件的类型和权限"><a href="#文件的类型和权限" class="headerlink" title="文件的类型和权限"></a>文件的类型和权限</h3><p>​    文件类型和权限表示为如：<strong>-rwxrwx—</strong></p>
+<ul>
+<li>第一个字符表示文件类型：d为目录，-为文件，l为链接文件等</li>
+<li>接下来的字符，以三个为一组，依次为用户(user)，群组(group)，其他用户(other)</li>
+<li>rwx可以用数字来表示，分别为4，2，1。</li>
+</ul>
+<h3 id="文件属性与权限的修改（P157）"><a href="#文件属性与权限的修改（P157）" class="headerlink" title="文件属性与权限的修改（P157）"></a>文件属性与权限的修改（P157）</h3><ul>
+<li><code>chgrp</code>修改文件所属用户组</li>
+<li><code>chown</code>修改文件拥有者</li>
+<li><code>chmod</code>修改文件权限</li>
+</ul>
+<h3 id="目录与文件的权限意义"><a href="#目录与文件的权限意义" class="headerlink" title="目录与文件的权限意义"></a>目录与文件的权限意义</h3><ol>
+<li><p><strong>文件</strong></p>
+<ul>
+<li><p>r：可读取此文件的实际内容。</p>
+</li>
+<li><p>w：可以编辑、新增或是修改文件的内容（但不含删除该文件）。</p>
+</li>
+<li><p>x：该文件具有可以被系统执行的权限。（与windows不同，windwos是通过扩展名决定此文件是否可以被执行）</p>
+</li>
+</ul>
+</li>
+<li><p><strong>目录</strong></p>
+<ul>
+<li><p>r：表示具有读取目录结构的权限，即可以使用ls列出内容列表（但是无法查看除文件名的其他信息，会显示问号。）</p>
+</li>
+<li><p>w：表示具有改动该目录结构列表的权限</p>
+<ul>
+<li><p>建立新的文件与目录；</p>
+</li>
+<li><p>删除已经存在的文件与目录；</p>
+</li>
+<li><p>将已存在的文件或目录进行更名；</p>
+</li>
+<li><p>移动该目录内的文件、目录位置；</p>
+</li>
+</ul>
+</li>
+<li><p>x：表示用户能否进入该目录成为工作目录，即能否cd进去。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>#第六章 Linux文件与目录管理</p>
+<h3 id="命令学习"><a href="#命令学习" class="headerlink" title="命令学习"></a>命令学习</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd -</td>
+<td align="center">返回前一个工作目录</td>
+</tr>
+<tr>
+<td>pwd -P</td>
+<td align="center">显示正确的文件路径，而不是链接文件路径（仅在链接文件中使用有区别）</td>
+</tr>
+<tr>
+<td>mkdir -[mp]</td>
+<td align="center">-m：直接设置权限（如777），-p：自动创建所需要的文件夹</td>
+</tr>
+<tr>
+<td>ls</td>
+<td align="center">P181</td>
+</tr>
+<tr>
+<td>cp</td>
+<td align="center">P183（常用-a，-i，-p，-r）</td>
+</tr>
+<tr>
+<td>basename</td>
+<td align="center">获取最后的文件名</td>
+</tr>
+<tr>
+<td>dirname</td>
+<td align="center">获取目录名</td>
+</tr>
+</tbody></table>
+<h3 id="关于执行文件的路径变量：-PATH"><a href="#关于执行文件的路径变量：-PATH" class="headerlink" title="关于执行文件的路径变量：$PATH"></a>关于执行文件的路径变量：$PATH</h3><p>​        ls等命令能直接执行是因为环境变量中有/bin目录。使用<code>$ PATH=&quot;${PATH}:/xxx&quot;</code>可以把/xxx也加入环境变量中，即/xxx下的可执行文件也可以在任意地方被使用。</p>
+<h3 id="文件内容查看命令"><a href="#文件内容查看命令" class="headerlink" title="文件内容查看命令"></a>文件内容查看命令</h3><p>（可以使用sublime3）</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="center">使用情景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">cat</td>
+<td align="center">查看行数较少的文本，可以添加行标</td>
+</tr>
+<tr>
+<td align="left">less</td>
+<td align="center">查看行数较多的文本</td>
+</tr>
+<tr>
+<td align="left">head/tail(-f:持续查看)</td>
+<td align="center">查看文件头尾</td>
+</tr>
+<tr>
+<td align="left">od(-d oCc:显示ASCII10进制对照表)</td>
+<td align="center">查看非文本文件</td>
+</tr>
+</tbody></table>
+<h3 id="修改文件时间或创建新文件：touch"><a href="#修改文件时间或创建新文件：touch" class="headerlink" title="修改文件时间或创建新文件：touch"></a>修改文件时间或创建新文件：touch</h3><p>Linux下文件的有三个主要变动的时间参数：</p>
+<ol>
+<li><strong>修改时间（modification time, mtime）</strong></li>
+<li><strong>状态时间（change time, ctime）</strong></li>
+<li><strong>读取时间（access time, atime）</strong></li>
+</ol>
+<p>​        在ll下显示出来的是mtime，可以通过添加<code>--time=ctime/-c</code>或<code>--time=atime/-a</code>显示另外两种时间。（Linux下可以使用<strong>;</strong>分割执行多条任务）</p>
+<p>​        或者使用<strong><code>stat filename</code></strong>也可查看文件的3条时间信息。</p>
+<p>​        <strong>可以使用touch修改文件的mtime和atime，但无法修改文件的ctime。而且在touch一个文件时，文件的ctime会变成目前时间。</strong></p>
+<h3 id="文件默认权限"><a href="#文件默认权限" class="headerlink" title="文件默认权限"></a>文件默认权限</h3><p>​        可以使用<code>umask -S</code>查看，文件对象默认将x权限都去除。使用<code>umask [002]</code>可以直接设置umask的值。</p>
+<h3 id="文件的隐藏权限"><a href="#文件的隐藏权限" class="headerlink" title="文件的隐藏权限"></a>文件的隐藏权限</h3><p>​        使用<code>lsattr</code>查看，使用<code>chattr</code>修改。比较重要的有<strong>a（只能增加内容）</strong>和<strong>i（对此文件的任何操作都不允许）</strong>两个属性。</p>
+<h3 id="文件特殊权限"><a href="#文件特殊权限" class="headerlink" title="文件特殊权限"></a>文件特殊权限</h3><ol>
+<li><strong>SUID（Set UID）</strong>：当s标志出现在文件拥有者的x权限上时。仅限对二进制程序有效，执行者在执行此程序时将获得拥有者的权限。（如/usr/bin/passwd命令）</li>
+<li><strong>SGID（Set GID）</strong>：当s标志出现在文件用户组的x权限上时。<ul>
+<li>对于文件来说：仅限对二进制程序有效，执行者在执行此程序时将获得用户组的权限。（如/usr/bin/locate命令）</li>
+<li>对于目录来说：若用户在此目录下具有w权限，则用户所建立的新文件，该新文件的用户组与此目录的用户组相同。<strong><em>（问题：不是很明白有什么用）</em></strong></li>
+</ul>
+</li>
+<li><strong>SBIT（Sticky Bit）</strong>：当t标志出现在文件其他人的x权限上时。仅对目录有效，用户在该目录下新建的文件或目录，只有他自己和root有权利删除。</li>
+</ol>
+<p><strong>特殊权限的设置方法</strong>：在3个权限数字前再加一个数字，SUID：4；SGID：2；SBIT：1。</p>
+<h3 id="观察文件类型"><a href="#观察文件类型" class="headerlink" title="观察文件类型"></a>观察文件类型</h3><p>​        使用<code>file</code>命令。</p>
+<h3 id="命令与文件的查询"><a href="#命令与文件的查询" class="headerlink" title="命令与文件的查询"></a>命令与文件的查询</h3><ul>
+<li><strong>命令的查询</strong>：<code>which [-a]</code> ，它是根据[Path]这个环境变量所规范的路径去查找执行文件的文件名。</li>
+<li><strong>文件的查询</strong><ul>
+<li><strong>whereis</strong>：查找特定文件夹下的一些文件，使用<code>whereis -l</code>可以看到查找的是哪些文件夹。</li>
+<li><strong>locate</strong>：使用已经建立的数据库中查找文件（centos7是每天更新一次），优点是可以模糊匹配，缺点是找不到新创建的文件。使用<code>updatedb</code>可以手动更新数据库。</li>
+<li><strong>find</strong>：功能多，速度慢。</li>
+</ul>
+</li>
+</ul>
+<h1 id="第七章-Linux磁盘与文件系统管理"><a href="#第七章-Linux磁盘与文件系统管理" class="headerlink" title="第七章 Linux磁盘与文件系统管理"></a>第七章 Linux磁盘与文件系统管理</h1><h3 id="磁盘分区格式"><a href="#磁盘分区格式" class="headerlink" title="磁盘分区格式"></a>磁盘分区格式</h3><p>​        扇区为最小分区单位（早起为柱面），主要有512B和4KB两种格式。</p>
+<ol>
+<li><p><strong>MBR分区表</strong>：第一个扇区有512字节。</p>
+<ul>
+<li><p>主引导记录（Master Boot Record）：可以安装启动引导程序的地方，有446字节；</p>
+</li>
+<li><p>分区表（partition table）：记录整块硬盘分区的状态，有64字节</p>
+</li>
+</ul>
+</li>
+<li><p><strong>GPT分区表</strong>：分区数量扩充较多，支持的磁盘容量可以超过2TB。</p>
+</li>
+</ol>
+<h3 id="文件系统特性"><a href="#文件系统特性" class="headerlink" title="文件系统特性"></a>文件系统特性</h3><p>​        传统的磁盘与文件系统中，一个分区只能被格式化为一个文件系统。现在一个分区可以被格式化为多个文件系统，多个分区也可以被格式化为一个文件系统。因此我们通常称<strong>一个可被挂载的数据为一个文件系统而不是一个分区</strong></p>
+<h4 id="文件系统的数据存取方式"><a href="#文件系统的数据存取方式" class="headerlink" title="文件系统的数据存取方式"></a>文件系统的数据存取方式</h4><ol>
+<li><strong>索引式文件系统</strong>：根据inode找到此文件的所有数据区块，不太需要碎片整理，如ext2。</li>
+<li><strong>链式文件系统</strong>：需要将区块一个个读出来后，才能知道下一个区块的位置，需要不时的进行碎片整理，否则文件读取性能会很差，如FAT。</li>
+</ol>
+<h3 id="Linux的ext2文件系统"><a href="#Linux的ext2文件系统" class="headerlink" title="Linux的ext2文件系统"></a>Linux的ext2文件系统</h3><p>​        ext2文件系统格式化的时候会区分成多个区块群组（block group），在最前面有个启动扇区（boot sector），这个扇区可以安装启动引导程序。(ext2文件系统示意图p212)</p>
+<p><strong>每个区块群组的六个主要内容如下</strong>：</p>
+<ol>
+<li><p><strong>数据区块（data block）</strong>：实际记录文件的内容。在ext2中所支持的区块大小有1K、2K以及4K。不同的区块大小有不同的<strong>最大单一文件限制</strong>和<strong>最大文件系统总容量</strong>。每个区块最多只能放置一个文件，因此不合适的区块大小选择会产生严重的空间浪费。</p>
+</li>
+<li><p><strong>inode表（inode table）</strong>：记录了文件属性和权限等一些信息。系统读取文件时需要先找到inode，并分析inode所记录的权限与用户是否符合，若符合才能够读取分区块的内容。</p>
+<p>采用索引式文件系统，并且通过间接，双间接，三简接来扩大了最大单一文件限制。</p>
+</li>
+<li><p><strong>超级区块（Superblock）</strong>：记录此文件系统的整体信息，包括inode与数据区块的总量、使用量、剩余量，以及文件系统的格式与相关信息等。除了第一个区块群组的超级区块之外，后续若含有超级区块也是作为第一个的备份。</p>
+</li>
+<li><p><strong>区块对照表（block bitmap）</strong>：记录数据区块的使用情况，如未使用、已占用等。</p>
+</li>
+<li><p><strong>inode对照表（inode bitmap）</strong>：记录inode区块的使用情况。</p>
+</li>
+<li><p><strong>文件系统描述（Filesystem Description）</strong>：描述每个区块群组开始与结束的区块，以及说明每个区段分别介于哪一个区块之间。</p>
+</li>
+</ol>
+<p><strong>可以用<code>dump2fs</code>查询ext系列超级区块的信息，centos7默认使用的是xfs文件系统，因此无法使用此命令</strong></p>
+<h3 id="ext2文件读取与目录树的关系"><a href="#ext2文件读取与目录树的关系" class="headerlink" title="ext2文件读取与目录树的关系"></a>ext2文件读取与目录树的关系</h3><p>​        在Linux下创建一个目录时，文件系统会分配一个inode与至少一个区块给该目录（目录下的文件数过多则会继续分配区块给这个目录）。文件的文件名和占用的inode号码都被存储在此目录的区块中。因此文件的增删改和目录的权限有关，对于文件的访问是从根目录开始读起的。具体例子见P218。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/linux">linux</a>
+              
+                <a class="hover-with-bg" href="/tags/centos7">centos7</a>
+              
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "linux学习&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="Junjie Shen">
+  <meta name="keywords" content>
+  <title>Spring事务@transaction ~ TWINの無駄づかい</title>
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+  <link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  
+    <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+  
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>TWINの無駄づかい</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p>星期一, 三月 30日 2020, 11:58 中午</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto">
+          <div class="markdown-body">
+            <p><strong>转载自<a href="https://mp.weixin.qq.com/s/enKOM3F_Xxg123HPMCFUPw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/enKOM3F_Xxg123HPMCFUPw</a></strong></p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务管理在系统开发中是不可缺少的一部分，<code>Spring</code>提供了很好事务管理机制，主要分为<code>编程式事务</code>和<code>声明式事务</code>两种。</p>
+<p><strong>编程式事务</strong>：是指在代码中手动的管理事务的提交、回滚等操作，代码侵入性比较强，如下示例：</p>
+<pre><code class="java">try {
+    //TODO something
+     transactionManager.commit(status);
+} catch (Exception e) {
+    transactionManager.rollback(status);
+    throw new InvoiceApplyException(&quot;异常失败&quot;);
+}</code></pre>
+<p><strong>声明式事务</strong>：基于<code>AOP</code>面向切面的，它将具体业务与事务处理部分解耦，代码侵入性很低，所以在实际开发中声明式事务用的比较多。声明式事务也有两种实现方式，一是基于<code>TX</code>和<code>AOP</code>的xml配置文件方式，二种就是基于@Transactional注解了。</p>
+<pre><code class="java">@Transactional
+@GetMapping(&quot;/test&quot;)
+public String test() {
+    int insert = cityInfoDictMapper.insert(cityInfoDict);
+}</code></pre>
+<p>#@Transactional介绍</p>
+<h4 id="1、-Transactional注解可以作用于哪些地方？"><a href="#1、-Transactional注解可以作用于哪些地方？" class="headerlink" title="1、@Transactional注解可以作用于哪些地方？"></a>1、@Transactional注解可以作用于哪些地方？</h4><p>@Transactional 可以作用在<code>接口</code>、<code>类</code>、<code>类方法</code>。</p>
+<ul>
+<li><strong>作用于类</strong>：当把@Transactional 注解放在类上时，表示所有该类的<code>public</code>方法都配置相同的事务属性信息。</li>
+<li><strong>作用于方法</strong>：当类配置了@Transactional，方法也配置了@Transactional，方法的事务会覆盖类的事务配置信息。</li>
+<li><strong>作用于接口</strong>：不推荐这种使用方法，因为一旦标注在Interface上并且配置了Spring AOP 使用CGLib动态代理，将会导致@Transactional注解失效</li>
+</ul>
+<pre><code class="java"> @Transactional
+ @RestController
+ @RequestMapping
+ public class MybatisPlusController {
+     @Autowired
+     private CityInfoDictMapper cityInfoDictMapper;
+
+     @Transactional(rollbackFor = Exception.class)
+     @GetMapping(&quot;/test&quot;)
+     public String test() throws Exception {
+         CityInfoDict cityInfoDict = new CityInfoDict();
+         cityInfoDict.setParentCityId(2);
+         cityInfoDict.setCityName(&quot;2&quot;);
+         cityInfoDict.setCityLevel(&quot;2&quot;);
+         cityInfoDict.setCityCode(&quot;2&quot;);
+         int insert = cityInfoDictMapper.insert(cityInfoDict);
+         return insert + &quot;&quot;;
+    }
+}</code></pre>
+<h4 id="2、-Transactional注有哪些属性？"><a href="#2、-Transactional注有哪些属性？" class="headerlink" title="2、@Transactional注有哪些属性？"></a>2、@Transactional注有哪些属性？</h4><h5 id="propagation属性"><a href="#propagation属性" class="headerlink" title="propagation属性"></a>propagation属性</h5><p><code>propagation</code> 代表事务的传播行为，默认值为 <code>Propagation.REQUIRED</code>，其他的属性信息如下：</p>
+<ul>
+<li><code>Propagation.REQUIRED</code>：如果当前存在事务，则加入该事务，如果当前不存在事务，则创建一个新的事务。<strong>(</strong> 也就是说如果A方法和B方法都添加了注解，在默认传播模式下，A方法内部调用B方法，会把两个方法的事务合并为一个事务 <strong>）</strong></li>
+<li><code>Propagation.SUPPORTS</code>：如果当前存在事务，则加入该事务；如果当前不存在事务，则以非事务的方式继续运行。</li>
+<li><code>Propagation.MANDATORY</code>：如果当前存在事务，则加入该事务；如果当前不存在事务，则抛出异常。</li>
+<li><code>Propagation.REQUIRES_NEW</code>：重新创建一个新的事务，如果当前存在事务，暂停当前的事务。<strong>(</strong> 当类A中的 a 方法用默认<code>Propagation.REQUIRED</code>模式，类B中的 b方法加上采用 <code>Propagation.REQUIRES_NEW</code>模式，然后在 a 方法中调用 b方法操作数据库，然而 a方法抛出异常后，b方法并没有进行回滚，因为<code>Propagation.REQUIRES_NEW</code>会暂停 a方法的事务 <strong>)</strong></li>
+<li><code>Propagation.NOT_SUPPORTED</code>：以非事务的方式运行，如果当前存在事务，暂停当前的事务。</li>
+<li><code>Propagation.NEVER</code>：以非事务的方式运行，如果当前存在事务，则抛出异常。</li>
+<li><code>Propagation.NESTED</code> ：和 Propagation.REQUIRED 效果一样。</li>
+</ul>
+<h5 id="isolation-属性"><a href="#isolation-属性" class="headerlink" title="isolation 属性"></a>isolation 属性</h5><p><code>isolation</code> ：事务的隔离级别，默认值为 <code>Isolation.DEFAULT</code>。</p>
+<ul>
+<li>Isolation.DEFAULT：使用底层数据库默认的隔离级别。</li>
+<li>Isolation.READ_UNCOMMITTED</li>
+<li>Isolation.READ_COMMITTED</li>
+<li>Isolation.REPEATABLE_READ</li>
+<li>Isolation.SERIALIZABLE</li>
+</ul>
+<h5 id="timeout-属性"><a href="#timeout-属性" class="headerlink" title="timeout 属性"></a>timeout 属性</h5><p><code>timeout</code> ：事务的超时时间，默认值为 -1。如果超过该时间限制但事务还没有完成，则自动回滚事务。</p>
+<h5 id="readOnly-属性"><a href="#readOnly-属性" class="headerlink" title="readOnly 属性"></a>readOnly 属性</h5><p><code>readOnly</code> ：指定事务是否为只读事务，默认值为 false；为了忽略那些不需要事务的方法，比如读取数据，可以设置 read-only 为 true。</p>
+<h5 id="rollbackFor-属性"><a href="#rollbackFor-属性" class="headerlink" title="rollbackFor 属性"></a>rollbackFor 属性</h5><p><code>rollbackFor</code> ：用于指定能够触发事务回滚的异常类型，可以指定多个异常类型。</p>
+<h5 id="noRollbackFor属性"><a href="#noRollbackFor属性" class="headerlink" title="noRollbackFor属性"></a><strong>noRollbackFor</strong>属性</h5><p><code>noRollbackFor</code>：抛出指定的异常类型，不回滚事务，也可以指定多个异常类型。</p>
+<p>#@Transactional失效场景</p>
+<p>接下来我们结合具体的代码分析一下哪些场景下，@Transactional 注解会失效。</p>
+<h4 id="1、-Transactional-应用在非-public-修饰的方法上"><a href="#1、-Transactional-应用在非-public-修饰的方法上" class="headerlink" title="1、@Transactional 应用在非 public 修饰的方法上"></a>1、@Transactional 应用在非 public 修饰的方法上</h4><p>如果<code>Transactional</code>注解应用在非<code>public</code> 修饰的方法上，Transactional将会失效。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/0OzaL5uW2aOhsEJ0TtJSM5kcSOKZGJDOJoUPF0IHL2wvUHIzlHVYOib6bEN2tKkCyUn8fOxMVicBxvoKpgXU2HDQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>之所以会失效是因为在Spring AOP 代理时，如上图所示 <code>TransactionInterceptor</code> （事务拦截器）在目标方法执行前后进行拦截，<code>DynamicAdvisedInterceptor</code>（CglibAopProxy 的内部类）的 intercept 方法或 <code>JdkDynamicAopProxy</code> 的 invoke 方法会间接调用 <code>AbstractFallbackTransactionAttributeSource</code>的 <code>computeTransactionAttribute</code> 方法，获取Transactional 注解的事务配置信息。</p>
+<pre><code class="java">protected TransactionAttribute computeTransactionAttribute(Method method,
+    Class&lt;?&gt; targetClass) {
+        // Don&#39;t allow no-public methods as required.
+        if (allowPublicMethodsOnly() &amp;&amp; !Modifier.isPublic(method.getModifiers())) {
+        return null;
+}</code></pre>
+<p>此方法会检查目标方法的修饰符是否为 public，不是 public则不会获取@Transactional 的属性配置信息。</p>
+<p><strong>注意：<code>protected</code>、<code>private</code> 修饰的方法上使用 <code>@Transactional</code> 注解，虽然事务无效，但不会有任何报错，这是我们很容犯错的一点。</strong></p>
+<h4 id="2、-Transactional-注解属性-propagation-设置错误"><a href="#2、-Transactional-注解属性-propagation-设置错误" class="headerlink" title="2、@Transactional 注解属性 propagation 设置错误"></a>2、@Transactional 注解属性 propagation 设置错误</h4><p>这种失效是由于配置错误，若是错误的配置以下三种 propagation，事务将不会发生回滚。</p>
+<p><code>TransactionDefinition.PROPAGATION_SUPPORTS</code>：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。<br><code>TransactionDefinition.PROPAGATION_NOT_SUPPORTED</code>：以非事务方式运行，如果当前存在事务，则把当前事务挂起。<br><code>TransactionDefinition.PROPAGATION_NEVER</code>：以非事务方式运行，如果当前存在事务，则抛出异常。</p>
+<h4 id="3、-Transactional-注解属性-rollbackFor-设置错误"><a href="#3、-Transactional-注解属性-rollbackFor-设置错误" class="headerlink" title="3、@Transactional 注解属性 rollbackFor 设置错误"></a>3、@Transactional 注解属性 rollbackFor 设置错误</h4><p><code>rollbackFor</code> 可以指定能够触发事务回滚的异常类型。Spring默认抛出了未检查<code>unchecked</code>异常（继承自 <code>RuntimeException</code>的异常）或者 <code>Error</code>才回滚事务；其他异常不会触发回滚事务。如果在事务中抛出其他类型的异常，但却期望 Spring 能够回滚事务，就需要指定 <strong>rollbackFor</strong>属性。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/0OzaL5uW2aOhsEJ0TtJSM5kcSOKZGJDOENdU9CHkPlMgJrCv3Du00eDAiaaqleo6D9Q49dQuwY4lddQOsRRiadPA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<pre><code class="java">// 希望自定义的异常可以进行回滚
+@Transactional(propagation= Propagation.REQUIRED,rollbackFor= MyException.class</code></pre>
+<p>若在目标方法中抛出的异常是 <code>rollbackFor</code> 指定的异常的子类，事务同样会回滚。Spring源码如下：</p>
+<pre><code class="java"> private int getDepth(Class&lt;?&gt; exceptionClass, int depth) {
+         if (exceptionClass.getName().contains(this.exceptionName)) {
+             // Found it!
+             return depth;
+ }
+         // If we&#39;ve gone as far as we can go and haven&#39;t found it...
+         if (exceptionClass == Throwable.class) {
+             return -1;
+ }
+ return getDepth(exceptionClass.getSuperclass(), depth + 1);
+}</code></pre>
+<h4 id="4、同一个类中方法调用，导致-Transactional失效"><a href="#4、同一个类中方法调用，导致-Transactional失效" class="headerlink" title="4、同一个类中方法调用，导致@Transactional失效"></a>4、同一个类中方法调用，导致@Transactional失效</h4><p>开发中避免不了会对同一个类里面的方法调用，比如有一个类Test，它的一个方法A，A再调用本类的方法B（不论方法B是用public还是private修饰），但方法A没有声明注解事务，而B方法有。则外部调用方法A之后，方法B的事务是不会起作用的。这也是经常犯错误的一个地方。</p>
+<p>那为啥会出现这种情况？其实这还是由于使用<code>Spring AOP</code>代理造成的，因为只有当事务方法被当前类以外的代码调用时，才会由<code>Spring</code>生成的代理对象来管理。</p>
+<pre><code class="java">//@Transactional
+     @GetMapping(&quot;/test&quot;)
+     private Integer A() throws Exception {
+         CityInfoDict cityInfoDict = new CityInfoDict();
+         cityInfoDict.setCityName(&quot;2&quot;);
+         /**
+          * B 插入字段为 3的数据
+          */
+         this.insertB();
+         /**
+          * A 插入字段为 2的数据
+          */
+         int insert = cityInfoDictMapper.insert(cityInfoDict);
+
+         return insert;
+     }
+
+     @Transactional()
+     public Integer insertB() throws Exception {
+         CityInfoDict cityInfoDict = new CityInfoDict();
+         cityInfoDict.setCityName(&quot;3&quot;);
+         cityInfoDict.setParentCityId(3);
+
+         return cityInfoDictMapper.insert(cityInfoDict);
+     }</code></pre>
+<h4 id="5、异常被你的-catch“吃了”导致-Transactional失效"><a href="#5、异常被你的-catch“吃了”导致-Transactional失效" class="headerlink" title="5、异常被你的 catch“吃了”导致@Transactional失效"></a>5、异常被你的 catch“吃了”导致@Transactional失效</h4><p>这种情况是最常见的一种@Transactional注解失效场景</p>
+<pre><code class="java">    @Transactional
+    private Integer A() throws Exception {
+        int insert = 0;
+        try {
+            CityInfoDict cityInfoDict = new CityInfoDict();
+            cityInfoDict.setCityName(&quot;2&quot;);
+            cityInfoDict.setParentCityId(2);
+            /**
+             * A 插入字段为 2的数据
+             */
+            insert = cityInfoDictMapper.insert(cityInfoDict);
+            /**
+             * B 插入字段为 3的数据
+             */
+            b.insertB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }</code></pre>
+<p>如果B方法内部抛了异常，而A方法此时try catch了B方法的异常，那这个事务还能正常回滚吗？</p>
+<p>答案：不能！</p>
+<p>会抛出异常：</p>
+<pre><code class="java">1org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only</code></pre>
+<p>因为当<code>ServiceB</code>中抛出了一个异常以后，<code>ServiceB</code>标识当前事务需要<code>rollback</code>。但是<code>ServiceA</code>中由于你手动的捕获这个异常并进行处理，<code>ServiceA</code>认为当前事务应该正常<code>commit</code>。此时就出现了前后不一致，也就是因为这样，抛出了前面的<code>UnexpectedRollbackException</code>异常。</p>
+<p><code>spring</code>的事务是在调用业务方法之前开始的，业务方法执行完毕之后才执行<code>commit</code> or <code>rollback</code>，事务是否执行取决于是否抛出<code>runtime异常</code>。如果抛出<code>runtime exception</code> 并在你的业务方法中没有catch到的话，事务会回滚。</p>
+<p>在业务方法中一般不需要catch异常，如果非要catch一定要抛出<code>throw new RuntimeException()</code>，或者注解中指定抛异常类型<code>@Transactional(rollbackFor=Exception.class)</code>，否则会导致事务失效，数据commit造成数据不一致，所以有些时候try catch反倒会画蛇添足。</p>
+<h4 id="6、数据库引擎不支持事务"><a href="#6、数据库引擎不支持事务" class="headerlink" title="6、数据库引擎不支持事务"></a>6、数据库引擎不支持事务</h4><p>这种情况出现的概率并不高，事务能否生效数据库引擎是否支持事务是关键。常用的MySQL数据库默认使用支持事务的<code>innodb</code>引擎。一旦数据库引擎切换成不支持事务的<code>myisam</code>，那事务就从根本上失效了。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Spring事务@transaction&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+</body>
+</html>

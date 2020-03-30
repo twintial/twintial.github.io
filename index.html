@@ -128,6 +128,91 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/30/Spring事务-transaction/">
+        <p class="h4 index-header">Spring事务@transaction</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">转载自https://mp.weixin.qq.com/s/enKOM3F_Xxg123HPMCFUPw
+事务事务管理在系统开发中是不可缺少的一部分，Spring提供了很好事务管理机制，主要分为编程式事务和声明式事务两种。
+编程式事务：是指在代码中手动的管理事务的提交、回滚等操作，代码侵入性比较强，如下示例：
+try {
+    //TODO something
+     transactionManager.commit(status);
+} catch (Exception e) {
+    transactionManager.rollback(status);
+    throw new InvoiceApplyException(&quot;异常失败&quot;);
+}
+声明式事务：基于AOP面向切面的，它将具体业务与事务处理部分解耦，代码侵入性很低，所以在实际开发中声明式事务用的比较多。声明式事务也有两种实现方式，一是基于TX和AOP的xml配置文件方式，二种就是基于@Transactional注解了。
+@Transactional
+@GetMapping(&quot;/t</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/12/linux学习/">
+        <p class="h4 index-header">linux学习</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">第三章 安装Centos7强制使用GPT分区表​        若磁盘容量小于2TB则会默认使用MBR分区表来安装。
+​        在光盘启动后安装界面按下TAB按键，输入inst.gpt。
+配置信息​        所有的配置信息，包括root的密码等都会被记录到/root/anaconda-ks.cfg这个文件内。重建系统时，可以参考该文件。
+指令学习
+echo $LANG和locale可以获得终端支持的语系数据。
+date可显示日期，cal可显示日历，bc可作为计算器。
+man和info为常见的帮助指令。
+ctrl+alt+F1~6可以切换tty1～6
+man page的数字中，1代表一般账号可用命令，8代表系统管理员可用，5代表系统配置文件格式。
+
+第五章 Linux的文件权限与目录配置文件的类型和权限​    文件类型和权限表示为如：-rwxrwx—
+
+第一个字符表示文件类型：d为目录，-为文件，l为链接文件等
+接下来的字符，以三个为一组，依次为用户(user)，群组(group)，其他用户(other)
+rwx可以用数字来表示，分别为4，2，1。
+
+文件属性与权限的修改</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+            <a href="/tags/centos7">centos7</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/10/java编程思想/">
         <p class="h4 index-header">java编程思想</p>
         
@@ -140,7 +225,7 @@
 允许库设计者可以改变类内部的工作方式而不用担心会影响到客户端程序员
 
 多态区分前期绑定和后期绑定
-范性出现的原因​        java SE5之前容器中只能存储Object对象，即当对象从容器中取出时需要向下转型为程序员需要的类型，然而除非知道所要处理的对象类型，这种转换是不安全的。向下转型和运行时的检查需要额为的程序运行时间，也需要程序员付出更多的心血。
+泛型出现的原因​        java SE5之前容器中只能存储Object对象，即当对象从容器中取出时需要向下转型为程序员需要的类型，然而除非知道所要处理的对象类型，这种转换是不安全的。向下转型和运行时的检查需要额外的程序运行时间（java的泛型不能优化这部分时间，使用泛型的话向下转型依然存在（归咎于擦除机制），但是是由编译器自动帮你完成 P380），也需要程序员付出更多的心血。
 对象创建的生命周期
 在编写程序的时候确定对象的存储空间和生命周期。可以通过将对象置于栈中（有时被称为automatic variable或scoped variable）或静态存储区域来实现。
 在被称为堆的内存池中动态地创建对象。
@@ -153,8 +238,7 @@
 非RAM存储
 
 高精度数字BigInteget和BigDecimal
-获取系统信息System.getProperties().list(System.out);
-System.out.println(Sys</div>
+获取系统信息Sy</div>
         </div>
       </a>
 
@@ -197,13 +281,13 @@ System.out.println(Sys</div>
 标准化数据（n/(MAX - MIN)）
 
 注意
-图片处理的scipy.imread和imresize已经被抛弃，用matplotlib.pyplot.imread或者PLT.Image.open代替imread。用Image对象image.resize代替imresize
+图片处理的scipy.imread和imresize已经被抛弃，用matplotlib.pyplot.imread或者PLT.Image.open代替imread。用Image对象image.resize代替imresize。
 reshape的坑
 train_x_flatten = train_x_orig.reshape(-1, train_x_orig.shape[0])
 train_x_flatten2 = train_x_orig.reshape(train_x_orig.shape[0], -1).T
 两者不相等，要了解其中含义
 #He initialization
-​    This function is similar to the previous initialize_para</div>
+​    This function is similar to the previous initialize_par</div>
         </div>
       </a>
 
