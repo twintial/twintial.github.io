@@ -143,11 +143,12 @@
 <img src="https://i.natfrp.com/5bebb222646084471eb19e9f1f0bb289.png" srcset="/img/loading.gif" alt="composition" style="zoom:50%;">
 </li>
 <li><p><strong>Aggregation|聚合</strong>：composition的一种，即composition by reference。比composition by value的关系弱。以指针的形式表现，是一种弱的拥有关系。可以在需要的时候为指针分配空间，不需要的时候释放。部分与整体生命周期不一致。</p>
-<pre><code>class CMyDoc : public CDocument
+<pre><code class="c++">class CMyDoc : public CDocument
 {
     private:
         CObList* myList;
-};</code></pre><p><img src="https://i.natfrp.com/4964eaacdd9614b0dc0bcde4f91f437b.png" srcset="/img/loading.gif" alt="aggregation"></p>
+};</code></pre>
+<p><img src="https://i.natfrp.com/4964eaacdd9614b0dc0bcde4f91f437b.png" srcset="/img/loading.gif" alt="aggregation"></p>
 </li>
 <li><p><strong>Association|关联</strong>：一个类必须知道另一个类的成员和变量。若A-&gt;B，则A中存在classB的实例。关联包括聚合和组成。有双向和单项两种。</p>
 <p><img src="https://i.natfrp.com/95e8b899324878203d7337860a187de6.png" srcset="/img/loading.gif" alt="img"></p>

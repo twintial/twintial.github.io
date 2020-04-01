@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Junjie Shen">
   <meta name="keywords" content>
-  <title>归档 ~ TWINの無駄づかい</title>
+  <title>深度学习花书 ~ TWINの無駄づかい</title>
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
@@ -30,7 +30,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -101,6 +101,9 @@
             </span>
 
             
+              <br>
+              <p>星期二, 三月 31日 2020, 10:00 上午</p>
+            
           </div>
 
           
@@ -111,59 +114,81 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 12 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/31/深度学习花书/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">深度学习花书</span>
-      <span style="float: right;">03-31</span>
-    </a>
-  
-    
-    <a href="/2020/03/30/leetcode题解/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">leetcode题解</span>
-      <span style="float: right;">03-30</span>
-    </a>
-  
-    
-    <a href="/2020/03/30/Spring事务-transaction/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring事务@transaction</span>
-      <span style="float: right;">03-30</span>
-    </a>
-  
-    
-    <a href="/2020/03/12/linux学习/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">linux学习</span>
-      <span style="float: right;">03-12</span>
-    </a>
-  
-    
-    <a href="/2020/03/10/java编程思想/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">java编程思想</span>
-      <span style="float: right;">03-10</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto">
+          <div class="markdown-body">
+            <h1 id="第2章-线性代数"><a href="#第2章-线性代数" class="headerlink" title="第2章 线性代数"></a>第2章 线性代数</h1><ul>
+<li><p><strong>张量</strong>：一般，一个数组中的元素分布在若干维坐标的规则网格中，我们称之为张量。</p>
+</li>
+<li><p><strong>广播</strong>：$C = A + b$，这种隐式地复制向量b到很多位置的方式，称为广播。</p>
+</li>
+<li><p>Hadmard<strong>乘积</strong>：$A\bigodot B$</p>
+</li>
+<li><p><strong>奇异矩阵</strong>：不是方阵或行列式值为0，行或列向量存在线性相关。空间可以朝着某一维度收缩。</p>
+</li>
+<li><p><strong>范式</strong>：$\displaystyle \left( \sum_{i}|x_{i}|^p \right)^{\frac{1}{p}}$ </p>
+<ul>
+<li>当p=2时，$L^2$为欧几里得范数，其在原点附近的增长十分缓慢。</li>
+<li>当0和非零元素之间的差异非常重要时，通常会用$L^1$范数。</li>
+<li>最大范数：$\displaystyle ||x||_{\infty}=\max_i|x_i|$</li>
+<li>衡量矩阵的大小，Frobenius范数：$\displaystyle ||A||<em>F=\sqrt{\sum</em>{i,j}{A_{i,j}^2}}$</li>
+</ul>
+</li>
+<li><p><strong>特征分解、奇异值分解、Moore-Penrose伪逆</strong>：参考书P26</p>
+</li>
+<li><p><strong>迹运算</strong>：返回的是矩阵的对角和，$\displaystyle Tr(A)=\sum_iA_{i,i}$</p>
+</li>
+<li><p><strong>主成分分析</strong>：（还没看）</p>
+</li>
+</ul>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a>
+              
+                <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+              
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -217,6 +242,11 @@
   <script src="/js/lazyload.js" ></script>
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
   <script src="/lib/prettify/prettify.min.js" ></script>
   <script>
@@ -232,7 +262,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "深度学习花书&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

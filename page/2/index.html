@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Junjie Shen">
   <meta name="keywords" content>
-  <title>归档 ~ TWINの無駄づかい</title>
+  <title>TWINの無駄づかい</title>
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
@@ -30,7 +30,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -90,7 +90,7 @@
 </nav>
 
     <div class="view intro-2"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/view/bg.PNG')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -103,6 +103,10 @@
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="fa fa-angle-down scroll-down-arrow"></i>
+            </div>
           
         </div>
       </div>
@@ -119,44 +123,196 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 12 篇文章</p>
-  <hr>
-  
+
+  <div class="row mb-4 mx-auto">
     
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/10/10/设计模式/" target="_self">
+          <img src="/img/view/IMG_2683.jpg" srcset="/img/loading.gif" alt="设计模式" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/10/10/设计模式/">
+        <p class="h4 index-header">设计模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Template Method
+定义首先定义一个算法骨干，推迟其中一些步骤使它们在子类中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。我们平时使用的许多接口都采用了这种方法。
+
+类图表示
+
+
+示例
+
+类图：
+
+
+java代码：
+public class Main {
+    public static void main(String[] args) {
+        Generalization algorithm = new Realization();
+        algorithm.findSolution();
+    }
+}
+abstract class Generalization{
+    // 定义一个算法骨干
+    public void findSolution(){
+        stepOne();
+        stepTwo();
+        stepThr();
+        stepFor();
+    }
+    prot</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Design%20Pattern">Design Pattern</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/10/08/回顾html/" target="_self">
+          <img src="/img/view/IMG_2681.jpg" srcset="/img/loading.gif" alt="回顾html" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/10/08/回顾html/">
+        <p class="h4 index-header">回顾html</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">对html语言进行了回顾和再次学习。
+html样式一些标签和属性都用html中的style属性所代替了。
+被抛弃的标签和属性
+
+
+标签/属性
+描述
+
+
+
+&lt;center&gt;
+定义居中的内容
+
+
+&lt;font&gt;和&lt;basefont&gt;
+定义HTML字体
+
+
+&lt;s&gt;和&lt;strike&gt;(使用&lt;del&gt;代替)
+定义删除线文本
+
+
+&lt;u&gt;(使用样式&lt;ins&gt;代替)
+定义下划线文本
+
+
+align
+定义文本对齐方式
+
+
+bgcolor/color
+定义背景/文本颜色
+
+
+html折行使用&lt;br /&gt;标签:
+&lt;p&gt;This is&lt;br /&gt;a para&lt;br /&gt;graph with line breaks&lt;/p&gt;
+文本格式化标签
+
+
+标签
+效果
+
+
+
+&lt;p&gt;
+正常
+
+
+&lt;big&gt;
+大号
+
+
+&lt;em&gt;
+着重
+
+
+&lt;i&gt;
+斜体
+
+
+&lt;small&gt;
+小号
+
+
+&lt;b&gt;
+粗体
+
+
+&lt;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/HTML">HTML</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <ul class="pagination pg-blue justify-content-center mt-5">
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/31/深度学习花书/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">深度学习花书</span>
-      <span style="float: right;">03-31</span>
-    </a>
-  
-    
-    <a href="/2020/03/30/leetcode题解/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">leetcode题解</span>
-      <span style="float: right;">03-30</span>
-    </a>
-  
-    
-    <a href="/2020/03/30/Spring事务-transaction/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring事务@transaction</span>
-      <span style="float: right;">03-30</span>
-    </a>
-  
-    
-    <a href="/2020/03/12/linux学习/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">linux学习</span>
-      <span style="float: right;">03-12</span>
-    </a>
-  
-    
-    <a href="/2020/03/10/java编程思想/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">java编程思想</span>
-      <span style="float: right;">03-10</span>
-    </a>
-  
-</div>
+        <li class="page-item">
+          <a class="page-link" href="/#board">上一页</a>
+        </li>
+      
+      
+    </ul>
+  </nav>
+
 
 
               </div>
@@ -232,7 +388,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "无聊的学习记录&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

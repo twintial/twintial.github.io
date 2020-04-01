@@ -4,6 +4,86 @@
   
   
   <entry>
+    <title>c#问题总结</title>
+    <link href="undefined2020/04/01/c#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"/>
+    <url>2020/04/01/c#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<ul><li>c#里皆为对象，没有java中所谓的基本类型。int与System.Int32一模一样。</li></ul><table><thead><tr><th>c#</th><th>java</th></tr></thead><tbody><tr><td>const</td><td>final</td></tr><tr><td>readonly</td><td>无</td></tr><tr><td>sealed</td><td>final</td></tr><tr><td>virtual</td><td>无</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>c#</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>确认和验证的区别</title>
+    <link href="undefined2020/04/01/%E7%A1%AE%E8%AE%A4%E5%92%8C%E9%AA%8C%E8%AF%81%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>2020/04/01/%E7%A1%AE%E8%AE%A4%E5%92%8C%E9%AA%8C%E8%AF%81%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<ul><li><strong>validation</strong>：代码</li><li><strong>verification</strong>：概要设计与需求规约是否相等</li></ul><p>没听懂</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>软件测试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>深度学习花书</title>
+    <link href="undefined2020/03/31/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%8A%B1%E4%B9%A6/"/>
+    <url>2020/03/31/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%8A%B1%E4%B9%A6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="第2章-线性代数"><a href="#第2章-线性代数" class="headerlink" title="第2章 线性代数"></a>第2章 线性代数</h1><ul><li><p><strong>张量</strong>：一般，一个数组中的元素分布在若干维坐标的规则网格中，我们称之为张量。</p></li><li><p><strong>广播</strong>：$C = A + b$，这种隐式地复制向量b到很多位置的方式，称为广播。</p></li><li><p>Hadmard<strong>乘积</strong>：$A\bigodot B$</p></li><li><p><strong>奇异矩阵</strong>：不是方阵或行列式值为0，行或列向量存在线性相关。空间可以朝着某一维度收缩。</p></li><li><p><strong>范式</strong>：$\displaystyle \left( \sum_{i}|x_{i}|^p \right)^{\frac{1}{p}}$ </p><ul><li>当p=2时，$L^2$为欧几里得范数，其在原点附近的增长十分缓慢。</li><li>当0和非零元素之间的差异非常重要时，通常会用$L^1$范数。</li><li>最大范数：$\displaystyle ||x||_{\infty}=\max_i|x_i|$</li><li>衡量矩阵的大小，Frobenius范数：$\displaystyle ||A||<em>F=\sqrt{\sum</em>{i,j}{A_{i,j}^2}}$</li></ul></li><li><p><strong>特征分解、奇异值分解、Moore-Penrose伪逆</strong>：参考书P26</p></li><li><p><strong>迹运算</strong>：返回的是矩阵的对角和，$\displaystyle Tr(A)=\sum_iA_{i,i}$</p></li><li><p><strong>主成分分析</strong>：（还没看）</p></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>深度学习</tag>
+      
+      <tag>读书笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>leetcode题解</title>
+    <link href="undefined2020/03/30/leetcode%E9%A2%98%E8%A7%A3/"/>
+    <url>2020/03/30/leetcode%E9%A2%98%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<ol start="3"><li><p>无重复最长子串</p><pre><code class="java">class Solution {    public int lengthOfLongestSubstring(String s) {        int max = 0;        int startIndex = 0;        for (int i = 0; i &lt; s.length(); i++) {            int x = s.indexOf(s.charAt(i), startIndex);            if (x &lt; 0) {                continue;            }            if (x &lt; i) {                max = Math.max(max, i - startIndex);                startIndex = x + 1;            }        }        max = Math.max(max, s.length() - startIndex);        return max;    }}</code></pre></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Spring事务@transaction</title>
     <link href="undefined2020/03/30/Spring%E4%BA%8B%E5%8A%A1-transaction/"/>
     <url>2020/03/30/Spring%E4%BA%8B%E5%8A%A1-transaction/</url>
@@ -11,6 +91,12 @@
     <content type="html"><![CDATA[<p><strong>转载自<a href="https://mp.weixin.qq.com/s/enKOM3F_Xxg123HPMCFUPw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/enKOM3F_Xxg123HPMCFUPw</a></strong></p><h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务管理在系统开发中是不可缺少的一部分，<code>Spring</code>提供了很好事务管理机制，主要分为<code>编程式事务</code>和<code>声明式事务</code>两种。</p><p><strong>编程式事务</strong>：是指在代码中手动的管理事务的提交、回滚等操作，代码侵入性比较强，如下示例：</p><pre><code class="java">try {    //TODO something     transactionManager.commit(status);} catch (Exception e) {    transactionManager.rollback(status);    throw new InvoiceApplyException(&quot;异常失败&quot;);}</code></pre><p><strong>声明式事务</strong>：基于<code>AOP</code>面向切面的，它将具体业务与事务处理部分解耦，代码侵入性很低，所以在实际开发中声明式事务用的比较多。声明式事务也有两种实现方式，一是基于<code>TX</code>和<code>AOP</code>的xml配置文件方式，二种就是基于@Transactional注解了。</p><pre><code class="java">@Transactional@GetMapping(&quot;/test&quot;)public String test() {    int insert = cityInfoDictMapper.insert(cityInfoDict);}</code></pre><p>#@Transactional介绍</p><h4 id="1、-Transactional注解可以作用于哪些地方？"><a href="#1、-Transactional注解可以作用于哪些地方？" class="headerlink" title="1、@Transactional注解可以作用于哪些地方？"></a>1、@Transactional注解可以作用于哪些地方？</h4><p>@Transactional 可以作用在<code>接口</code>、<code>类</code>、<code>类方法</code>。</p><ul><li><strong>作用于类</strong>：当把@Transactional 注解放在类上时，表示所有该类的<code>public</code>方法都配置相同的事务属性信息。</li><li><strong>作用于方法</strong>：当类配置了@Transactional，方法也配置了@Transactional，方法的事务会覆盖类的事务配置信息。</li><li><strong>作用于接口</strong>：不推荐这种使用方法，因为一旦标注在Interface上并且配置了Spring AOP 使用CGLib动态代理，将会导致@Transactional注解失效</li></ul><pre><code class="java"> @Transactional @RestController @RequestMapping public class MybatisPlusController {     @Autowired     private CityInfoDictMapper cityInfoDictMapper;     @Transactional(rollbackFor = Exception.class)     @GetMapping(&quot;/test&quot;)     public String test() throws Exception {         CityInfoDict cityInfoDict = new CityInfoDict();         cityInfoDict.setParentCityId(2);         cityInfoDict.setCityName(&quot;2&quot;);         cityInfoDict.setCityLevel(&quot;2&quot;);         cityInfoDict.setCityCode(&quot;2&quot;);         int insert = cityInfoDictMapper.insert(cityInfoDict);         return insert + &quot;&quot;;    }}</code></pre><h4 id="2、-Transactional注有哪些属性？"><a href="#2、-Transactional注有哪些属性？" class="headerlink" title="2、@Transactional注有哪些属性？"></a>2、@Transactional注有哪些属性？</h4><h5 id="propagation属性"><a href="#propagation属性" class="headerlink" title="propagation属性"></a>propagation属性</h5><p><code>propagation</code> 代表事务的传播行为，默认值为 <code>Propagation.REQUIRED</code>，其他的属性信息如下：</p><ul><li><code>Propagation.REQUIRED</code>：如果当前存在事务，则加入该事务，如果当前不存在事务，则创建一个新的事务。<strong>(</strong> 也就是说如果A方法和B方法都添加了注解，在默认传播模式下，A方法内部调用B方法，会把两个方法的事务合并为一个事务 <strong>）</strong></li><li><code>Propagation.SUPPORTS</code>：如果当前存在事务，则加入该事务；如果当前不存在事务，则以非事务的方式继续运行。</li><li><code>Propagation.MANDATORY</code>：如果当前存在事务，则加入该事务；如果当前不存在事务，则抛出异常。</li><li><code>Propagation.REQUIRES_NEW</code>：重新创建一个新的事务，如果当前存在事务，暂停当前的事务。<strong>(</strong> 当类A中的 a 方法用默认<code>Propagation.REQUIRED</code>模式，类B中的 b方法加上采用 <code>Propagation.REQUIRES_NEW</code>模式，然后在 a 方法中调用 b方法操作数据库，然而 a方法抛出异常后，b方法并没有进行回滚，因为<code>Propagation.REQUIRES_NEW</code>会暂停 a方法的事务 <strong>)</strong></li><li><code>Propagation.NOT_SUPPORTED</code>：以非事务的方式运行，如果当前存在事务，暂停当前的事务。</li><li><code>Propagation.NEVER</code>：以非事务的方式运行，如果当前存在事务，则抛出异常。</li><li><code>Propagation.NESTED</code> ：和 Propagation.REQUIRED 效果一样。</li></ul><h5 id="isolation-属性"><a href="#isolation-属性" class="headerlink" title="isolation 属性"></a>isolation 属性</h5><p><code>isolation</code> ：事务的隔离级别，默认值为 <code>Isolation.DEFAULT</code>。</p><ul><li>Isolation.DEFAULT：使用底层数据库默认的隔离级别。</li><li>Isolation.READ_UNCOMMITTED</li><li>Isolation.READ_COMMITTED</li><li>Isolation.REPEATABLE_READ</li><li>Isolation.SERIALIZABLE</li></ul><h5 id="timeout-属性"><a href="#timeout-属性" class="headerlink" title="timeout 属性"></a>timeout 属性</h5><p><code>timeout</code> ：事务的超时时间，默认值为 -1。如果超过该时间限制但事务还没有完成，则自动回滚事务。</p><h5 id="readOnly-属性"><a href="#readOnly-属性" class="headerlink" title="readOnly 属性"></a>readOnly 属性</h5><p><code>readOnly</code> ：指定事务是否为只读事务，默认值为 false；为了忽略那些不需要事务的方法，比如读取数据，可以设置 read-only 为 true。</p><h5 id="rollbackFor-属性"><a href="#rollbackFor-属性" class="headerlink" title="rollbackFor 属性"></a>rollbackFor 属性</h5><p><code>rollbackFor</code> ：用于指定能够触发事务回滚的异常类型，可以指定多个异常类型。</p><h5 id="noRollbackFor属性"><a href="#noRollbackFor属性" class="headerlink" title="noRollbackFor属性"></a><strong>noRollbackFor</strong>属性</h5><p><code>noRollbackFor</code>：抛出指定的异常类型，不回滚事务，也可以指定多个异常类型。</p><p>#@Transactional失效场景</p><p>接下来我们结合具体的代码分析一下哪些场景下，@Transactional 注解会失效。</p><h4 id="1、-Transactional-应用在非-public-修饰的方法上"><a href="#1、-Transactional-应用在非-public-修饰的方法上" class="headerlink" title="1、@Transactional 应用在非 public 修饰的方法上"></a>1、@Transactional 应用在非 public 修饰的方法上</h4><p>如果<code>Transactional</code>注解应用在非<code>public</code> 修饰的方法上，Transactional将会失效。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/0OzaL5uW2aOhsEJ0TtJSM5kcSOKZGJDOJoUPF0IHL2wvUHIzlHVYOib6bEN2tKkCyUn8fOxMVicBxvoKpgXU2HDQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>之所以会失效是因为在Spring AOP 代理时，如上图所示 <code>TransactionInterceptor</code> （事务拦截器）在目标方法执行前后进行拦截，<code>DynamicAdvisedInterceptor</code>（CglibAopProxy 的内部类）的 intercept 方法或 <code>JdkDynamicAopProxy</code> 的 invoke 方法会间接调用 <code>AbstractFallbackTransactionAttributeSource</code>的 <code>computeTransactionAttribute</code> 方法，获取Transactional 注解的事务配置信息。</p><pre><code class="java">protected TransactionAttribute computeTransactionAttribute(Method method,    Class&lt;?&gt; targetClass) {        // Don&#39;t allow no-public methods as required.        if (allowPublicMethodsOnly() &amp;&amp; !Modifier.isPublic(method.getModifiers())) {        return null;}</code></pre><p>此方法会检查目标方法的修饰符是否为 public，不是 public则不会获取@Transactional 的属性配置信息。</p><p><strong>注意：<code>protected</code>、<code>private</code> 修饰的方法上使用 <code>@Transactional</code> 注解，虽然事务无效，但不会有任何报错，这是我们很容犯错的一点。</strong></p><h4 id="2、-Transactional-注解属性-propagation-设置错误"><a href="#2、-Transactional-注解属性-propagation-设置错误" class="headerlink" title="2、@Transactional 注解属性 propagation 设置错误"></a>2、@Transactional 注解属性 propagation 设置错误</h4><p>这种失效是由于配置错误，若是错误的配置以下三种 propagation，事务将不会发生回滚。</p><p><code>TransactionDefinition.PROPAGATION_SUPPORTS</code>：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。<br><code>TransactionDefinition.PROPAGATION_NOT_SUPPORTED</code>：以非事务方式运行，如果当前存在事务，则把当前事务挂起。<br><code>TransactionDefinition.PROPAGATION_NEVER</code>：以非事务方式运行，如果当前存在事务，则抛出异常。</p><h4 id="3、-Transactional-注解属性-rollbackFor-设置错误"><a href="#3、-Transactional-注解属性-rollbackFor-设置错误" class="headerlink" title="3、@Transactional 注解属性 rollbackFor 设置错误"></a>3、@Transactional 注解属性 rollbackFor 设置错误</h4><p><code>rollbackFor</code> 可以指定能够触发事务回滚的异常类型。Spring默认抛出了未检查<code>unchecked</code>异常（继承自 <code>RuntimeException</code>的异常）或者 <code>Error</code>才回滚事务；其他异常不会触发回滚事务。如果在事务中抛出其他类型的异常，但却期望 Spring 能够回滚事务，就需要指定 <strong>rollbackFor</strong>属性。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/0OzaL5uW2aOhsEJ0TtJSM5kcSOKZGJDOENdU9CHkPlMgJrCv3Du00eDAiaaqleo6D9Q49dQuwY4lddQOsRRiadPA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><pre><code class="java">// 希望自定义的异常可以进行回滚@Transactional(propagation= Propagation.REQUIRED,rollbackFor= MyException.class</code></pre><p>若在目标方法中抛出的异常是 <code>rollbackFor</code> 指定的异常的子类，事务同样会回滚。Spring源码如下：</p><pre><code class="java"> private int getDepth(Class&lt;?&gt; exceptionClass, int depth) {         if (exceptionClass.getName().contains(this.exceptionName)) {             // Found it!             return depth; }         // If we&#39;ve gone as far as we can go and haven&#39;t found it...         if (exceptionClass == Throwable.class) {             return -1; } return getDepth(exceptionClass.getSuperclass(), depth + 1);}</code></pre><h4 id="4、同一个类中方法调用，导致-Transactional失效"><a href="#4、同一个类中方法调用，导致-Transactional失效" class="headerlink" title="4、同一个类中方法调用，导致@Transactional失效"></a>4、同一个类中方法调用，导致@Transactional失效</h4><p>开发中避免不了会对同一个类里面的方法调用，比如有一个类Test，它的一个方法A，A再调用本类的方法B（不论方法B是用public还是private修饰），但方法A没有声明注解事务，而B方法有。则外部调用方法A之后，方法B的事务是不会起作用的。这也是经常犯错误的一个地方。</p><p>那为啥会出现这种情况？其实这还是由于使用<code>Spring AOP</code>代理造成的，因为只有当事务方法被当前类以外的代码调用时，才会由<code>Spring</code>生成的代理对象来管理。</p><pre><code class="java">//@Transactional     @GetMapping(&quot;/test&quot;)     private Integer A() throws Exception {         CityInfoDict cityInfoDict = new CityInfoDict();         cityInfoDict.setCityName(&quot;2&quot;);         /**          * B 插入字段为 3的数据          */         this.insertB();         /**          * A 插入字段为 2的数据          */         int insert = cityInfoDictMapper.insert(cityInfoDict);         return insert;     }     @Transactional()     public Integer insertB() throws Exception {         CityInfoDict cityInfoDict = new CityInfoDict();         cityInfoDict.setCityName(&quot;3&quot;);         cityInfoDict.setParentCityId(3);         return cityInfoDictMapper.insert(cityInfoDict);     }</code></pre><h4 id="5、异常被你的-catch“吃了”导致-Transactional失效"><a href="#5、异常被你的-catch“吃了”导致-Transactional失效" class="headerlink" title="5、异常被你的 catch“吃了”导致@Transactional失效"></a>5、异常被你的 catch“吃了”导致@Transactional失效</h4><p>这种情况是最常见的一种@Transactional注解失效场景</p><pre><code class="java">    @Transactional    private Integer A() throws Exception {        int insert = 0;        try {            CityInfoDict cityInfoDict = new CityInfoDict();            cityInfoDict.setCityName(&quot;2&quot;);            cityInfoDict.setParentCityId(2);            /**             * A 插入字段为 2的数据             */            insert = cityInfoDictMapper.insert(cityInfoDict);            /**             * B 插入字段为 3的数据             */            b.insertB();        } catch (Exception e) {            e.printStackTrace();        }    }</code></pre><p>如果B方法内部抛了异常，而A方法此时try catch了B方法的异常，那这个事务还能正常回滚吗？</p><p>答案：不能！</p><p>会抛出异常：</p><pre><code class="java">1org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only</code></pre><p>因为当<code>ServiceB</code>中抛出了一个异常以后，<code>ServiceB</code>标识当前事务需要<code>rollback</code>。但是<code>ServiceA</code>中由于你手动的捕获这个异常并进行处理，<code>ServiceA</code>认为当前事务应该正常<code>commit</code>。此时就出现了前后不一致，也就是因为这样，抛出了前面的<code>UnexpectedRollbackException</code>异常。</p><p><code>spring</code>的事务是在调用业务方法之前开始的，业务方法执行完毕之后才执行<code>commit</code> or <code>rollback</code>，事务是否执行取决于是否抛出<code>runtime异常</code>。如果抛出<code>runtime exception</code> 并在你的业务方法中没有catch到的话，事务会回滚。</p><p>在业务方法中一般不需要catch异常，如果非要catch一定要抛出<code>throw new RuntimeException()</code>，或者注解中指定抛异常类型<code>@Transactional(rollbackFor=Exception.class)</code>，否则会导致事务失效，数据commit造成数据不一致，所以有些时候try catch反倒会画蛇添足。</p><h4 id="6、数据库引擎不支持事务"><a href="#6、数据库引擎不支持事务" class="headerlink" title="6、数据库引擎不支持事务"></a>6、数据库引擎不支持事务</h4><p>这种情况出现的概率并不高，事务能否生效数据库引擎是否支持事务是关键。常用的MySQL数据库默认使用支持事务的<code>innodb</code>引擎。一旦数据库引擎切换成不支持事务的<code>myisam</code>，那事务就从根本上失效了。</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>Spring</tag>
+      
+    </tags>
     
   </entry>
   
@@ -26,6 +112,8 @@
     
     
     <tags>
+      
+      <tag>读书笔记</tag>
       
       <tag>linux</tag>
       
@@ -48,7 +136,9 @@
     
     <tags>
       
-      <tag>java</tag>
+      <tag>Java</tag>
+      
+      <tag>读书笔记</tag>
       
     </tags>
     
@@ -103,7 +193,7 @@
     <link href="undefined2019/10/10/%E5%9B%9E%E9%A1%BEUML/"/>
     <url>2019/10/10/%E5%9B%9E%E9%A1%BEUML/</url>
     
-    <content type="html"><![CDATA[<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h2><img src="https://i.natfrp.com/9fdfaefc97ad92394e08125d4ae04fae.png" srcset="/img/loading.gif" alt="class" style="zoom:50%;"><h2 id="类与类之间的关系"><a href="#类与类之间的关系" class="headerlink" title="类与类之间的关系"></a>类与类之间的关系</h2><ol><li><p><strong>Inheritance|继承</strong>：字面意义</p><pre><code class="c++">class CMyDoc : public CDocument{    private:      CObList myList;};</code></pre><img src="https://i.natfrp.com/40270b82a208cdb66a47d376cf7105d9.png" srcset="/img/loading.gif" alt="inheritance" style="zoom:50%;"></li><li><p><strong>Composition|组成</strong>：一个类包含另一个类，部分和整体的生命周期一致。分为composition by value和composition by reference。（下例为composition by value）</p><pre><code class="c++">class CMyDoc : public CDocument{    private:        CObList myList;};</code></pre><img src="https://i.natfrp.com/5bebb222646084471eb19e9f1f0bb289.png" srcset="/img/loading.gif" alt="composition" style="zoom:50%;"></li><li><p><strong>Aggregation|聚合</strong>：composition的一种，即composition by reference。比composition by value的关系弱。以指针的形式表现，是一种弱的拥有关系。可以在需要的时候为指针分配空间，不需要的时候释放。部分与整体生命周期不一致。</p><pre><code>class CMyDoc : public CDocument{    private:        CObList* myList;};</code></pre><p><img src="https://i.natfrp.com/4964eaacdd9614b0dc0bcde4f91f437b.png" srcset="/img/loading.gif" alt="aggregation"></p></li><li><p><strong>Association|关联</strong>：一个类必须知道另一个类的成员和变量。若A-&gt;B，则A中存在classB的实例。关联包括聚合和组成。有双向和单项两种。</p><p><img src="https://i.natfrp.com/95e8b899324878203d7337860a187de6.png" srcset="/img/loading.gif" alt="img"></p></li></ol><p>（待续）</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h2><img src="https://i.natfrp.com/9fdfaefc97ad92394e08125d4ae04fae.png" srcset="/img/loading.gif" alt="class" style="zoom:50%;"><h2 id="类与类之间的关系"><a href="#类与类之间的关系" class="headerlink" title="类与类之间的关系"></a>类与类之间的关系</h2><ol><li><p><strong>Inheritance|继承</strong>：字面意义</p><pre><code class="c++">class CMyDoc : public CDocument{    private:      CObList myList;};</code></pre><img src="https://i.natfrp.com/40270b82a208cdb66a47d376cf7105d9.png" srcset="/img/loading.gif" alt="inheritance" style="zoom:50%;"></li><li><p><strong>Composition|组成</strong>：一个类包含另一个类，部分和整体的生命周期一致。分为composition by value和composition by reference。（下例为composition by value）</p><pre><code class="c++">class CMyDoc : public CDocument{    private:        CObList myList;};</code></pre><img src="https://i.natfrp.com/5bebb222646084471eb19e9f1f0bb289.png" srcset="/img/loading.gif" alt="composition" style="zoom:50%;"></li><li><p><strong>Aggregation|聚合</strong>：composition的一种，即composition by reference。比composition by value的关系弱。以指针的形式表现，是一种弱的拥有关系。可以在需要的时候为指针分配空间，不需要的时候释放。部分与整体生命周期不一致。</p><pre><code class="c++">class CMyDoc : public CDocument{    private:        CObList* myList;};</code></pre><p><img src="https://i.natfrp.com/4964eaacdd9614b0dc0bcde4f91f437b.png" srcset="/img/loading.gif" alt="aggregation"></p></li><li><p><strong>Association|关联</strong>：一个类必须知道另一个类的成员和变量。若A-&gt;B，则A中存在classB的实例。关联包括聚合和组成。有双向和单项两种。</p><p><img src="https://i.natfrp.com/95e8b899324878203d7337860a187de6.png" srcset="/img/loading.gif" alt="img"></p></li></ol><p>（待续）</p>]]></content>
     
     
     <categories>

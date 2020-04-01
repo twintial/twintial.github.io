@@ -128,6 +128,220 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/01/c#问题总结/">
+        <p class="h4 index-header">c#问题总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+c#里皆为对象，没有java中所谓的基本类型。int与System.Int32一模一样。
+
+
+
+
+c#
+java
+
+
+
+const
+final
+
+
+readonly
+无
+
+
+sealed
+final
+
+
+virtual
+无
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/c#">c#</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/01/确认和验证的区别/">
+        <p class="h4 index-header">确认和验证的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+validation：代码
+verification：概要设计与需求规约是否相等
+
+没听懂
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95">软件测试</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/31/深度学习花书/">
+        <p class="h4 index-header">深度学习花书</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">第2章 线性代数
+张量：一般，一个数组中的元素分布在若干维坐标的规则网格中，我们称之为张量。
+
+广播：$C = A + b$，这种隐式地复制向量b到很多位置的方式，称为广播。
+
+Hadmard乘积：$A\bigodot B$
+
+奇异矩阵：不是方阵或行列式值为0，行或列向量存在线性相关。空间可以朝着某一维度收缩。
+
+范式：$\displaystyle \left( \sum_{i}|x_{i}|^p \right)^{\frac{1}{p}}$ 
+
+当p=2时，$L^2$为欧几里得范数，其在原点附近的增长十分缓慢。
+当0和非零元素之间的差异非常重要时，通常会用$L^1$范数。
+最大范数：$\displaystyle ||x||_{\infty}=\max_i|x_i|$
+衡量矩阵的大小，Frobenius范数：$\displaystyle ||A||F=\sqrt{\sum{i,j}{A_{i,j}^2}}$
+
+
+特征分解、奇异值分解、Moore-Penrose伪逆：参考书P26
+
+迹运算：返回的是矩阵的对角和，$\displaystyle Tr(A)=\sum_iA_{i,i}$
+
+主</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/30/leetcode题解/">
+        <p class="h4 index-header">leetcode题解</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+无重复最长子串
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int max = 0;
+        int startIndex = 0;
+        for (int i = 0; i &lt; s.length(); i++) {
+            int x = s.indexOf(s.charAt(i), startIndex);
+            if (x &lt; 0) {
+                continue;
+            }
+            if (x &lt; i) {
+                max = Math.max(max, i - startIndex);
+                startIndex = x + 1;
+            }
+        }
+        max = Math.max(max, s.length() - startIndex);
+    </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+            <a href="/tags/leetcode">leetcode</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/30/Spring事务-transaction/">
         <p class="h4 index-header">Spring事务@transaction</p>
         
@@ -156,6 +370,11 @@ try {
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
         
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Spring">Spring</a>&nbsp;
+          
         
       </div>
     </div>
@@ -199,6 +418,8 @@ rwx可以用数字来表示，分别为4，2，1。
         
         
           <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
           
             <a href="/tags/linux">linux</a>&nbsp;
           
@@ -250,7 +471,9 @@ rwx可以用数字来表示，分别为4，2，1。
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
           
         
       </div>
@@ -416,183 +639,18 @@ class CMyDoc : public CDocument
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/10/10/设计模式/" target="_self">
-          <img src="/img/view/IMG_2683.jpg" srcset="/img/loading.gif" alt="设计模式" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/10/10/设计模式/">
-        <p class="h4 index-header">设计模式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Template Method
-定义首先定义一个算法骨干，推迟其中一些步骤使它们在子类中获得定义。即这些步骤在父亲类中是抽象的，需要在子类中实现。Template Method使得子类可以重新定义算法中的某些步骤，而不需要改变算法的架构（骨干）。我们平时使用的许多接口都采用了这种方法。
-
-类图表示
 
 
-示例
-
-类图：
-
-
-java代码：
-public class Main {
-    public static void main(String[] args) {
-        Generalization algorithm = new Realization();
-        algorithm.findSolution();
-    }
-}
-abstract class Generalization{
-    // 定义一个算法骨干
-    public void findSolution(){
-        stepOne();
-        stepTwo();
-        stepThr();
-        stepFor();
-    }
-    prot</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-10&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Design%20Pattern">Design Pattern</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/10/08/回顾html/" target="_self">
-          <img src="/img/view/IMG_2681.jpg" srcset="/img/loading.gif" alt="回顾html" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/10/08/回顾html/">
-        <p class="h4 index-header">回顾html</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">对html语言进行了回顾和再次学习。
-html样式一些标签和属性都用html中的style属性所代替了。
-被抛弃的标签和属性
-
-
-标签/属性
-描述
-
-
-
-&lt;center&gt;
-定义居中的内容
-
-
-&lt;font&gt;和&lt;basefont&gt;
-定义HTML字体
-
-
-&lt;s&gt;和&lt;strike&gt;(使用&lt;del&gt;代替)
-定义删除线文本
-
-
-&lt;u&gt;(使用样式&lt;ins&gt;代替)
-定义下划线文本
-
-
-align
-定义文本对齐方式
-
-
-bgcolor/color
-定义背景/文本颜色
-
-
-html折行使用&lt;br /&gt;标签:
-&lt;p&gt;This is&lt;br /&gt;a para&lt;br /&gt;graph with line breaks&lt;/p&gt;
-文本格式化标签
-
-
-标签
-效果
-
-
-
-&lt;p&gt;
-正常
-
-
-&lt;big&gt;
-大号
-
-
-&lt;em&gt;
-着重
-
-
-&lt;i&gt;
-斜体
-
-
-&lt;small&gt;
-小号
-
-
-&lt;b&gt;
-粗体
-
-
-&lt;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-10-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/HTML">HTML</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-
+  <nav aria-label="index posts navigation">
+    <ul class="pagination pg-blue justify-content-center mt-5">
+      
+      
+        <li class="page-item">
+          <a class="page-link" href="/page/2/#board">下一页</a>
+        </li>
+      
+    </ul>
+  </nav>
 
 
 
